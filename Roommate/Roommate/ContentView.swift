@@ -6,17 +6,51 @@
 //
 
 import SwiftUI
+import ECE564Login
 
 struct ContentView: View {
+    @StateObject var dataModel: Database  = Database.shared
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            TabView{
+                VStack{
+                    Text("Hello everyone")
+                }
+                .tabItem{
+                    Label("", systemImage:"circle.hexagongrid.circle.fill")
+                }
+                
+                
+                NavigationView{
+                    BlogView()
+                }
+                .tabItem{
+                    Label("", systemImage:"house")
+                }
+                
+                
+                NavigationView{
+                    ChatView()
+                }
+                .tabItem {
+                    Label("", systemImage: "message.fill")
+                }
+                
+                
+                
+                NavigationView{
+                    ProfileView()
+                }
+                .tabItem {
+                    Label("", systemImage: "person.fill")
+                }
+                
+            }
+            //ECE564Login()
         }
-        .padding()
     }
+        
 }
 
 #Preview {
