@@ -1,34 +1,63 @@
 import Fluent
+import Vapor
+import Foundation
 
 struct CreateUserList: AsyncMigration {
     func prepare(on database: Database) async throws {
+        database.logger.info("Creating userlist table")
+        do {
         try await database.schema("userlist")
             .id()
             .field("fName", .string, .required)
             .field("lName", .string, .required)
-            .field("DUID", .uint, .required)
+            .field("DUID", .int, .required)
             .field("netId", .string, .required)
             .field("gender", .string)
-            .field("friends", .json)
+            .field("friends", .array(of: .int))
             .field("purpose", .string)
-            .field("photos", .json)
+            .field("photos", .array(of: .string))
             .field("major", .string)
             .field("gradYear", .int)
             .field("age", .int)
-            .field("sleepSchedule", .json)
-            .field("budget", .json)
+            .field("sleepSchedule", .dictionary)
+            .field("budget", .dictionary)
             .field("isSmoke", .bool)
             .field("havePets", .bool)
             .field("selfIntro", .string)
             .field("haveRoom", .bool)
-            .field("room", .json)
-            .field("preference", .json)
+            .field("room", .dictionary)
+            .field("preference", .dictionary)
             .field("location", .string)
-            .field("interests", .json)
+            .field("interests", .array(of: .string))
             .create()
+        } catch {
+            print(String(reflecting: error))
+        }
+        
+        let directory = DirectoryConfiguration.detect().workingDirectory
+        let filePath = directory + "Resources/initdata.json"
+        
+
+        guard let data = FileManager.default.contents(atPath: filePath) else {
+            // return database.eventLoop.makeFailedFuture(FluentError.idRequired) 
+            print("Fail！")
+            return
+        }
+        
+        guard let users = try? JSONDecoder().decode([User].self, from: data) else {
+            // return database.eventLoop.makeFailedFuture(FluentError.idRequired)
+            print("Fail！")
+            return
+        }
+        
+        // try await users.create(on: database)
+        for user in users {
+            try await user.save(on: database)
+        }
     }
 
     func revert(on database: Database) async throws {
         try await database.schema("userlist").delete()
+        try await User.query(on: database).delete()
     }
 }

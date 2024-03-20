@@ -1,0 +1,46 @@
+[
+    {
+        "id": "123e4567-e89b-12d3-a456-426614174000",
+        "fName": "Tenki",
+        "lName": "QIANG",
+        "DUID": 951555,
+        "netId": "tq22",
+        "gender": "Male",
+        "friends": [],
+        "purpose": "College",
+        "photos": [],
+        "major": "ECE",
+        "gradYear": 2024,
+        "age": 24,
+        "sleepSchedule": {
+        "min": 23,
+        "max": 7
+        },
+        "budget": {
+        "min": 500,
+        "max": 1000
+        },
+        "isSmoke": false,
+        "havePets": false,
+        "selfIntro": "Hello, I'm an ECE master student looking for a roommate who is quiet and tidy.",
+        "haveRoom": true,
+        "room": {
+            "roomNumber": 353,
+            "location": "Campus View Apartments",
+            "description": "A spacious room with a beautiful campus view, fully furnished.",
+            "photos": []
+        },
+        "preference": {
+            "gender": "Unknown",
+            "ageRange": {
+                "min": 18,
+                "max": 30
+            },
+            "sameSchool": true,
+            "sameProgram": true,
+            "sameMajor": true
+        },
+        "location": "Durham",
+        "interests": ["coding", "video games"]
+    }
+]

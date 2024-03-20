@@ -1,5 +1,6 @@
 import Fluent
 import Vapor
+import Foundation
 
 final class User: Model, Content {
     static let schema = "userlist"
@@ -14,7 +15,7 @@ final class User: Model, Content {
     var lName: String
 
     @Field(key: "DUID")
-    var DUID: UInt
+    var DUID: Int
 
     @Field(key: "netId")
     var netId: String
@@ -23,7 +24,7 @@ final class User: Model, Content {
     var gender: Gender
 
     @Field(key: "friends")
-    var friends: [UInt]
+    var friends: [Int]
 
     @Field(key: "purpose")
     var purpose: Purpose
@@ -70,13 +71,36 @@ final class User: Model, Content {
     @Field(key: "interests")
     var interests: [String]
 
-    init() { }
+    init() {}
 
-    init(id: UUID? = nil, fName: String, lName: String, DUID: UInt, netId: String) {
-        self.id = id
-        self.fName = fName
-        self.lName = lName
-        self.DUID = DUID
-        self.netId = netId
-    }
+    // init(DUID: UInt, netId: String, fName: String, lName: String, 
+    // gender: Gender, friends: [UInt], purpose: Purpose, photos: [String], 
+    // major: Major, gradYear: Int, age: Int, sleepSchedule: Range, 
+    // budget: Range, isSmoke: Bool, havePets: Bool, selfIntro: String, 
+    // haveRoom: Bool, room: Room, preference: Preference, location: String, 
+    // interests: [String]) {
+    //     self.id = UUID()
+    //     self.DUID = DUID
+    //     self.netId = netId
+    //     self.fName = fName
+    //     self.lName = lName
+    //     self.gender = gender
+    //     self.friends = friends
+    //     self.purpose = purpose
+    //     self.photos = photos
+    //     self.major = major
+    //     self.gradYear = gradYear
+    //     self.age = age
+    //     self.sleepSchedule = sleepSchedule
+    //     self.budget = budget
+    //     self.isSmoke = isSmoke
+    //     self.havePets = havePets
+    //     self.selfIntro = selfIntro
+    //     self.haveRoom = haveRoom
+    //     self.room = room
+    //     self.preference = preference
+    //     self.location = location
+    //     self.interests = interests
+    // }
+
 }
