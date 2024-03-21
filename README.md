@@ -27,6 +27,5 @@
 
 - GET /roommate/user/{netid} // get current user data
 - GET /roommate/list //get the list data for main page
-- GET /roommate/profile/{netid} // get other user's profile
 - POST /roommate/modify-profile
 
