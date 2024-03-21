@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BlogView: View {
     var body: some View {
-        Text("Hello, World!b")
+        Text("Hello, World!")
     }
 }
 

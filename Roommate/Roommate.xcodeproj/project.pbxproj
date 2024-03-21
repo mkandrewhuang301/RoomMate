@@ -24,7 +24,8 @@
 		914C9B9D2BAA8234004F3E69 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9C2BAA8234004F3E69 /* ProfileView.swift */; };
 		914C9B9F2BAA8297004F3E69 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9E2BAA8297004F3E69 /* ChatView.swift */; };
 		914C9BA32BAA8442004F3E69 /* BlogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9BA22BAA8442004F3E69 /* BlogView.swift */; };
-		914C9BA82BAA8512004F3E69 /* ECE564Login in Frameworks */ = {isa = PBXBuildFile; productRef = 914C9BA72BAA8512004F3E69 /* ECE564Login */; };
+		914C9BAF2BAB6711004F3E69 /* profilePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9BAE2BAB6711004F3E69 /* profilePic.swift */; };
+		91FE1BE22BABC43000980170 /* ECE564Login in Frameworks */ = {isa = PBXBuildFile; productRef = 91FE1BE12BABC43000980170 /* ECE564Login */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,8 @@
 		914C9B9C2BAA8234004F3E69 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		914C9B9E2BAA8297004F3E69 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		914C9BA22BAA8442004F3E69 /* BlogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogView.swift; sourceTree = "<group>"; };
+		914C9BAB2BAB588E004F3E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		914C9BAE2BAB6711004F3E69 /* profilePic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilePic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				914C9BA82BAA8512004F3E69 /* ECE564Login in Frameworks */,
+				91FE1BE22BABC43000980170 /* ECE564Login in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,12 +82,14 @@
 		67901FFC2BA4989400CE0AAC /* Roommate */ = {
 			isa = PBXGroup;
 			children = (
+				914C9BAB2BAB588E004F3E69 /* Info.plist */,
 				6790200C2BAA0E0F00CE0AAC /* Model */,
 				67901FFD2BA4989400CE0AAC /* RoommateApp.swift */,
 				67901FFF2BA4989400CE0AAC /* ContentView.swift */,
 				914C9B9E2BAA8297004F3E69 /* ChatView.swift */,
 				914C9B9C2BAA8234004F3E69 /* ProfileView.swift */,
 				914C9BA22BAA8442004F3E69 /* BlogView.swift */,
+				914C9BAE2BAB6711004F3E69 /* profilePic.swift */,
 				679020012BA4989500CE0AAC /* Assets.xcassets */,
 				679020032BA4989500CE0AAC /* Preview Content */,
 			);
@@ -130,10 +135,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				91FE1BE42BABC43500980170 /* PBXTargetDependency */,
 			);
 			name = Roommate;
 			packageProductDependencies = (
-				914C9BA72BAA8512004F3E69 /* ECE564Login */,
+				91FE1BE12BABC43000980170 /* ECE564Login */,
 			);
 			productName = Roommate;
 			productReference = 67901FFA2BA4989400CE0AAC /* Roommate.app */;
@@ -164,7 +170,7 @@
 			);
 			mainGroup = 67901FF12BA4989400CE0AAC;
 			packageReferences = (
-				914C9BA62BAA8512004F3E69 /* XCRemoteSwiftPackageReference "ECE564Login" */,
+				91FE1BE02BABC43000980170 /* XCRemoteSwiftPackageReference "ECE564Login" */,
 			);
 			productRefGroup = 67901FFB2BA4989400CE0AAC /* Products */;
 			projectDirPath = "";
@@ -200,6 +206,7 @@
 				679020172BAA0E2300CE0AAC /* Room.swift in Sources */,
 				679020142BAA0E2300CE0AAC /* Range.swift in Sources */,
 				914C9BA32BAA8442004F3E69 /* BlogView.swift in Sources */,
+				914C9BAF2BAB6711004F3E69 /* profilePic.swift in Sources */,
 				6790201A2BAA0E2300CE0AAC /* Major.swift in Sources */,
 				914C9B9B2BAA7C58004F3E69 /* Database.swift in Sources */,
 				679020002BA4989400CE0AAC /* ContentView.swift in Sources */,
@@ -211,6 +218,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		91FE1BE42BABC43500980170 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 91FE1BE32BABC43500980170 /* ECE564Login */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		679020062BA4989500CE0AAC /* Debug */ = {
@@ -343,6 +357,7 @@
 				DEVELOPMENT_TEAM = 6LR5K8LYYD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Roommate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -372,6 +387,7 @@
 				DEVELOPMENT_TEAM = 6LR5K8LYYD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Roommate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -414,7 +430,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		914C9BA62BAA8512004F3E69 /* XCRemoteSwiftPackageReference "ECE564Login" */ = {
+		91FE1BE02BABC43000980170 /* XCRemoteSwiftPackageReference "ECE564Login" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/0HugoHu/ECE564Login";
 			requirement = {
@@ -425,9 +441,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		914C9BA72BAA8512004F3E69 /* ECE564Login */ = {
+		91FE1BE12BABC43000980170 /* ECE564Login */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 914C9BA62BAA8512004F3E69 /* XCRemoteSwiftPackageReference "ECE564Login" */;
+			package = 91FE1BE02BABC43000980170 /* XCRemoteSwiftPackageReference "ECE564Login" */;
+			productName = ECE564Login;
+		};
+		91FE1BE32BABC43500980170 /* ECE564Login */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 91FE1BE02BABC43000980170 /* XCRemoteSwiftPackageReference "ECE564Login" */;
 			productName = ECE564Login;
 		};
 /* End XCSwiftPackageProductDependency section */
