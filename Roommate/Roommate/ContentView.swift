@@ -8,15 +8,18 @@
 import SwiftUI
 import ECE564Login
 
-class DownloadManager: NSObject, ObservableObject, URLSessionDownloadDelegate{
+class DownloadManager<T: Decodable>: NSObject, ObservableObject, URLSessionDownloadDelegate{
     
     //hold download task
     private var task: URLSessionDownloadTask?
-    //completion handler returning if downloaded correct or not
-    var downloadingCompletionHandler: (([User]) -> Bool)?
+    //completion handler provide task for downloading
+    var downloadingCompletionHandler: ((Result<T, Error>)  -> Bool)?
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?){
         if let error = error{
             print("Download failed with error \(error.localizedDescription)")
+            DispatchQueue.main.async {
+                let _ = self.downloadingCompletionHandler?(.failure(error))
+            }
         }
         else{
             print("Download successfully")
@@ -35,7 +38,10 @@ class DownloadManager: NSObject, ObservableObject, URLSessionDownloadDelegate{
             //do{
             do {
                 let decoder = JSONDecoder()
-                let decoded = try decoder.decode([User].self, from: data)
+                let decoded = try decoder.decode(T.self, from: data)
+                DispatchQueue.main.async {
+                   let _ = self.downloadingCompletionHandler?(.success(decoded))
+               }
                 // If decoding is successful, use 'decoded' data
             } catch {
                 print("Decoding error: \(error)")
@@ -43,6 +49,9 @@ class DownloadManager: NSObject, ObservableObject, URLSessionDownloadDelegate{
            //}
         }catch{
             print("error retrieving data ")
+            DispatchQueue.main.async {
+                let _ = self.downloadingCompletionHandler?(.failure(error))
+            }
         }
     }
     func download(website: String, auth: String, delegate: URLSessionDelegate?) -> Bool{
@@ -73,9 +82,8 @@ class DownloadManager: NSObject, ObservableObject, URLSessionDownloadDelegate{
         return true
                 
     }
-    func downloadData(completionHandler: (([User]) -> Bool)?){
+    func downloadData(url: String, completionHandler: ( (Result<T, Error>) -> Bool)?){
         self.downloadingCompletionHandler = completionHandler
-        let url = "http://vcm-39030.vm.duke.edu:8080/roommate/list"
         let authentication = "imgrople8U"
         _ = download(website: url, auth: authentication, delegate: self)
     }
@@ -84,7 +92,7 @@ class DownloadManager: NSObject, ObservableObject, URLSessionDownloadDelegate{
 
 struct ContentView: View {
     @ObservedObject var dataModel: Database  = Database.shared
-    @StateObject private var downloadManager = DownloadManager()
+    @StateObject private var downloadManager = DownloadManager<[User]>()
     @State private var currentNetID: String = ""
     @State private var isViewVisible: Bool = false
         //immediate downlod
@@ -99,14 +107,12 @@ struct ContentView: View {
                     Label("", systemImage:"circle.hexagongrid.circle.fill")
                 }
                 
-                
                 NavigationView{
                     BlogView()
                 }
                 .tabItem{
                     Label("", systemImage:"house")
                 }
-                
                 
                 NavigationView{
                     ChatView()
@@ -115,19 +121,28 @@ struct ContentView: View {
                     Label("", systemImage: "message.fill")
                 }
                 
-                
                 NavigationView{
+                    var s: String = "123"
                     ProfileView()
                 }
                 .tabItem {
                     Label("", systemImage: "person.fill")
                 }
-                
             }
             ECE564Login()
         }
         .onAppear{
-            downloadManager.downloadData(completionHandler: dataModel.replaceDB)
+            downloadManager.downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/list"){result in
+                switch result{
+                    case .success(let users):
+                        let _ = dataModel.replaceDB(users: users)
+                            return true
+                    case .failure(let error):
+                        // Handle the error, perhaps setting an error message state variable
+                        print("Error downloading user data: \(error.localizedDescription)")
+                        return false
+                    }
+                }
         }
     }
         

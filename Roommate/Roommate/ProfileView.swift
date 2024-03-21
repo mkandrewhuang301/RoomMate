@@ -22,16 +22,28 @@ struct ProfileView: View {
     @State private var password: String = ""
     var height: Double = 20
     var width: Double = 20
-    
+    @State var user: User = User()
+    init(){
+        
+    }
     var body: some View {
         VStack{
-            
+            //profilePic(height:height, width: width)
         }
-        
         .onAppear{
             netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
             password = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[1]
             
+            DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
+                switch result{
+                case .failure(let error):
+                    self.user = User()
+                    return true
+                case .success(let user):
+                    self.user = user
+                    return true
+                }
+            }
         }
     }
         
