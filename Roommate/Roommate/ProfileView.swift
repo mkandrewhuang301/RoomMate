@@ -20,29 +20,41 @@ struct ProfileView: View {
     @StateObject var dataModel: Database  = Database.shared
     @State private var netID: String = ""
     @State private var password: String = ""
-    var height: Double = 20
-    var width: Double = 20
+    @State var isLoading: Bool = true
+    var height: Double = 150
+    var width: Double = 150
     @State var user: User = User()
     init(){
         
     }
     var body: some View {
         VStack{
-            //profilePic(height:height, width: width)
+            switch isLoading{
+                case false:
+                    profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width)
+                case true:
+                    profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width)
+            }
+
+            Spacer()
         }
         .onAppear{
+            isLoading = true
             netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
             password = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[1]
             
             DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
+                isLoading = false
                 switch result{
-                case .failure(let error):
-                    self.user = User()
-                    return true
-                case .success(let user):
-                    self.user = user
-                    return true
+                    //when user not found, just use new profile
+                    case .failure( _):
+                        self.user = User()
+                        return true
+                    case .success(let user):
+                        self.user = user
+                        return true
                 }
+
             }
         }
     }
