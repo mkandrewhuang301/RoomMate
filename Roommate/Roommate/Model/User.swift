@@ -18,7 +18,7 @@ struct User: Codable, Identifiable {
 
     var purpose: Purpose = .Unknown
 
-    var photos: [String] = []
+    var photos: [String] = [] /// 4 photos
 
     var school: School = .NotApplicable
     
@@ -44,7 +44,7 @@ struct User: Codable, Identifiable {
 
     var room: Room = Room()
 
-    var preference: Preference = Preference()
+    var preference: Preference = Preference() //5
 
     var location: String = ""
 

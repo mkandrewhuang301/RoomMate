@@ -29,11 +29,13 @@ class DownloadManager<T: Decodable>: NSObject, ObservableObject, URLSessionDownl
         print("Download completed. File saved at: \(location.absoluteString)")
         do{
             let data = try Data(contentsOf: location)
+            /*
             if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
                let prettyPrintedData = try? JSONSerialization.data(withJSONObject: jsonObject, options: [.prettyPrinted]),
                let prettyPrintedString = String(data: prettyPrintedData, encoding: .utf8) {
                 print(prettyPrintedString)
             }
+             */
             
             //do{
             do {
@@ -122,7 +124,7 @@ struct ContentView: View {
                 }
                 
                 NavigationView{
-                    var s: String = "123"
+                    //var s: String = "123"
                     ProfileView()
                 }
                 .tabItem {
