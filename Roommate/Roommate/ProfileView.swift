@@ -24,32 +24,51 @@ struct ProfileView: View {
     var height: Double = 125
     var width: Double = 125
     @State var user: User = User()
+    @State var percent: Double = 0
     init(){
         
     }
     var body: some View {
         VStack{
-            switch isLoading{
-                case false:
-                    profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width)
-                        .offset(y:45)
-                case true:
-                    profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width)
-                        .offset(y:45)
+            NavigationLink(destination: editProfileView()){
+                VStack{
+                    switch isLoading{
+                    case false:
+                        profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width, percent: $percent )
+                            .offset(y:45)
+                    case true:
+                        profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width, percent: $percent)
+                            .offset(y:45)
+                    }
+                    
+                    ZStack{
+                        Color(red: 0.95, green: 0.95, blue: 0.95)
+                            .frame(width:34, height:34)
+                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                        
+                        Image(systemName:"pencil")
+                            .resizable()
+                            .foregroundColor(.gray)
+                        
+                            .frame(width:23, height:23)
+                    }
+                    
+                    .frame(width:33, height:34)
+                    .offset(x:50, y: -145)
+                }
             }
-            ZStack{
-                Color(red: 0.95, green: 0.95, blue: 0.95)
-                    .frame(width:34, height:34)
-                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                NavigationLink(destination: editProfileView()){
-                    Image(systemName:"pencil")
-                        .resizable()
+            VStack{
+                Text("\(user.fName) \(user.lName), \(user.age)")
+                //.offset(y:-40)
+                    .font(.system(size: 20))
+                    .padding(.bottom, 5)
+                if(percent != 100){
+                    Text("Incomplete Profile")
+                        . italic()
                         .foregroundColor(.gray)
                 }
-                    .frame(width:23, height:23)
             }
-                .frame(width:33, height:34)
-                .offset(x:50, y: -145)
+            .offset(y: -35)
             Spacer()
         }
         .onAppear{

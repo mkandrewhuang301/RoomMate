@@ -12,9 +12,11 @@ struct profilePic: View {
     var user: User
     let height: Double
     let width: Double
+    @Binding var percent: Double
+
     let total: Double = 17 ///number of variables needed to be set in USER
     @State var count: Double = 0
-    @State var percent: Double = 0
+    //@State var percent: Double = 0
     var body: some View {
         VStack{
             if let imageData = Data(base64Encoded: photo), let UIImage = UIImage(data: imageData){
