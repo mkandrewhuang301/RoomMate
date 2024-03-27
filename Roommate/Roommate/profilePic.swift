@@ -17,6 +17,8 @@ struct profilePic: View {
     let total: Double = 17 ///number of variables needed to be set in USER
     @State var count: Double = 0
     //@State var percent: Double = 0
+    var color: Color = .purple
+    
     var body: some View {
         VStack{
             if let imageData = Data(base64Encoded: photo), let UIImage = UIImage(data: imageData){
@@ -37,7 +39,7 @@ struct profilePic: View {
                     .frame(width: width, height: height)
             }
             Text("\(Int(percent*100))%")
-                .background(.purple)
+                .background(color)
                 //.background(Color(red: 0.95, green: 0.95, blue: 0.92))
                 .cornerRadius(7)
                 .offset(y:-47)
@@ -125,7 +127,7 @@ struct profilePic: View {
             .trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: CGFloat(percent))
             .stroke(style: StrokeStyle(lineWidth: 6, lineCap: .round))
             .rotation(Angle(degrees: -180))
-            .foregroundColor(.purple)
+            .foregroundColor(color)
             .padding(-5)
             .animation(.easeInOut(duration:1), value:percent)
     }

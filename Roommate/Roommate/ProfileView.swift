@@ -25,20 +25,19 @@ struct ProfileView: View {
     var width: Double = 125
     @State var user: User = User()
     @State var percent: Double = 0
-    init(){
-        
-    }
+    
+   
     var body: some View {
         VStack{
-            NavigationLink(destination: editProfileView()){
+            NavigationLink(destination: editProfileView(user: $user)){
                 VStack{
                     switch isLoading{
                     case false:
                         profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width, percent: $percent )
-                            .offset(y:45)
+                            .offset(y:42)
                     case true:
                         profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width, percent: $percent)
-                            .offset(y:45)
+                            .offset(y:42)
                     }
                     
                     ZStack{
@@ -69,7 +68,24 @@ struct ProfileView: View {
                 }
             }
             .offset(y: -35)
+            Divider()
+            ///Could make scrollview
+            HStack(spacing: 0) {
+                Image("roommates")
+                    .resizable()
+                    
+                Divider()
+
+                Image("roommates2")
+                    .resizable()
+                    
+            }
+            .scaledToFit()
+            
             Spacer()
+            
+            helpButton()
+                .padding()
         }
         .onAppear{
             isLoading = true
@@ -92,6 +108,21 @@ struct ProfileView: View {
         }
     }
         
+}
+
+struct helpButton: View {
+    var body: some View {
+        HStack{
+            Image(systemName:"questionmark.circle")
+            Text("Help")
+                .foregroundColor(.white)
+        }
+        .padding()
+        //.cornerRadius(40)
+        .background(Color(red: 0.667, green: 0.667, blue: 0.667))
+        .clipShape(RoundedRectangle(cornerRadius: 30))
+        
+    }
 }
 
 /*
