@@ -48,52 +48,40 @@ struct profilePic: View {
             count = 0
             if(user.DUID != 0){
                 count+=1
-                print(1)
             }
             if(user.netId != ""){
                 count+=1
-                print(2)
             }
             if(user.fName != "Unknown"){
                 count+=1
-                print(3)
             }
             if(user.lName != "Unknown"){
                 count+=1
-                print(4)
             }
             if(user.gender != .Unknown){
                 count+=1
-                print(5)
             }
             if(user.purpose != .Unknown){
                 count+=1
-                print(6)
             }
             if(!user.photos.isEmpty){
                 count+=1
-                print(7)
             }
             if(user.school != .NotApplicable){
                 count+=1
-                print(8)
             }
             //self.program = program ?? .NotApplicable
             if(user.major != .NotApplicable){
                 count+=1
-                print(9)
             }
             if(user.gradYear != 0){
                 count+=1
-                print(10)
             }
             if(!(user.sleepSchedule.min ==  0 && user.sleepSchedule.max == 0)){
                 count+=1
-                print(11)
             }
             if(!(user.budget.min ==  0 && user.budget.max == 0)){
                 count+=1
-                print(12)
             }
             /*
             if(user.isSmoke == false){
@@ -105,7 +93,6 @@ struct profilePic: View {
              */
             if(user.selfIntro != ""){
                 count+=1
-                print(13)
             }
             ///ROOM IS OPTIONAL
             //self.room = room ?? Room()
@@ -114,20 +101,16 @@ struct profilePic: View {
             //Get preference elements
             if(user.preference.gender != .Unknown){
                 count+=1
-                print(14)
             }
             if(!(user.preference.ageRange.min ==  0 && user.preference.ageRange.max == 0)){
                 count+=1
-                print(15)
             }
             
             if(user.location != ""){
                 count+=1
-                print(16)
             }
             if(!user.interests.isEmpty){
                 count+=1
-                print(17)
             }
             print(count)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

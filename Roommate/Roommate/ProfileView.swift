@@ -21,8 +21,8 @@ struct ProfileView: View {
     @State private var netID: String = ""
     @State private var password: String = ""
     @State var isLoading: Bool = true
-    var height: Double = 150
-    var width: Double = 150
+    var height: Double = 125
+    var width: Double = 125
     @State var user: User = User()
     init(){
         
@@ -32,10 +32,24 @@ struct ProfileView: View {
             switch isLoading{
                 case false:
                     profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width)
+                        .offset(y:45)
                 case true:
                     profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width)
+                        .offset(y:45)
             }
-
+            ZStack{
+                Color(red: 0.95, green: 0.95, blue: 0.95)
+                    .frame(width:34, height:34)
+                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                NavigationLink(destination: editProfileView()){
+                    Image(systemName:"pencil")
+                        .resizable()
+                        .foregroundColor(.gray)
+                }
+                    .frame(width:23, height:23)
+            }
+                .frame(width:33, height:34)
+                .offset(x:50, y: -145)
             Spacer()
         }
         .onAppear{
@@ -61,6 +75,8 @@ struct ProfileView: View {
         
 }
 
-#Preview {
-    ProfileView()
-}
+/*
+ #Preview {
+ ProfileView()
+ }
+ */
