@@ -168,7 +168,7 @@ struct ProfileEditView: View {
                 Button(action: {
                     withAnimation {
                         closeAllSheet()
-                        self.showAwakeTimeSheet.toggle()
+                        self.showInterestSheet.toggle()
                     }
                 }) {
                     HStack {
@@ -188,12 +188,12 @@ struct ProfileEditView: View {
                 }
             }
             
-            Section(header: Text("Room")
-                .font(.custom("Helvetica Neue", size: 18))
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-            ) {
-            }
+//            Section(header: Text("Room")
+//                .font(.custom("Helvetica Neue", size: 18))
+//                .fontWeight(.bold)
+//                .foregroundColor(.black)
+//            ) {
+//            }
             
             Section(header: Text("preference")
                 .font(.custom("Helvetica Neue", size: 18))
@@ -234,18 +234,27 @@ struct ProfileEditView: View {
         .listStyle(GroupedListStyle())
         .overlay(
             WheelPickerView(isPresented: $showAgeSheet, num: $user.age,from: 18, to: 100)
+                .animation(.easeInOut, value: showAgeSheet)
         )
         .overlay(
             WheelPickerView(isPresented: $showGradYearSheet, num: $user.gradYear,from: 2020, to: 2032)
+                .animation(.easeInOut, value: showGradYearSheet)
         )
         .overlay(
             SliderPickerView(isPresented: $showBudgetSheet, maxValue: 10000, rangeType:.money, low: $user.budget.min, high: $user.budget.max)
+                .animation(.easeInOut, value: showBudgetSheet)
         )
         .overlay(
             SliderPickerView(isPresented: $showAwakeTimeSheet, maxValue: 1440, rangeType:.time, low: $user.sleepSchedule.min, high: $user.sleepSchedule.max)
+                .animation(.easeInOut, value: showAwakeTimeSheet)
         )
         .overlay(
             SliderPickerView(isPresented: $showAgeRangeSheet, maxValue: 100, rangeType:.number, low: $user.preference.ageRange.min, high: $user.preference.ageRange.max)
+                .animation(.easeInOut, value: showAgeRangeSheet)
+        )
+        .overlay(
+            InterestsView(isPresented: $showInterestSheet, selectedInterests: $user.interests)
+                .animation(.easeInOut, value: showInterestSheet)
         )
     }
     

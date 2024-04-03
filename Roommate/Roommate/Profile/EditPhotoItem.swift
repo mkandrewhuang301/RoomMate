@@ -33,7 +33,7 @@ struct EditPhotoItem: View {
             }
             .frame(width: 130, height: 200)
             .cornerRadius(8)
-            if let imageData = Data(base64Encoded: imageStr), let UIImage = UIImage(data: imageData){
+            if let imageData = Data(base64Encoded: imageStr), let _ = UIImage(data: imageData){
                 Color(red: 0.95, green: 0.95, blue: 0.95)
                     .frame(width:34, height:34)
                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)

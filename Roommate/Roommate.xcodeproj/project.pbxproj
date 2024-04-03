@@ -13,6 +13,8 @@
 		673E3F522BBDC0EC005229B7 /* WheelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E3F512BBDC0EC005229B7 /* WheelPickerView.swift */; };
 		673E3F542BBDD246005229B7 /* SliderPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E3F532BBDD246005229B7 /* SliderPickerView.swift */; };
 		673E3F562BBDD3A0005229B7 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E3F552BBDD3A0005229B7 /* RangeSlider.swift */; };
+		673E3F582BBDEEE0005229B7 /* InterestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E3F572BBDEEE0005229B7 /* InterestsView.swift */; };
+		673E3F5B2BBE09BA005229B7 /* interests.json in Resources */ = {isa = PBXBuildFile; fileRef = 673E3F5A2BBE09BA005229B7 /* interests.json */; };
 		67901FFE2BA4989400CE0AAC /* RoommateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67901FFD2BA4989400CE0AAC /* RoommateApp.swift */; };
 		679020002BA4989400CE0AAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67901FFF2BA4989400CE0AAC /* ContentView.swift */; };
 		679020022BA4989500CE0AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 679020012BA4989500CE0AAC /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 		673E3F512BBDC0EC005229B7 /* WheelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelPickerView.swift; sourceTree = "<group>"; };
 		673E3F532BBDD246005229B7 /* SliderPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderPickerView.swift; sourceTree = "<group>"; };
 		673E3F552BBDD3A0005229B7 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
+		673E3F572BBDEEE0005229B7 /* InterestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsView.swift; sourceTree = "<group>"; };
+		673E3F5A2BBE09BA005229B7 /* interests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = interests.json; sourceTree = "<group>"; };
 		67901FFA2BA4989400CE0AAC /* Roommate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roommate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67901FFD2BA4989400CE0AAC /* RoommateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoommateApp.swift; sourceTree = "<group>"; };
 		67901FFF2BA4989400CE0AAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		673E3F592BBE09AC005229B7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				673E3F5A2BBE09BA005229B7 /* interests.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		67901FF12BA4989400CE0AAC = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +111,7 @@
 				914C9BAB2BAB588E004F3E69 /* Info.plist */,
 				6790200C2BAA0E0F00CE0AAC /* Model */,
 				6790208C2BBC706D00CE0AAC /* Profile */,
+				673E3F592BBE09AC005229B7 /* Resources */,
 				67901FFD2BA4989400CE0AAC /* RoommateApp.swift */,
 				67901FFF2BA4989400CE0AAC /* ContentView.swift */,
 				914C9B9E2BAA8297004F3E69 /* ChatView.swift */,
@@ -143,6 +156,7 @@
 				673E3F4D2BBD0FCC005229B7 /* EditPhotoItem.swift */,
 				673E3F4F2BBD1502005229B7 /* EditPhotoMatrix.swift */,
 				673E3F4B2BBCF9BF005229B7 /* ProfileEditView.swift */,
+				673E3F572BBDEEE0005229B7 /* InterestsView.swift */,
 				673E3F532BBDD246005229B7 /* SliderPickerView.swift */,
 				673E3F552BBDD3A0005229B7 /* RangeSlider.swift */,
 				673E3F512BBDC0EC005229B7 /* WheelPickerView.swift */,
@@ -217,6 +231,7 @@
 			files = (
 				679020052BA4989500CE0AAC /* Preview Assets.xcassets in Resources */,
 				679020022BA4989500CE0AAC /* Assets.xcassets in Resources */,
+				673E3F5B2BBE09BA005229B7 /* interests.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +252,7 @@
 				679020172BAA0E2300CE0AAC /* Room.swift in Sources */,
 				673E3F562BBDD3A0005229B7 /* RangeSlider.swift in Sources */,
 				679020142BAA0E2300CE0AAC /* Range.swift in Sources */,
+				673E3F582BBDEEE0005229B7 /* InterestsView.swift in Sources */,
 				673E3F542BBDD246005229B7 /* SliderPickerView.swift in Sources */,
 				914C9BA32BAA8442004F3E69 /* BlogView.swift in Sources */,
 				914C9BAF2BAB6711004F3E69 /* profilePic.swift in Sources */,
