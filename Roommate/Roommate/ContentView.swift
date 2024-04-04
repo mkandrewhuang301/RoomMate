@@ -102,26 +102,26 @@ struct ContentView: View {
         ZStack {
             TabView{
                 
-//                VStack{
-//                    Text("Hello everyone")
-//                }
-//                .tabItem{
-//                    Label("", systemImage:"circle.hexagongrid.circle.fill")
-//                }
-//                
-//                NavigationView{
-//                    BlogView()
-//                }
-//                .tabItem{
-//                    Label("", systemImage:"house")
-//                }
-//                
-//                NavigationView{
-//                    ChatView()
-//                }
-//                .tabItem {
-//                    Label("", systemImage: "message.fill")
-//                }
+                VStack{
+                    Text("Hello everyone")
+                }
+                .tabItem{
+                    Label("", systemImage:"circle.hexagongrid.circle.fill")
+                }
+                
+                NavigationView{
+                    BlogView()
+                }
+                .tabItem{
+                    Label("", systemImage:"house")
+                }
+                
+                NavigationView{
+                    ChatView()
+                }
+                .tabItem {
+                    Label("", systemImage: "message.fill")
+                }
                 
                 NavigationView{
                     //var s: String = "123"
@@ -131,7 +131,7 @@ struct ContentView: View {
                     Label("", systemImage: "person.fill")
                 }
             }
-            // ECE564Login()
+             ECE564Login()
         }
         .background(.white)
         .onAppear{

@@ -94,9 +94,8 @@ struct ProfileView: View {
         }
         .onAppear{
             isLoading = true
-//            netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
-//            password = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[1]
-            netID = "tq22"
+            netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+            password = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[1]
             DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                 isLoading = false
                 switch result{
