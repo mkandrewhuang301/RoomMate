@@ -23,11 +23,8 @@ struct ProfileEditView: View {
             Section(header: Text("MEDIA")
                 .font(.custom("Helvetica Neue", size: 18))
                 .fontWeight(.bold)
-                .foregroundColor(.black)
-            ) {
-                EditPhotoMatrix(imageStrs: $user.photos)
-                    .padding()
-            }
+                .foregroundColor(.black)) {}
+            Section(header:EditPhotoMatrix(imageStrs: $user.photos).padding(.leading)) {}
             Section(header: Text("Basic")
                 .font(.custom("Helvetica Neue", size: 18))
                 .fontWeight(.bold)
@@ -252,10 +249,9 @@ struct ProfileEditView: View {
             SliderPickerView(isPresented: $showAgeRangeSheet, maxValue: 100, rangeType:.number, low: $user.preference.ageRange.min, high: $user.preference.ageRange.max)
                 .animation(.easeInOut, value: showAgeRangeSheet)
         )
-        .overlay(
+        .fullScreenCover(isPresented: $showInterestSheet) {
             InterestsView(isPresented: $showInterestSheet, selectedInterests: $user.interests)
-                .animation(.easeInOut, value: showInterestSheet)
-        )
+        }
     }
     
     func closeAllSheet() {

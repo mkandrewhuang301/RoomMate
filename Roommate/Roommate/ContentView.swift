@@ -133,6 +133,7 @@ struct ContentView: View {
             }
             // ECE564Login()
         }
+        .background(.white)
         .onAppear{
             downloadManager.downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/list"){result in
                 switch result{

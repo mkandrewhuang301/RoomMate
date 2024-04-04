@@ -12,7 +12,7 @@ enum Tab {
     case preview
 }
 
-struct editProfileView: View {
+struct ProfileDetailView: View {
     var switched: Bool = false
     @Binding var user: User //need to modify the user, and run a save
     @Binding var showOverlay: Bool

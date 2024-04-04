@@ -97,7 +97,6 @@ struct ProfileView: View {
 //            netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
 //            password = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[1]
             netID = "tq22"
-            // password = "711024erick"
             DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                 isLoading = false
                 switch result{
@@ -112,14 +111,9 @@ struct ProfileView: View {
 
             }
         }
-        .overlay(
-            ZStack{
-                if showOverlay{
-                    editProfileView(user: $user, showOverlay: $showOverlay)
-                }
-            }
-            .animation(.easeInOut, value: showOverlay)
-        )
+        .fullScreenCover(isPresented: $showOverlay) {
+            ProfileDetailView(user: $user, showOverlay: $showOverlay)
+        }
     }
         
 }
