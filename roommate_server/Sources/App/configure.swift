@@ -9,7 +9,9 @@ public func configure(_ app: Application) async throws {
     app.logger.logLevel = .debug
     app.http.server.configuration.hostname = "0.0.0.0"
     app.http.server.configuration.port = 8080
-
+    app.routes.defaultMaxBodySize = "100mb"
+    // app.http.server.configuration.requestDecompression = .enabled(limit: .megabytes(50))
+    // app.http.server.configuration.responseCompression = .enabled
     app.databases.use(DatabaseConfigurationFactory.postgres(configuration: .init(
         hostname: "localhost",
         port: 5432,

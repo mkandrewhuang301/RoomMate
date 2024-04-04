@@ -32,6 +32,9 @@ final class User: Model, Content {
     @Field(key: "photos")
     var photos: [String]
 
+    @Field(key: "school")
+    var school: School
+
     @Field(key: "major")
     var major: Major
 

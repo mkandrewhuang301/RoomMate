@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum School : String, Codable, CaseIterable {
+enum School : String, Codable {
     case Trinity = "Trinity"
     case Pratt = "Pratt"
     case Other = "Other"

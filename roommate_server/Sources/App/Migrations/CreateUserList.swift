@@ -16,6 +16,7 @@ struct CreateUserList: AsyncMigration {
             .field("friends", .array(of: .int))
             .field("purpose", .string)
             .field("photos", .array(of: .string))
+            .field("school", .string)
             .field("major", .string)
             .field("gradYear", .int)
             .field("age", .int)
@@ -36,16 +37,13 @@ struct CreateUserList: AsyncMigration {
         
         let directory = DirectoryConfiguration.detect().workingDirectory
         let filePath = directory + "Resources/initdata.json"
-        
 
         guard let data = FileManager.default.contents(atPath: filePath) else {
-            // return database.eventLoop.makeFailedFuture(FluentError.idRequired) 
             print("Fail！")
             return
         }
         
         guard let users = try? JSONDecoder().decode([User].self, from: data) else {
-            // return database.eventLoop.makeFailedFuture(FluentError.idRequired)
             print("Fail！")
             return
         }
@@ -58,6 +56,5 @@ struct CreateUserList: AsyncMigration {
 
     func revert(on database: Database) async throws {
         try await database.schema("userlist").delete()
-        try await User.query(on: database).delete()
     }
 }
