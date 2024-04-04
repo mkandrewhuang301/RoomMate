@@ -25,11 +25,16 @@ struct ProfileView: View {
     var width: Double = 125
     @State var user: User = User()
     @State var percent: Double = 0
-    
+    @State var showOverlay: Bool = false
    
     var body: some View {
         VStack{
-            NavigationLink(destination: editProfileView(user: $user)){
+//            NavigationLink(destination: editProfileView(user: $user)){
+            Button(action: {
+                withAnimation {
+                    showOverlay = true
+                }
+            }){
                 VStack{
                     switch isLoading{
                     case false:
@@ -55,7 +60,7 @@ struct ProfileView: View {
                     .frame(width:33, height:34)
                     .offset(x:50, y: -145)
                 }
-            }
+           }
             VStack{
                 Text("\(user.fName) \(user.lName), \(user.age)")
                 //.offset(y:-40)
@@ -91,7 +96,6 @@ struct ProfileView: View {
             isLoading = true
             netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
             password = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[1]
-            
             DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                 isLoading = false
                 switch result{
@@ -105,6 +109,9 @@ struct ProfileView: View {
                 }
 
             }
+        }
+        .fullScreenCover(isPresented: $showOverlay) {
+            ProfileEditTabView(user: $user, showOverlay: $showOverlay)
         }
     }
         
@@ -125,8 +132,8 @@ struct helpButton: View {
     }
 }
 
-/*
- #Preview {
- ProfileView()
- }
- */
+//
+// #Preview {
+// ProfileView()
+// }
+ 
