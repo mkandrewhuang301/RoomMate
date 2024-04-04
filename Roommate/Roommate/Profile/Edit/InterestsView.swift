@@ -131,7 +131,7 @@ struct WrapView<ItemView: View>: View {
     @Binding var selectedItems: [String]
     var content: (String) -> ItemView
 
-    @State private var totalHeight = CGFloat.infinity
+    @State var totalHeight = CGFloat.infinity
     
     var body: some View {
         VStack {

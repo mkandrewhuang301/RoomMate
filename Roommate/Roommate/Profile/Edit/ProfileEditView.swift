@@ -25,7 +25,7 @@ struct ProfileEditView: View {
                 .fontWeight(.bold)
                 .foregroundColor(.black)) {}
             Section(header:EditPhotoMatrix(imageStrs: $user.photos).padding(.leading)) {}
-            Section(header: Text("Basic")
+            Section(header: Text("Essentials")
                 .font(.custom("Helvetica Neue", size: 18))
                 .fontWeight(.bold)
                 .foregroundColor(.black)
@@ -52,25 +52,11 @@ struct ProfileEditView: View {
                             .foregroundColor(.gray)
                     }
                 }
-            }
-            
-            Section(header: Text("purpose")
-                .font(.custom("Helvetica Neue", size: 18))
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-            ) {
                 Picker("Purpose", selection: $user.purpose) {
                     ForEach(Purpose.allCases, id: \.self) { purpose in
                         Text(purpose.rawValue).tag(purpose)
                     }
                 }
-            }
-            
-            Section(header: Text("budget")
-                .font(.custom("Helvetica Neue", size: 18))
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-            ) {
                 Button(action: {
                     withAnimation {
                         closeAllSheet()
@@ -88,7 +74,7 @@ struct ProfileEditView: View {
                 }
             }
             
-            Section(header: Text("academic")
+            Section(header: Text("academics")
                 .font(.custom("Helvetica Neue", size: 18))
                 .fontWeight(.bold)
                 .foregroundColor(.black)

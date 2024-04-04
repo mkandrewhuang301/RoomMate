@@ -12,12 +12,12 @@ enum Tab {
     case preview
 }
 
-struct ProfileDetailView: View {
+struct ProfileEditTabView: View {
     var switched: Bool = false
-    @Binding var user: User //need to modify the user, and run a save
+    @Binding var user: User 
     @Binding var showOverlay: Bool
     var profileImages: [UIImage] = []
-    @State private var selectedTab: Tab = .edit
+    @State private var selectedTab: Tab = .preview
     
     var body: some View {
         VStack {
@@ -66,7 +66,7 @@ struct ProfileDetailView: View {
                 case .edit:
                     ProfileEditView(user: $user)
                 case .preview:
-                    Text("Preview View")
+                OtherProfileView(user: $user)
             }
             Spacer()
         }

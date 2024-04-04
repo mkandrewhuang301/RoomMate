@@ -112,7 +112,7 @@ struct ProfileView: View {
             }
         }
         .fullScreenCover(isPresented: $showOverlay) {
-            ProfileDetailView(user: $user, showOverlay: $showOverlay)
+            ProfileEditTabView(user: $user, showOverlay: $showOverlay)
         }
     }
         
