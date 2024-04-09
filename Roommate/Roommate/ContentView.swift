@@ -8,6 +8,80 @@
 import SwiftUI
 import ECE564Login
 
+struct ContentView: View {
+    @ObservedObject var dataModel: Database  = Database.shared
+    @StateObject private var downloadManager = DownloadManager<[User]>()
+    @State private var currentNetID: String = ""
+    @State private var isViewVisible: Bool = false
+        //immediate downlod
+    var body: some View {
+        ZStack {
+            TabView{
+                
+                VStack{
+                    Text("Hello everyone")
+                }
+                .tabItem{
+                    Label("", systemImage:"circle.hexagongrid.circle.fill")
+                }
+                
+                NavigationView{
+                    BlogView()
+                }
+                .tabItem{
+                    Label("", systemImage:"house")
+                }
+                
+                NavigationView{
+                    ChatView(user: dataModel.bindingForCurrentUser())
+                }
+                .tabItem {
+                    Label("", systemImage: "message.fill")
+                }
+                
+                NavigationView{
+                    //var s: String = "123"
+                    ProfileView(user: dataModel.bindingForCurrentUser())
+                }
+                .tabItem {
+                    Label("", systemImage: "person.fill")
+                }
+            }
+             ECE564Login()
+            .onDisappear(){
+//            .onAppear(){
+                let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+                DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
+                    switch result{
+                        //when user not found, just use new profile
+                        case .failure( _):
+                            dataModel.setCurrentUser(User())
+                            return true
+                        case .success(let user):
+                            dataModel.setCurrentUser(user)
+                            return true
+                    }
+                }
+            }
+        }
+        .background(.white)
+        .onAppear{
+            downloadManager.downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/list"){result in
+                switch result{
+                    case .success(let users):
+                        let _ = dataModel.replaceDB(users: users)
+                            return true
+                    case .failure(let error):
+                        // Handle the error, perhaps setting an error message state variable
+                        print("Error downloading user data: \(error.localizedDescription)")
+                        return false
+                    }
+                }
+        }
+    }
+        
+}
+
 class DownloadManager<T: Decodable>: NSObject, ObservableObject, URLSessionDownloadDelegate{
     
     //hold download task
@@ -89,66 +163,6 @@ class DownloadManager<T: Decodable>: NSObject, ObservableObject, URLSessionDownl
         let authentication = "imgrople8U"
         _ = download(website: url, auth: authentication, delegate: self)
     }
-}
- 
-
-struct ContentView: View {
-    @ObservedObject var dataModel: Database  = Database.shared
-    @StateObject private var downloadManager = DownloadManager<[User]>()
-    @State private var currentNetID: String = ""
-    @State private var isViewVisible: Bool = false
-        //immediate downlod
-    var body: some View {
-        ZStack {
-            TabView{
-                
-                VStack{
-                    Text("Hello everyone")
-                }
-                .tabItem{
-                    Label("", systemImage:"circle.hexagongrid.circle.fill")
-                }
-                
-                NavigationView{
-                    BlogView()
-                }
-                .tabItem{
-                    Label("", systemImage:"house")
-                }
-                
-                NavigationView{
-                    ChatView()
-                }
-                .tabItem {
-                    Label("", systemImage: "message.fill")
-                }
-                
-                NavigationView{
-                    //var s: String = "123"
-                    ProfileView()
-                }
-                .tabItem {
-                    Label("", systemImage: "person.fill")
-                }
-            }
-             ECE564Login()
-        }
-        .background(.white)
-        .onAppear{
-            downloadManager.downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/list"){result in
-                switch result{
-                    case .success(let users):
-                        let _ = dataModel.replaceDB(users: users)
-                            return true
-                    case .failure(let error):
-                        // Handle the error, perhaps setting an error message state variable
-                        print("Error downloading user data: \(error.localizedDescription)")
-                        return false
-                    }
-                }
-        }
-    }
-        
 }
 
 #Preview {

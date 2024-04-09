@@ -23,7 +23,7 @@ struct ProfileView: View {
     @State var isLoading: Bool = true
     var height: Double = 125
     var width: Double = 125
-    @State var user: User = User()
+    @Binding var user: User
     @State var percent: Double = 0
     @State var showOverlay: Bool = false
    
@@ -93,22 +93,21 @@ struct ProfileView: View {
                 .padding()
         }
         .onAppear{
-            isLoading = true
-            netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
-            password = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[1]
-            DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
-                isLoading = false
-                switch result{
-                    //when user not found, just use new profile
-                    case .failure( _):
-                        self.user = User()
-                        return true
-                    case .success(let user):
-                        self.user = user
-                        return true
-                }
-
-            }
+//            isLoading = true
+//            netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+//            password = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[1]
+//            DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
+//                isLoading = false
+//                switch result{
+//                    //when user not found, just use new profile
+//                    case .failure( _):
+//                        self.user = User()
+//                        return true
+//                    case .success(let user):
+//                        self.user = user
+//                        return true
+//                }
+//            }
         }
         .fullScreenCover(isPresented: $showOverlay) {
             ProfileEditTabView(user: $user, showOverlay: $showOverlay)

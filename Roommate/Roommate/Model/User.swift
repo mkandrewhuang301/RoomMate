@@ -14,7 +14,11 @@ struct User: Codable, Identifiable {
 
     var gender: Gender = .Unknown
 
-    var friends: [UInt] = []
+    var friends: [String] = []
+    
+    var applyList: [String] = []
+    
+    var waitList: [String] = []
 
     var purpose: Purpose = .Unknown
 
