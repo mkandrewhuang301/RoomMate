@@ -16,6 +16,12 @@ struct RMController: RouteCollection {
         subroutes.group("add-default") { subroute in
             subroute.get(use: addDefault)
         }
+        subroutes.group("apply") { subroute in
+            subroute.post(use: applyForMatch)
+        }
+        subroutes.group("accept") { subroute in
+            subroute.post(use: acceptForMatch)
+        }
     }
 
     func getUser(req: Request) throws -> EventLoopFuture<User> {
@@ -42,6 +48,8 @@ struct RMController: RouteCollection {
             user.netId = userData.netId    
             user.gender = userData.gender
             user.friends = userData.friends
+            user.applyList = userData.applyList
+            user.waitList = userData.waitList
             user.purpose = userData.purpose
             user.photos = userData.photos
             user.school = userData.school
@@ -89,6 +97,44 @@ struct RMController: RouteCollection {
         print("Unknown decoding error: \(error)")
     }
             throw Abort(.notFound, reason: "Fail to decode")
+        }
+    }
+
+    func applyForMatch(req: Request) throws -> EventLoopFuture<HTTPStatus> {
+        let matchRequest = try req.content.decode(MatchRequest.self)
+        
+         return User.find(matchRequest.myid, on: req.db)
+        .unwrap(or: Abort(.notFound))
+        .flatMap { currentUser in
+            User.find(matchRequest.matchid, on: req.db)
+                .unwrap(or: Abort(.notFound))
+                .flatMap { userToMatch in
+                    currentUser.applyList.append(userToMatch.id!)
+                    userToMatch.waitList.append(currentUser.id!)
+                    return currentUser.save(on: req.db).flatMap {
+                        userToMatch.save(on: req.db).map { userToMatch }
+                    }
+                }.transform(to: .ok)
+        }
+    }
+
+    func acceptForMatch(req: Request) throws -> EventLoopFuture<HTTPStatus> {
+        let matchRequest = try req.content.decode(MatchRequest.self)
+        
+         return User.find(matchRequest.myid, on: req.db)
+        .unwrap(or: Abort(.notFound))
+        .flatMap { currentUser in
+            User.find(matchRequest.matchid, on: req.db)
+                .unwrap(or: Abort(.notFound))
+                .flatMap { userToMatch in
+                    currentUser.applyList.removeAll { $0 == userToMatch.id! }
+                    userToMatch.waitList.removeAll { $0 == currentUser.id! }
+                    currentUser.friends.append(userToMatch.id!)
+                    userToMatch.friends.append(currentUser.id!)
+                    return currentUser.save(on: req.db).flatMap {
+                        userToMatch.save(on: req.db).map { userToMatch }
+                    }
+                }.transform(to: .ok)
         }
     }
 }

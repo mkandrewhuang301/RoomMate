@@ -24,7 +24,13 @@ final class User: Model, Content {
     var gender: Gender
 
     @Field(key: "friends")
-    var friends: [Int]
+    var friends: [UUID]
+    
+    @Field(key: "applyList")
+    var applyList: [UUID]
+    
+    @Field(key: "waitList")
+    var waitList: [UUID]
 
     @Field(key: "purpose")
     var purpose: Purpose
