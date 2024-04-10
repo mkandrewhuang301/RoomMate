@@ -1,6 +1,24 @@
 {
   "pins" : [
     {
+      "identity" : "agorartcengine_ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AgoraIO/AgoraRtcEngine_iOS",
+      "state" : {
+        "revision" : "75d5b9ce6e3676c1e6efaf91fbdfaafb8d20daa6",
+        "version" : "4.3.0"
+      }
+    },
+    {
+      "identity" : "agorartm_ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AgoraIO/AgoraRtm_iOS",
+      "state" : {
+        "revision" : "2e87ada22df8110cf85b9f18c2ac08083f4f63f4",
+        "version" : "1.5.1"
+      }
+    },
+    {
       "identity" : "ece564login",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/0HugoHu/ECE564Login",
@@ -43,6 +61,15 @@
       "state" : {
         "revision" : "85858c0246dcd781228301f9928519f75ce89758",
         "version" : "0.0.4"
+      }
+    },
+    {
+      "identity" : "swiftuirtc",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AgoraIO-Community/SwiftUIRtc.git",
+      "state" : {
+        "revision" : "708548a477450be13d76f72c296928880d73ad5c",
+        "version" : "0.5.0"
       }
     }
   ],

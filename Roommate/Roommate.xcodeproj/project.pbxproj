@@ -36,6 +36,9 @@
 		6793D2EB2BC65B0400FC8C68 /* profilePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2EA2BC65B0400FC8C68 /* profilePic.swift */; };
 		6793D2ED2BC65B6900FC8C68 /* NewMatchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2EC2BC65B6900FC8C68 /* NewMatchItem.swift */; };
 		6793D2EF2BC65B7100FC8C68 /* NewMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2EE2BC65B7100FC8C68 /* NewMatchView.swift */; };
+		6793D2F22BC7110900FC8C68 /* SwiftUIRtc in Frameworks */ = {isa = PBXBuildFile; productRef = 6793D2F12BC7110900FC8C68 /* SwiftUIRtc */; };
+		6793D2F42BC7112400FC8C68 /* AgoraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2F32BC7112400FC8C68 /* AgoraManager.swift */; };
+		6793D2F72BC7383200FC8C68 /* AgoraRtmKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6793D2F62BC7383200FC8C68 /* AgoraRtmKit */; };
 		91019E052BB3C67E00FE262D /* ProfileEditTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */; };
 		914C9B9B2BAA7C58004F3E69 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9A2BAA7C58004F3E69 /* Database.swift */; };
 		914C9B9D2BAA8234004F3E69 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9C2BAA8234004F3E69 /* ProfileView.swift */; };
@@ -75,6 +78,7 @@
 		6793D2EA2BC65B0400FC8C68 /* profilePic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = profilePic.swift; path = ../../../../../Downloads/profilePic.swift; sourceTree = "<group>"; };
 		6793D2EC2BC65B6900FC8C68 /* NewMatchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchItem.swift; sourceTree = "<group>"; };
 		6793D2EE2BC65B7100FC8C68 /* NewMatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchView.swift; sourceTree = "<group>"; };
+		6793D2F32BC7112400FC8C68 /* AgoraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraManager.swift; sourceTree = "<group>"; };
 		91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditTabView.swift; sourceTree = "<group>"; };
 		914C9B9A2BAA7C58004F3E69 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		914C9B9C2BAA8234004F3E69 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6793D2F72BC7383200FC8C68 /* AgoraRtmKit in Frameworks */,
+				6793D2F22BC7110900FC8C68 /* SwiftUIRtc in Frameworks */,
 				91FE1BE22BABC43000980170 /* ECE564Login in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +165,7 @@
 			children = (
 				914C9BAB2BAB588E004F3E69 /* Info.plist */,
 				6790200C2BAA0E0F00CE0AAC /* Model */,
+				6793D2F82BC7384700FC8C68 /* AgoraVideoCall */,
 				673E3F692BC5AA13005229B7 /* Chat */,
 				6790208C2BBC706D00CE0AAC /* Profile */,
 				673E3F592BBE09AC005229B7 /* Resources */,
@@ -209,6 +216,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		6793D2F82BC7384700FC8C68 /* AgoraVideoCall */ = {
+			isa = PBXGroup;
+			children = (
+				6793D2F32BC7112400FC8C68 /* AgoraManager.swift */,
+			);
+			path = AgoraVideoCall;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -228,6 +243,8 @@
 			name = Roommate;
 			packageProductDependencies = (
 				91FE1BE12BABC43000980170 /* ECE564Login */,
+				6793D2F12BC7110900FC8C68 /* SwiftUIRtc */,
+				6793D2F62BC7383200FC8C68 /* AgoraRtmKit */,
 			);
 			productName = Roommate;
 			productReference = 67901FFA2BA4989400CE0AAC /* Roommate.app */;
@@ -259,6 +276,8 @@
 			mainGroup = 67901FF12BA4989400CE0AAC;
 			packageReferences = (
 				91FE1BE02BABC43000980170 /* XCRemoteSwiftPackageReference "ECE564Login" */,
+				6793D2F02BC7110900FC8C68 /* XCRemoteSwiftPackageReference "SwiftUIRtc" */,
+				6793D2F52BC7383200FC8C68 /* XCRemoteSwiftPackageReference "AgoraRtm_iOS" */,
 			);
 			productRefGroup = 67901FFB2BA4989400CE0AAC /* Products */;
 			projectDirPath = "";
@@ -293,6 +312,7 @@
 				6790201C2BAA112300CE0AAC /* Program.swift in Sources */,
 				914C9B9D2BAA8234004F3E69 /* ProfileView.swift in Sources */,
 				673E3F632BBE4A6B005229B7 /* PhotosViewer.swift in Sources */,
+				6793D2F42BC7112400FC8C68 /* AgoraManager.swift in Sources */,
 				679020162BAA0E2300CE0AAC /* Preference.swift in Sources */,
 				679020152BAA0E2300CE0AAC /* User.swift in Sources */,
 				914C9B9F2BAA8297004F3E69 /* ChatView.swift in Sources */,
@@ -534,6 +554,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6793D2F02BC7110900FC8C68 /* XCRemoteSwiftPackageReference "SwiftUIRtc" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AgoraIO-Community/SwiftUIRtc.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
+		6793D2F52BC7383200FC8C68 /* XCRemoteSwiftPackageReference "AgoraRtm_iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AgoraIO/AgoraRtm_iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.1;
+			};
+		};
 		91FE1BE02BABC43000980170 /* XCRemoteSwiftPackageReference "ECE564Login" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/0HugoHu/ECE564Login";
@@ -545,6 +581,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6793D2F12BC7110900FC8C68 /* SwiftUIRtc */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6793D2F02BC7110900FC8C68 /* XCRemoteSwiftPackageReference "SwiftUIRtc" */;
+			productName = SwiftUIRtc;
+		};
+		6793D2F62BC7383200FC8C68 /* AgoraRtmKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6793D2F52BC7383200FC8C68 /* XCRemoteSwiftPackageReference "AgoraRtm_iOS" */;
+			productName = AgoraRtmKit;
+		};
 		91FE1BE12BABC43000980170 /* ECE564Login */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 91FE1BE02BABC43000980170 /* XCRemoteSwiftPackageReference "ECE564Login" */;
