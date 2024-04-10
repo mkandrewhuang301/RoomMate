@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 final class Database: ObservableObject{
-    @Published private var db: [UUID : User] = [:]
+    @Published var db: [UUID : User] = [:]
     @Published private var currentUser: User = User()
     
     static let shared = Database()
@@ -42,14 +42,6 @@ final class Database: ObservableObject{
         return db[id];
     }
     
-    func find(_ netId: String)-> User{
-        for user in db.values{
-            if user.netId == netId {
-                return user
-            }
-        }
-        return User()
-    }
     ///save data model
     func save()-> Bool{
         let values: [User] = Array(db.values)
@@ -84,6 +76,13 @@ final class Database: ObservableObject{
         Binding<User>(
             get: { self.currentUser },
             set: { self.currentUser = $0 }
+        )
+    }
+    
+    func bindingForUser(_ id: UUID) -> Binding<User> {
+        Binding<User>(
+            get: { self.db[id]! },
+            set: { self.db[id]! = $0 }
         )
     }
 }

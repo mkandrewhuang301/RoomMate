@@ -13,7 +13,25 @@ struct ChatView: View {
     
     var body: some View {
         List {
-            Text("hi")
+            Section(header: Text("New Matches")
+                .font(.custom("Helvetica Neue", size: 18))
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+                .padding(.vertical)
+            ) {
+                NewMatchView(user: $user)
+            }
+            Section(header: Text("Contacts")
+                .font(.custom("Helvetica Neue", size: 18))
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+                .padding(.vertical)
+            ) {
+                ForEach(user.friends, id: \.self) { friend_uuid in
+                    let friend = dataModel.bindingForUser(friend_uuid)
+                    ChatRow(user: friend)
+                }
+            }
         }
     }
 }

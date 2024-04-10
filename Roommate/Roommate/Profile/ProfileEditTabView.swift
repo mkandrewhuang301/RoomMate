@@ -111,6 +111,32 @@ class UploadViewModel: NSObject, ObservableObject, URLSessionDelegate, URLSessio
         return true
     }
     
+    func upload(website: String, json: Data) -> Bool {
+        let url = URL(string: website)
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session : URLSession = {
+            let config = URLSessionConfiguration.ephemeral
+            config.allowsCellularAccess = false
+            let session = URLSession(configuration: config, delegate: self, delegateQueue: .main)
+            return session
+        }()
+        
+//        let encoder = JSONEncoder()
+//        var jsonData: Data
+//        do {
+//            jsonData = try encoder.encode(user)
+//        } catch {
+//            return false
+//        }
+//        print(String(data: jsonData, encoding: .utf8)!)
+        request.httpBody = json
+        let task = session.dataTask(with: request)
+        task.resume()
+        return true
+    }
+    
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if error != nil {
             self.alertTitle = "Upload Fail!"

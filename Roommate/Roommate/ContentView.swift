@@ -13,27 +13,30 @@ struct ContentView: View {
     @StateObject private var downloadManager = DownloadManager<[User]>()
     @State private var currentNetID: String = ""
     @State private var isViewVisible: Bool = false
+    @State private var isLoading: Bool = true
         //immediate downlod
     var body: some View {
         ZStack {
             TabView{
                 
-                VStack{
-                    Text("Hello everyone")
-                }
-                .tabItem{
-                    Label("", systemImage:"circle.hexagongrid.circle.fill")
-                }
+//                VStack{
+//                    Text("Hello everyone")
+//                }
+//                .tabItem{
+//                    Label("", systemImage:"circle.hexagongrid.circle.fill")
+//                }
+//                
+//                NavigationView{
+//                    BlogView()
+//                }
+//                .tabItem{
+//                    Label("", systemImage:"house")
+//                }
                 
                 NavigationView{
-                    BlogView()
-                }
-                .tabItem{
-                    Label("", systemImage:"house")
-                }
-                
-                NavigationView{
-                    ChatView(user: dataModel.bindingForCurrentUser())
+                    if (!isLoading) {
+                        ChatView(user: dataModel.bindingForCurrentUser())
+                    }
                 }
                 .tabItem {
                     Label("", systemImage: "message.fill")
@@ -47,10 +50,11 @@ struct ContentView: View {
                     Label("", systemImage: "person.fill")
                 }
             }
-             ECE564Login()
-            .onDisappear(){
-//            .onAppear(){
-                let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+//             ECE564Login()
+//            .onDisappear(){
+            .onAppear(){
+                let netID = "tq22"
+//                let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
                 DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                     switch result{
                         //when user not found, just use new profile
@@ -70,6 +74,7 @@ struct ContentView: View {
                 switch result{
                     case .success(let users):
                         let _ = dataModel.replaceDB(users: users)
+                        isLoading = false
                             return true
                     case .failure(let error):
                         // Handle the error, perhaps setting an error message state variable
