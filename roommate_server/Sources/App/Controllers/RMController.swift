@@ -156,8 +156,8 @@ struct RMController: RouteCollection {
             User.find(matchRequest.matchid, on: req.db)
                 .unwrap(or: Abort(.notFound))
                 .flatMap { userToMatch in
-                    currentUser.applyList.removeAll { $0 == userToMatch.id! }
-                    userToMatch.waitList.removeAll { $0 == currentUser.id! }
+                    currentUser.waitList.removeAll { $0 == userToMatch.id! }
+                    userToMatch.applyList.removeAll { $0 == currentUser.id! }
                     return currentUser.save(on: req.db).flatMap {
                         userToMatch.save(on: req.db).map { userToMatch }
                     }
