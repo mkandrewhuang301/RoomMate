@@ -28,4 +28,12 @@
 - GET /roommate/user/{netid} // get current user data
 - GET /roommate/list //get the list data for main page
 - POST /roommate/modify-profile
+- POST /roommate/apply
+{
+    "myid": "nsacbjskjc", (id of current user)
+    "matchid": "cnaslcnasj" (id of user apply for)
+}
+- POST /roommate/accept
+(json format same as apply)
+
 

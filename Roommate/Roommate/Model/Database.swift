@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class Database: ObservableObject{
-    @Published private var db: [UUID : User] = [:]
+    @Published var db: [UUID : User] = [:]
+    @Published private var currentUser: User = User()
+    
     static let shared = Database()
     ///create a filemanager to read the json of the information
     static let fileManager = FileManager.default
@@ -38,6 +41,7 @@ final class Database: ObservableObject{
     func find(_ id: UUID)-> User?{
         return db[id];
     }
+    
     ///save data model
     func save()-> Bool{
         let values: [User] = Array(db.values)
@@ -60,7 +64,25 @@ final class Database: ObservableObject{
         return res
     }
     
+    func setCurrentUser(_ user: User){
+        currentUser = user
+    }
     
-    ///todo: Replace
-    //////
+    func getCurrentUser()-> User{
+        return currentUser
+    }
+    
+    func bindingForCurrentUser() -> Binding<User> {
+        Binding<User>(
+            get: { self.currentUser },
+            set: { self.currentUser = $0 }
+        )
+    }
+    
+    func bindingForUser(_ id: UUID) -> Binding<User> {
+        Binding<User>(
+            get: { self.db[id]! },
+            set: { self.db[id]! = $0 }
+        )
+    }
 }

@@ -19,6 +19,7 @@
 		673E3F612BBE412B005229B7 /* OtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E3F602BBE412B005229B7 /* OtherProfileView.swift */; };
 		673E3F632BBE4A6B005229B7 /* PhotosViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E3F622BBE4A6B005229B7 /* PhotosViewer.swift */; };
 		673E3F652BBE6F33005229B7 /* OtherProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E3F642BBE6F33005229B7 /* OtherProfileDetailView.swift */; };
+		673E3F6D2BC5B597005229B7 /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E3F6C2BC5B597005229B7 /* ChatRow.swift */; };
 		67901FFE2BA4989400CE0AAC /* RoommateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67901FFD2BA4989400CE0AAC /* RoommateApp.swift */; };
 		679020002BA4989400CE0AAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67901FFF2BA4989400CE0AAC /* ContentView.swift */; };
 		679020022BA4989500CE0AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 679020012BA4989500CE0AAC /* Assets.xcassets */; };
@@ -32,12 +33,14 @@
 		6790201A2BAA0E2300CE0AAC /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679020132BAA0E2300CE0AAC /* Major.swift */; };
 		6790201C2BAA112300CE0AAC /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790201B2BAA112300CE0AAC /* Program.swift */; };
 		6790201E2BAA12C000CE0AAC /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790201D2BAA12C000CE0AAC /* School.swift */; };
+		6793D2EB2BC65B0400FC8C68 /* profilePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2EA2BC65B0400FC8C68 /* profilePic.swift */; };
+		6793D2ED2BC65B6900FC8C68 /* NewMatchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2EC2BC65B6900FC8C68 /* NewMatchItem.swift */; };
+		6793D2EF2BC65B7100FC8C68 /* NewMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2EE2BC65B7100FC8C68 /* NewMatchView.swift */; };
 		91019E052BB3C67E00FE262D /* ProfileEditTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */; };
 		914C9B9B2BAA7C58004F3E69 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9A2BAA7C58004F3E69 /* Database.swift */; };
 		914C9B9D2BAA8234004F3E69 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9C2BAA8234004F3E69 /* ProfileView.swift */; };
 		914C9B9F2BAA8297004F3E69 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9E2BAA8297004F3E69 /* ChatView.swift */; };
 		914C9BA32BAA8442004F3E69 /* BlogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9BA22BAA8442004F3E69 /* BlogView.swift */; };
-		914C9BAF2BAB6711004F3E69 /* profilePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9BAE2BAB6711004F3E69 /* profilePic.swift */; };
 		91FE1BE22BABC43000980170 /* ECE564Login in Frameworks */ = {isa = PBXBuildFile; productRef = 91FE1BE12BABC43000980170 /* ECE564Login */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +57,7 @@
 		673E3F602BBE412B005229B7 /* OtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileView.swift; sourceTree = "<group>"; };
 		673E3F622BBE4A6B005229B7 /* PhotosViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewer.swift; sourceTree = "<group>"; };
 		673E3F642BBE6F33005229B7 /* OtherProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileDetailView.swift; sourceTree = "<group>"; };
+		673E3F6C2BC5B597005229B7 /* ChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
 		67901FFA2BA4989400CE0AAC /* Roommate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roommate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67901FFD2BA4989400CE0AAC /* RoommateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoommateApp.swift; sourceTree = "<group>"; };
 		67901FFF2BA4989400CE0AAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,13 +72,15 @@
 		679020132BAA0E2300CE0AAC /* Major.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Major.swift; sourceTree = "<group>"; };
 		6790201B2BAA112300CE0AAC /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		6790201D2BAA12C000CE0AAC /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
+		6793D2EA2BC65B0400FC8C68 /* profilePic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = profilePic.swift; path = ../../../../../Downloads/profilePic.swift; sourceTree = "<group>"; };
+		6793D2EC2BC65B6900FC8C68 /* NewMatchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchItem.swift; sourceTree = "<group>"; };
+		6793D2EE2BC65B7100FC8C68 /* NewMatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchView.swift; sourceTree = "<group>"; };
 		91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditTabView.swift; sourceTree = "<group>"; };
 		914C9B9A2BAA7C58004F3E69 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		914C9B9C2BAA8234004F3E69 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		914C9B9E2BAA8297004F3E69 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		914C9BA22BAA8442004F3E69 /* BlogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogView.swift; sourceTree = "<group>"; };
 		914C9BAB2BAB588E004F3E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		914C9BAE2BAB6711004F3E69 /* profilePic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profilePic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +127,17 @@
 			path = OtherSide;
 			sourceTree = "<group>";
 		};
+		673E3F692BC5AA13005229B7 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				914C9B9E2BAA8297004F3E69 /* ChatView.swift */,
+				6793D2EE2BC65B7100FC8C68 /* NewMatchView.swift */,
+				6793D2EC2BC65B6900FC8C68 /* NewMatchItem.swift */,
+				673E3F6C2BC5B597005229B7 /* ChatRow.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		67901FF12BA4989400CE0AAC = {
 			isa = PBXGroup;
 			children = (
@@ -142,13 +159,12 @@
 			children = (
 				914C9BAB2BAB588E004F3E69 /* Info.plist */,
 				6790200C2BAA0E0F00CE0AAC /* Model */,
+				673E3F692BC5AA13005229B7 /* Chat */,
 				6790208C2BBC706D00CE0AAC /* Profile */,
 				673E3F592BBE09AC005229B7 /* Resources */,
 				67901FFD2BA4989400CE0AAC /* RoommateApp.swift */,
 				67901FFF2BA4989400CE0AAC /* ContentView.swift */,
-				914C9B9E2BAA8297004F3E69 /* ChatView.swift */,
 				914C9BA22BAA8442004F3E69 /* BlogView.swift */,
-				914C9BAE2BAB6711004F3E69 /* profilePic.swift */,
 				679020012BA4989500CE0AAC /* Assets.xcassets */,
 				679020032BA4989500CE0AAC /* Preview Content */,
 			);
@@ -184,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				914C9B9C2BAA8234004F3E69 /* ProfileView.swift */,
+				6793D2EA2BC65B0400FC8C68 /* profilePic.swift */,
 				91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */,
 				673E3F622BBE4A6B005229B7 /* PhotosViewer.swift */,
 				673E3F5E2BBE405C005229B7 /* Edit */,
@@ -283,16 +300,19 @@
 				673E3F562BBDD3A0005229B7 /* RangeSlider.swift in Sources */,
 				679020142BAA0E2300CE0AAC /* Range.swift in Sources */,
 				673E3F582BBDEEE0005229B7 /* InterestsView.swift in Sources */,
+				6793D2EB2BC65B0400FC8C68 /* profilePic.swift in Sources */,
 				673E3F542BBDD246005229B7 /* SliderPickerView.swift in Sources */,
 				673E3F612BBE412B005229B7 /* OtherProfileView.swift in Sources */,
+				6793D2EF2BC65B7100FC8C68 /* NewMatchView.swift in Sources */,
 				914C9BA32BAA8442004F3E69 /* BlogView.swift in Sources */,
 				673E3F652BBE6F33005229B7 /* OtherProfileDetailView.swift in Sources */,
-				914C9BAF2BAB6711004F3E69 /* profilePic.swift in Sources */,
 				673E3F4C2BBCF9BF005229B7 /* ProfileEditView.swift in Sources */,
 				6790201A2BAA0E2300CE0AAC /* Major.swift in Sources */,
 				914C9B9B2BAA7C58004F3E69 /* Database.swift in Sources */,
+				6793D2ED2BC65B6900FC8C68 /* NewMatchItem.swift in Sources */,
 				679020002BA4989400CE0AAC /* ContentView.swift in Sources */,
 				67901FFE2BA4989400CE0AAC /* RoommateApp.swift in Sources */,
+				673E3F6D2BC5B597005229B7 /* ChatRow.swift in Sources */,
 				673E3F4E2BBD0FCC005229B7 /* EditPhotoItem.swift in Sources */,
 				6790201E2BAA12C000CE0AAC /* School.swift in Sources */,
 				673E3F502BBD1502005229B7 /* EditPhotoMatrix.swift in Sources */,
