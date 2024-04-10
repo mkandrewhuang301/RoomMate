@@ -22,6 +22,9 @@ struct RMController: RouteCollection {
         subroutes.group("accept") { subroute in
             subroute.post(use: acceptForMatch)
         }
+        subroutes.group("reject") { subroute in
+            subroute.post(use: rejectForMatch)
+        }
     }
 
     func getUser(req: Request) throws -> EventLoopFuture<User> {
@@ -109,8 +112,14 @@ struct RMController: RouteCollection {
             User.find(matchRequest.matchid, on: req.db)
                 .unwrap(or: Abort(.notFound))
                 .flatMap { userToMatch in
-                    currentUser.applyList.append(userToMatch.id!)
-                    userToMatch.waitList.append(currentUser.id!)
+                    if userToMatch.applyList.contains(currentUser.id!) {
+                        userToMatch.applyList.removeAll { $0 == currentUser.id! }
+                        userToMatch.friends.append(currentUser.id!)
+                        currentUser.friends.append(userToMatch.id!)
+                    } else {
+                        currentUser.applyList.append(userToMatch.id!)
+                        userToMatch.waitList.append(currentUser.id!)
+                    }
                     return currentUser.save(on: req.db).flatMap {
                         userToMatch.save(on: req.db).map { userToMatch }
                     }
@@ -131,6 +140,24 @@ struct RMController: RouteCollection {
                     userToMatch.waitList.removeAll { $0 == currentUser.id! }
                     currentUser.friends.append(userToMatch.id!)
                     userToMatch.friends.append(currentUser.id!)
+                    return currentUser.save(on: req.db).flatMap {
+                        userToMatch.save(on: req.db).map { userToMatch }
+                    }
+                }.transform(to: .ok)
+        }
+    }
+
+    func rejectForMatch(req: Request) throws -> EventLoopFuture<HTTPStatus> {
+        let matchRequest = try req.content.decode(MatchRequest.self)
+        
+         return User.find(matchRequest.myid, on: req.db)
+        .unwrap(or: Abort(.notFound))
+        .flatMap { currentUser in
+            User.find(matchRequest.matchid, on: req.db)
+                .unwrap(or: Abort(.notFound))
+                .flatMap { userToMatch in
+                    currentUser.applyList.removeAll { $0 == userToMatch.id! }
+                    userToMatch.waitList.removeAll { $0 == currentUser.id! }
                     return currentUser.save(on: req.db).flatMap {
                         userToMatch.save(on: req.db).map { userToMatch }
                     }
