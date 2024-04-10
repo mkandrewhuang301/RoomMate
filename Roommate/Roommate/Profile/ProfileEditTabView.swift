@@ -17,7 +17,7 @@ struct ProfileEditTabView: View {
     @Binding var user: User 
     @Binding var showOverlay: Bool
     var profileImages: [UIImage] = []
-    @State private var selectedTab: Tab = .preview
+    @State private var selectedTab: Tab = .edit
     @StateObject var uploadViewModel = UploadViewModel()
     
     var body: some View {

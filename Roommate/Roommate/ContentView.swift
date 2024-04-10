@@ -19,19 +19,19 @@ struct ContentView: View {
         ZStack {
             TabView{
                 
-//                VStack{
-//                    Text("Hello everyone")
-//                }
-//                .tabItem{
-//                    Label("", systemImage:"circle.hexagongrid.circle.fill")
-//                }
-//                
-//                NavigationView{
-//                    BlogView()
-//                }
-//                .tabItem{
-//                    Label("", systemImage:"house")
-//                }
+                VStack{
+                    Text("Hello everyone")
+                }
+                .tabItem{
+                    Label("", systemImage:"circle.hexagongrid.circle.fill")
+                }
+                
+                NavigationView{
+                    BlogView()
+                }
+                .tabItem{
+                    Label("", systemImage:"house")
+                }
                 
                 NavigationView{
                     if (!isLoading) {
@@ -50,11 +50,10 @@ struct ContentView: View {
                     Label("", systemImage: "person.fill")
                 }
             }
-//             ECE564Login()
-//            .onDisappear(){
-            .onAppear(){
-                let netID = "tq22"
-//                let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+             ECE564Login()
+            .onDisappear(){
+//            .onAppear(){
+                let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
                 DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                     switch result{
                         //when user not found, just use new profile
