@@ -14,6 +14,7 @@ struct OtherProfileView: View {
         VStack {
             PhotosViewer(user: $user, showDetail: $showDetail)
                 .padding()
+            Spacer()
         }
         .fullScreenCover(isPresented: $showDetail) {
             OtherProfileDetailView(user: $user, showDetail: $showDetail)

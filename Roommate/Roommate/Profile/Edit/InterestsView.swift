@@ -57,7 +57,9 @@ struct InterestsView: View {
                        )
                        .padding(.horizontal, 10)
                    ScrollView {
-                       WrapView(items: filteredInterests, selectedItems: $selectedInterests) { interest in
+                       WrapView(items: filteredInterests
+//                                , selectedItems: $selectedInterests
+                       ) { interest in
                            InterestTagView(interest: interest, isSelected: selectedInterests.contains(interest)) {
                                if selectedInterests.contains(interest) {
                                    selectedInterests.removeAll(where: { $0 == interest })
@@ -128,7 +130,7 @@ struct SelectedInterestTagView: View {
 
 struct WrapView<ItemView: View>: View {
     var items: [String]
-    @Binding var selectedItems: [String]
+    //@Binding var selectedItems: [String]
     var content: (String) -> ItemView
 
     @State var totalHeight = CGFloat.infinity

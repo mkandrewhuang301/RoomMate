@@ -53,6 +53,7 @@ struct ContentView: View {
              ECE564Login()
             .onDisappear(){
 //            .onAppear(){
+//                let netID = "tq22"
                 let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
                 DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                     switch result{

@@ -41,7 +41,7 @@ struct OtherProfileDetailView: View {
         ScrollView {
             VStack (spacing: 0) {
                 PhotosViewer(user: $user, showDetail: .constant(false), showName: false, showAge: false, showInterests: false, showDetailButton: false, cardStyle: false)
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 10) {
                     VStack(alignment: .leading, spacing: 0) {
                         Text("About me")
                             .font(.custom("Helvetica Neue", size: 20))
@@ -49,9 +49,14 @@ struct OtherProfileDetailView: View {
                             .padding()
                         Text(user.selfIntro)
                             .font(.custom("Helvetica Neue", size: 20))
+                            .frame(width: UIScreen.main.bounds.width - 60, alignment: .leading)
                             .padding()
                     }
                     .background(RoundedRectangle(cornerRadius: 15).fill(Color.white))
+                    .frame(width: UIScreen.main.bounds.width - 30)
+                    .fixedSize()
+                    .padding(.horizontal)
+                    
                     VStack(alignment: .leading, spacing: 0) {
                         Text("Essentials")
                             .font(.custom("Helvetica Neue", size: 20))
@@ -61,6 +66,9 @@ struct OtherProfileDetailView: View {
                         InfoRow(title: "Purpose", detail: user.purpose.rawValue)
                     }
                     .background(RoundedRectangle(cornerRadius: 15).fill(Color.white))
+                    .frame(width: UIScreen.main.bounds.width - 30)
+                    .padding(.horizontal)
+                    
                     VStack(alignment: .leading, spacing: 0) {
                         Text("Academics")
                             .font(.custom("Helvetica Neue", size: 20))
@@ -71,19 +79,28 @@ struct OtherProfileDetailView: View {
                         InfoRow(title: "Graduation Year", detail: "\(user.gradYear)")
                     }
                     .background(RoundedRectangle(cornerRadius: 15).fill(Color.white))
+                    .frame(width: UIScreen.main.bounds.width - 30)
+                    .padding(.horizontal)
+                    
                     VStack(alignment: .leading, spacing: 0) {
                         Text("Interest")
                             .font(.custom("Helvetica Neue", size: 20))
                             .fontWeight(.black)
                             .padding()
                         ScrollView {
-                            WrapView(items: user.interests, selectedItems: $user.interests) { interest in
+                            WrapView(items: user.interests
+//                                     , selectedItems: $user.interests
+                            ) { interest in
                                 InterestBulletView(interest: interest)
                             }
+                            .padding(.horizontal)
                         }
                     }
                     .frame(height: 200)
                     .background(RoundedRectangle(cornerRadius: 15).fill(Color.white))
+                    .frame(width: UIScreen.main.bounds.width - 30)
+                    .padding(.horizontal)
+                    
                     VStack(alignment: .leading, spacing: 0) {
                         Text("Lifestyle")
                             .font(.custom("Helvetica Neue", size: 20))
@@ -94,6 +111,8 @@ struct OtherProfileDetailView: View {
                         InfoRow(title: "Pets", detail: user.isSmoke ? "Have Pets" : "No Pets")
                     }
                     .background(RoundedRectangle(cornerRadius: 15).fill(Color.white))
+                    .frame(width: UIScreen.main.bounds.width - 30)
+                    .padding(.horizontal)
                     Spacer()
                 }
                 .frame(minHeight: UIScreen.main.bounds.height, maxHeight: .infinity)
