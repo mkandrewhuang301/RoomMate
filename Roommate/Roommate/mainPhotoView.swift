@@ -151,8 +151,7 @@ struct mainPhotosViewer: View {
                                             return
                                         }
                                     }
-                                    user.friends.append(profile.id)
-                                    user.waitList.removeAll { $0 == profile.id }
+                                    user.applyList.append(profile.id)
                                     index += 1
                                     print(user.applyList.count)
                                 }
