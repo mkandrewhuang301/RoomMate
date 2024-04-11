@@ -32,6 +32,11 @@ struct ProfileEditTabView: View {
                     Spacer()
                 }
                 HStack {
+                    Button("Cancel") {
+                        withAnimation {
+                            showOverlay.toggle()
+                        }
+                    }
                     Spacer()
                     Button("Save") {
                         if !uploadViewModel.upload(website: "http://vcm-39030.vm.duke.edu:8080/roommate/modify-profile", user: user) {
@@ -69,7 +74,7 @@ struct ProfileEditTabView: View {
                 case .edit:
                     ProfileEditView(user: $user)
                 case .preview:
-                OtherProfileView(user: $user)
+                    OtherProfileView(user: $user)
             }
             Spacer()
         }

@@ -24,7 +24,15 @@ struct ProfileEditView: View {
                 .font(.custom("Helvetica Neue", size: 18))
                 .fontWeight(.bold)
                 .foregroundColor(.black)) {}
-            Section(header:EditPhotoMatrix(imageStrs: $user.photos).padding(.leading)) {}
+            Section(header: 
+                HStack {
+                    Spacer()
+                    EditPhotoMatrix(imageStrs: $user.photos)
+                    .frame(alignment: .center)
+                    Spacer()
+                }
+            ) {}
+                
             Section(header: Text("Essentials")
                 .font(.custom("Helvetica Neue", size: 18))
                 .fontWeight(.bold)

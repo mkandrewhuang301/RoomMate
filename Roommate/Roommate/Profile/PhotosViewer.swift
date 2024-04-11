@@ -20,6 +20,13 @@ struct PhotosViewer: View {
     var barWidth: CGFloat {
         return (screenWidth - 50 - CGFloat(8 * (user.photos.count - 1))) / CGFloat(user.photos.count)
     }
+    var selectedInterests: [String] {
+        if user.interests.count <= 2 {
+            return user.interests
+        } else {
+            return Array(user.interests.prefix(2))
+        }
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -28,7 +35,7 @@ struct PhotosViewer: View {
                     screenWidth = geometry.size.width
                 }
         }
-        ZStack {
+        ZStack (){
             if let imageData = Data(base64Encoded: user.photos[currentIndex]), let UIImage = UIImage(data: imageData) {
                 Image(uiImage: UIImage)
                     .resizable()
@@ -46,46 +53,52 @@ struct PhotosViewer: View {
                         }
                     }
             }
-            if showDetailButton {
-                Button(action: {
-                    showDetail.toggle()
-                }) {
-                    Image(systemName: "arrowshape.up.circle")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .foregroundColor(.white)
-                        .padding()
-                        .clipShape(Circle())
-                        .padding(.top, 10)
-                        .padding(.trailing, 10)
-                }
-                .position(x: 310, y: 410)
-            }
-            VStack (alignment: .leading) {
-                HStack {
-                    if showName {
-                        Text(user.fName)
-                            .font(.custom("Avenir", size: 40))
+            HStack {
+                VStack (alignment: .leading) {
+                    HStack {
+                        if showName {
+                            Text(user.fName)
+                                .font(.custom("Avenir", size: 40))
+                                .fontWeight(.black)
+                                .foregroundColor(.white)
+                        }
+                        if showAge {
+                            Text(String(user.age))
+                                .font(.custom("Avenir", size: 35))
+                                .foregroundColor(.white)
+                        }
+                        Spacer()
+                        if showDetailButton {
+                            Button(action: {
+                                showDetail.toggle()
+                            }) {
+                                Image(systemName: "arrowshape.up.circle")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .clipShape(Circle())
+                                    .padding(.top, 10)
+                                    .padding(.trailing, 10)
+                            }
+                            .padding(.horizontal)
+                        }
+                    }
+                    if showInterests {
+                        Text("Interests")
+                            .font(.custom("Avenir", size: 20))
                             .fontWeight(.black)
                             .foregroundColor(.white)
-                    }
-                    if showAge {
-                        Text(String(user.age))
-                            .font(.custom("Avenir", size: 35))
-                            .foregroundColor(.white)
-                    }
-                }
-                if showInterests {
-                    Text("Interests")
-                        .font(.custom("Avenir", size: 20))
-                        .fontWeight(.black)
-                        .foregroundColor(.white)
-                    WrapView(items: user.interests, selectedItems: $user.interests) { interest in
-                        InterestBulletView(interest: interest)
+                        WrapView(items: selectedInterests
+                                 /*, selectedItems: $user.interests*/) { interest in
+                            InterestBulletView(interest: interest)
+                        }
                     }
                 }
+//                .position(x: 210, y: 450)
             }
-            .position(x: 210, y: 450)
+            .position(x: screenWidth / 2 + 20, y: 300)
+            
             HStack(spacing: 8) {
                 ForEach(0..<user.photos.count, id: \.self) { index in
                     Rectangle()
@@ -100,6 +113,7 @@ struct PhotosViewer: View {
             }
             .offset(y: -260)
         }
+        
     }
 }
 
