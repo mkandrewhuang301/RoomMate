@@ -69,11 +69,11 @@ struct ContentView: View {
             }
             
             Text("")
-            ECE564Login()
-          .onDisappear(){
-            //.onAppear(){
-               // let netID = "ah629"
-              let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+            //ECE564Login()
+          //.onDisappear(){
+            .onAppear(){
+                let netID = "ah629"
+              //let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
                 DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                     switch result{
                         //when user not found, just use new profile
@@ -95,8 +95,8 @@ struct ContentView: View {
                 switch result{
                     case .success(let users):
                         let _ = dataModel.replaceDB(users: users)
-                        userList = dataModel.list()
-                        //userList = dataModel.filter()
+                        //userList = dataModel.list()
+                        userList = dataModel.filter()
                         isDownloadComplete = true
                         return true
                     case .failure(let error):
