@@ -4,6 +4,7 @@ import Foundation
 import SwiftUI
 import Combine
 import AgoraUIKit
+import AVFoundation
 
 class AgoraManager: NSObject, ObservableObject {
     static let shared = AgoraManager()
@@ -11,6 +12,7 @@ class AgoraManager: NSObject, ObservableObject {
         super.init()
         agoraRTC = AgoraRtcEngineKit.sharedEngine(withAppId: appId, delegate: nil)
         agoraRTM = AgoraRtmKit(appId: appId, delegate: self)
+        UserDefaults.standard.set(false, forKey: "permissionGranted")
     }
     
     var agoraRTC: AgoraRtcEngineKit!
@@ -186,6 +188,8 @@ class AgoraManager: NSObject, ObservableObject {
                 }
                 self.currentRtcToken = self.rtcToken
                 self.currentRtcChannelId = self.rtcChannelId
+                requestMicrophonePermissions()
+                requestCameraPermissions()
                 withAnimation {
                     showVideoView = true
                 }
@@ -220,6 +224,8 @@ class AgoraManager: NSObject, ObservableObject {
         }
         self.currentRtcToken = self.incomingToken
         self.currentRtcChannelId = self.incomingChannelId
+        requestCameraPermissions()
+        requestMicrophonePermissions()
         withAnimation {
             showVideoView = true
         }
@@ -276,6 +282,62 @@ class AgoraManager: NSObject, ObservableObject {
             }
             print("Logged out from RTM")
         }
+    }
+}
+
+func requestMicrophonePermissions() {
+    switch AVCaptureDevice.authorizationStatus(for: .audio) {
+    case .authorized:
+        print("Microphone permissions granted")
+        break
+    case .notDetermined:
+        AVCaptureDevice.requestAccess(for: .audio) { granted in
+            guard granted else {
+                print("Microphone permissions not granted")
+                return
+            }
+            if granted {
+                print("Microphone permissions granted")
+            } else {
+                print("Microphone permissions not granted")
+            }
+        }
+        case .denied:
+            print("Microphone permissions not granted")
+            break
+        case .restricted:
+            print("Microphone permissions not granted")
+            break
+        @unknown default:
+            break
+    }
+}
+
+func requestCameraPermissions() {
+    switch AVCaptureDevice.authorizationStatus(for: .video) {
+    case .authorized:
+        print("Camera permissions granted")
+        break
+    case .notDetermined:
+        AVCaptureDevice.requestAccess(for: .video) { granted in
+            guard granted else {
+                print("Camera permissions not granted")
+                return
+            }
+            if granted {
+                print("Camera permissions granted")
+            } else {
+                print("Camera permissions not granted")
+            }
+        }
+        case .denied:
+            print("Camera permissions not granted")
+            break
+        case .restricted:
+            print("Camera permissions not granted")
+            break
+        @unknown default:
+            break
     }
 }
 
