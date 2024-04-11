@@ -29,7 +29,7 @@ struct NewMatchItem: View {
                     "matchid": friend.id.uuidString
                 ]
                 if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []) {
-                    if !uploadViewModel.upload(website: "http://vcm-39030.vm.duke.edu:8080/roommate/apply", json: jsonData) {
+                    if !uploadViewModel.upload(website: "http://vcm-39030.vm.duke.edu:8080/roommate/accept", json: jsonData) {
                         print("Failed to start upload task")
                         return
                     }

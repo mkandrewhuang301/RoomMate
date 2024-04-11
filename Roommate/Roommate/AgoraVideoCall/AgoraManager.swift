@@ -225,7 +225,7 @@ class AgoraManager: NSObject, ObservableObject {
         self.currentRtcToken = self.incomingToken
         self.currentRtcChannelId = self.incomingChannelId
         requestCameraPermissions()
-        requestMicrophonePermissions()
+        requestMicrophonePermissions() 
         withAnimation {
             showVideoView = true
         }
