@@ -105,6 +105,7 @@ final class Database: ObservableObject{
                 failedHardFilter = true
             }
             ///school preference
+            /*
             if self.currentUser.preference.sameSchool &&  self.currentUser.school != profile.school{
                 failedHardFilter = true
             }
@@ -112,6 +113,7 @@ final class Database: ObservableObject{
             if profile.age < self.currentUser.preference.ageRange.min || profile.age > self.currentUser.preference.ageRange.max{
                 failedHardFilter = true
             }
+            */
             
             
             //

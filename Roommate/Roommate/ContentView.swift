@@ -95,8 +95,8 @@ struct ContentView: View {
                 switch result{
                     case .success(let users):
                         let _ = dataModel.replaceDB(users: users)
-                        //userList = dataModel.list()
-                        userList = dataModel.filter()
+                        userList = dataModel.list()
+                        //userList = dataModel.filter()
                         isDownloadComplete = true
                         return true
                     case .failure(let error):

@@ -106,7 +106,7 @@ struct mainPhotosViewer: View {
                         .fontWeight(.black)
                         .foregroundColor(.white)
                         .shadow(color: .black, radius: 2.8, x: 0, y: 2)
-                    WrapView(items: profile.interests, selectedItems: $profile.interests) { interest in
+                    WrapView(items: profile.interests) { interest in
                         InterestBulletView(interest: interest)
                     }
                 }
