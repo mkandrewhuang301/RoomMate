@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct RoommateApp: App {
+    @StateObject private var agoraManager = AgoraManager.shared
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willTerminateNotification)) { _ in
+                    agoraManager.logoutRTM()
+                    agoraManager.agoraVideoViewer?.leaveChannel()
+                }
         }
     }
 }

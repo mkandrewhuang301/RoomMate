@@ -10,6 +10,7 @@ import SwiftUI
 struct ChatView: View {
     @ObservedObject var dataModel: Database  = Database.shared
     @Binding var user: User
+    @ObservedObject var agoraManager: AgoraManager = AgoraManager.shared
     
     var body: some View {
         VStack(spacing: 0) {
@@ -69,6 +70,20 @@ struct ChatView: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: $agoraManager.showVideoView, onDismiss: {
+            agoraManager.agoraVideoViewer?.leaveChannel()
+        }) {
+            AgoraVideoViewerRepresentable()
+        }
+        .fullScreenCover(isPresented: $agoraManager.showCallingView) {
+            let name = dataModel.find(UUID(uuidString: agoraManager.calleeId)!)?.fName ?? ""
+            CallingView(calleeName: name)
+        }
+        .fullScreenCover(isPresented: $agoraManager.showIncomingView) {
+            let name = dataModel.find(UUID(uuidString: agoraManager.callerId)!)?.fName ?? ""
+            IncomingView(callerName: name)
+        }
+        
     }
 }
 
