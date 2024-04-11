@@ -12,24 +12,60 @@ struct ChatView: View {
     @Binding var user: User
     
     var body: some View {
-        List {
-            Section(header: Text("New Matches")
-                .font(.custom("Helvetica Neue", size: 18))
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-                .padding(.vertical)
-            ) {
-                NewMatchView(user: $user)
+        VStack(spacing: 0) {
+            HStack {
+                Spacer()
+                Text("RoomMate")
+                    .font(.custom("Futura", size: 28))
+                    .bold()
+                    .foregroundStyle(.white)
+                    .frame(height: 50)
+                Spacer()
             }
-            Section(header: Text("Contacts")
-                .font(.custom("Helvetica Neue", size: 18))
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-                .padding(.vertical)
-            ) {
-                ForEach(user.friends, id: \.self) { friend_uuid in
-                    let friend = dataModel.bindingForUser(friend_uuid)
-                    ChatRow(user: friend)
+            .frame(height: 50)
+            .background(Color(.purple))
+
+            List {
+                Section(header: 
+                            HStack {
+                    Text("New Matches")
+                        .font(.custom("Helvetica Neue", size: 18))
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
+                        .padding(.vertical)
+                    Spacer()
+                    Button(action: {
+                        let netID = user.netId
+                        DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
+                            switch result{
+                                case .failure( _):
+                                    dataModel.setCurrentUser(User())
+                                    return true
+                                case .success(let user):
+                                    dataModel.setCurrentUser(user)
+                                    return true
+                            }
+                        }
+                    }) {
+                        Image(systemName: "arrow.clockwise.circle.fill")
+                            .resizable()
+                            .frame(width: 35, height: 35)
+                            .foregroundColor(.green)
+                    }
+                }
+                ) {
+                    NewMatchView(user: $user)
+                }
+                Section(header: Text("Contacts")
+                    .font(.custom("Helvetica Neue", size: 18))
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                    .padding(.vertical)
+                ) {
+                    ForEach(user.friends, id: \.self) { friend_uuid in
+                        let friend = dataModel.bindingForUser(friend_uuid)
+                        ChatRow(user: friend)
+                    }
                 }
             }
         }
