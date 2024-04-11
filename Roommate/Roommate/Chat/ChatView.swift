@@ -25,29 +25,30 @@ struct ChatView: View {
             }
             .frame(height: 50)
             .background(Color(.purple))
-
+            
             List {
                 Section(header: 
-                            HStack {
-                    Text("New Matches")
-                        .font(.custom("Helvetica Neue", size: 18))
-                        .fontWeight(.bold)
-                        .foregroundColor(.black)
-                        .padding(.vertical)
-                    Spacer()
-                    Button(action: {
-                        let netID = user.netId
-                        DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
-                            switch result{
-                                case .failure( _):
-                                    dataModel.setCurrentUser(User())
-                                    return true
-                                case .success(let user):
-                                    dataModel.setCurrentUser(user)
-                                    return true
+                    HStack {
+                        Text("New Matches")
+                            .font(.custom("Helvetica Neue", size: 18))
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+                            .padding(.vertical)
+                        Spacer()
+                        Button(action: {
+                            let netID = user.netId
+                            DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
+                                switch result{
+                                    case .failure( _):
+                                        dataModel.setCurrentUser(User())
+                                        return true
+                                    case .success(let user):
+                                        dataModel.setCurrentUser(user)
+                                        return true
+                                }
                             }
                         }
-                    }) {
+                    ) {
                         Image(systemName: "arrow.clockwise.circle.fill")
                             .resizable()
                             .frame(width: 35, height: 35)

@@ -33,11 +33,9 @@
 		6790201A2BAA0E2300CE0AAC /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679020132BAA0E2300CE0AAC /* Major.swift */; };
 		6790201C2BAA112300CE0AAC /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790201B2BAA112300CE0AAC /* Program.swift */; };
 		6790201E2BAA12C000CE0AAC /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6790201D2BAA12C000CE0AAC /* School.swift */; };
-		6793D2EB2BC65B0400FC8C68 /* profilePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2EA2BC65B0400FC8C68 /* profilePic.swift */; };
 		6793D2ED2BC65B6900FC8C68 /* NewMatchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2EC2BC65B6900FC8C68 /* NewMatchItem.swift */; };
 		6793D2EF2BC65B7100FC8C68 /* NewMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2EE2BC65B7100FC8C68 /* NewMatchView.swift */; };
 		6793D2F22BC7110900FC8C68 /* SwiftUIRtc in Frameworks */ = {isa = PBXBuildFile; productRef = 6793D2F12BC7110900FC8C68 /* SwiftUIRtc */; };
-		6793D2F42BC7112400FC8C68 /* AgoraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2F32BC7112400FC8C68 /* AgoraManager.swift */; };
 		6793D2F72BC7383200FC8C68 /* AgoraRtmKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6793D2F62BC7383200FC8C68 /* AgoraRtmKit */; };
 		6793D2FA2BC78AD200FC8C68 /* AgoraVideoViewerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D2F92BC78AD200FC8C68 /* AgoraVideoViewerRepresentable.swift */; };
 		6793D2FD2BC7907500FC8C68 /* AgoraAppGroupDataHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6793D2FC2BC7907500FC8C68 /* AgoraAppGroupDataHelper */; };
@@ -45,7 +43,10 @@
 		6793D3012BC7907500FC8C68 /* AgoraUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6793D3002BC7907500FC8C68 /* AgoraUIKit */; };
 		6793D3032BC7A0A400FC8C68 /* CallingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D3022BC7A0A400FC8C68 /* CallingView.swift */; };
 		6793D3052BC7A36C00FC8C68 /* IncomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D3042BC7A36C00FC8C68 /* IncomingView.swift */; };
+		6793D3072BC83A6200FC8C68 /* profilePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D3062BC83A6200FC8C68 /* profilePic.swift */; };
 		91019E052BB3C67E00FE262D /* ProfileEditTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */; };
+		911C5B962BC83FB500335F9E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C5B952BC83FB500335F9E /* DataManager.swift */; };
+		911C5B982BC83FE700335F9E /* mainPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C5B972BC83FE700335F9E /* mainPhotoView.swift */; };
 		914C9B9B2BAA7C58004F3E69 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9A2BAA7C58004F3E69 /* Database.swift */; };
 		914C9B9D2BAA8234004F3E69 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9C2BAA8234004F3E69 /* ProfileView.swift */; };
 		914C9B9F2BAA8297004F3E69 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9E2BAA8297004F3E69 /* ChatView.swift */; };
@@ -81,14 +82,16 @@
 		679020132BAA0E2300CE0AAC /* Major.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Major.swift; sourceTree = "<group>"; };
 		6790201B2BAA112300CE0AAC /* Program.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		6790201D2BAA12C000CE0AAC /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
-		6793D2EA2BC65B0400FC8C68 /* profilePic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = profilePic.swift; path = ../../../../../Downloads/profilePic.swift; sourceTree = "<group>"; };
 		6793D2EC2BC65B6900FC8C68 /* NewMatchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchItem.swift; sourceTree = "<group>"; };
 		6793D2EE2BC65B7100FC8C68 /* NewMatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchView.swift; sourceTree = "<group>"; };
 		6793D2F32BC7112400FC8C68 /* AgoraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraManager.swift; sourceTree = "<group>"; };
 		6793D2F92BC78AD200FC8C68 /* AgoraVideoViewerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraVideoViewerRepresentable.swift; sourceTree = "<group>"; };
 		6793D3022BC7A0A400FC8C68 /* CallingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingView.swift; sourceTree = "<group>"; };
 		6793D3042BC7A36C00FC8C68 /* IncomingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingView.swift; sourceTree = "<group>"; };
+		6793D3062BC83A6200FC8C68 /* profilePic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profilePic.swift; sourceTree = "<group>"; };
 		91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditTabView.swift; sourceTree = "<group>"; };
+		911C5B952BC83FB500335F9E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		911C5B972BC83FE700335F9E /* mainPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPhotoView.swift; sourceTree = "<group>"; };
 		914C9B9A2BAA7C58004F3E69 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		914C9B9C2BAA8234004F3E69 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		914C9B9E2BAA8297004F3E69 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -177,12 +180,13 @@
 			children = (
 				914C9BAB2BAB588E004F3E69 /* Info.plist */,
 				6790200C2BAA0E0F00CE0AAC /* Model */,
-				6793D2F82BC7384700FC8C68 /* AgoraVideoCall */,
 				673E3F692BC5AA13005229B7 /* Chat */,
 				6790208C2BBC706D00CE0AAC /* Profile */,
 				673E3F592BBE09AC005229B7 /* Resources */,
 				67901FFD2BA4989400CE0AAC /* RoommateApp.swift */,
 				67901FFF2BA4989400CE0AAC /* ContentView.swift */,
+				911C5B972BC83FE700335F9E /* mainPhotoView.swift */,
+				911C5B952BC83FB500335F9E /* DataManager.swift */,
 				914C9BA22BAA8442004F3E69 /* BlogView.swift */,
 				679020012BA4989500CE0AAC /* Assets.xcassets */,
 				679020032BA4989500CE0AAC /* Preview Content */,
@@ -219,9 +223,9 @@
 			isa = PBXGroup;
 			children = (
 				914C9B9C2BAA8234004F3E69 /* ProfileView.swift */,
-				6793D2EA2BC65B0400FC8C68 /* profilePic.swift */,
 				91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */,
 				673E3F622BBE4A6B005229B7 /* PhotosViewer.swift */,
+				6793D3062BC83A6200FC8C68 /* profilePic.swift */,
 				673E3F5E2BBE405C005229B7 /* Edit */,
 				673E3F5F2BBE4101005229B7 /* OtherSide */,
 			);
@@ -239,6 +243,7 @@
 			path = AgoraVideoCall;
 			sourceTree = "<group>";
 		};
+
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -327,12 +332,12 @@
 			files = (
 				673E3F522BBDC0EC005229B7 /* WheelPickerView.swift in Sources */,
 				6793D3032BC7A0A400FC8C68 /* CallingView.swift in Sources */,
+				911C5B962BC83FB500335F9E /* DataManager.swift in Sources */,
 				91019E052BB3C67E00FE262D /* ProfileEditTabView.swift in Sources */,
 				673E3F5D2BBE37D6005229B7 /* ImagePicker.swift in Sources */,
 				6790201C2BAA112300CE0AAC /* Program.swift in Sources */,
 				914C9B9D2BAA8234004F3E69 /* ProfileView.swift in Sources */,
 				673E3F632BBE4A6B005229B7 /* PhotosViewer.swift in Sources */,
-				6793D2F42BC7112400FC8C68 /* AgoraManager.swift in Sources */,
 				679020162BAA0E2300CE0AAC /* Preference.swift in Sources */,
 				6793D2FA2BC78AD200FC8C68 /* AgoraVideoViewerRepresentable.swift in Sources */,
 				679020152BAA0E2300CE0AAC /* User.swift in Sources */,
@@ -342,7 +347,6 @@
 				673E3F562BBDD3A0005229B7 /* RangeSlider.swift in Sources */,
 				679020142BAA0E2300CE0AAC /* Range.swift in Sources */,
 				673E3F582BBDEEE0005229B7 /* InterestsView.swift in Sources */,
-				6793D2EB2BC65B0400FC8C68 /* profilePic.swift in Sources */,
 				673E3F542BBDD246005229B7 /* SliderPickerView.swift in Sources */,
 				673E3F612BBE412B005229B7 /* OtherProfileView.swift in Sources */,
 				6793D2EF2BC65B7100FC8C68 /* NewMatchView.swift in Sources */,
@@ -351,8 +355,10 @@
 				673E3F4C2BBCF9BF005229B7 /* ProfileEditView.swift in Sources */,
 				6790201A2BAA0E2300CE0AAC /* Major.swift in Sources */,
 				914C9B9B2BAA7C58004F3E69 /* Database.swift in Sources */,
+				911C5B982BC83FE700335F9E /* mainPhotoView.swift in Sources */,
 				6793D2ED2BC65B6900FC8C68 /* NewMatchItem.swift in Sources */,
 				679020002BA4989400CE0AAC /* ContentView.swift in Sources */,
+				6793D3072BC83A6200FC8C68 /* profilePic.swift in Sources */,
 				67901FFE2BA4989400CE0AAC /* RoommateApp.swift in Sources */,
 				673E3F6D2BC5B597005229B7 /* ChatRow.swift in Sources */,
 				673E3F4E2BBD0FCC005229B7 /* EditPhotoItem.swift in Sources */,

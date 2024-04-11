@@ -85,4 +85,63 @@ final class Database: ObservableObject{
             set: { self.db[id]! = $0 }
         )
     }
+    func list() -> [User]{
+            return Array(db.values)
+        }
+    func filter()-> [User]{
+        ///need to get rid of all users with wrong hard info
+        var  order: [Float: [User]] = [:]
+        
+        for profile in self.db.values{
+            var failedHardFilter: Bool = false
+            var similarity: Float = 0.0
+            ///cannot be your own profile
+            if currentUser.id == profile.id {
+                failedHardFilter = true
+            }
+            ///calculate similarity value from each field
+            ///gender preference
+            if self.currentUser.preference.gender != profile.gender{
+                failedHardFilter = true
+            }
+            ///school preference
+            /*
+            if self.currentUser.preference.sameSchool &&  self.currentUser.school != profile.school{
+                failedHardFilter = true
+            }
+            ///age must be right range
+            if profile.age < self.currentUser.preference.ageRange.min || profile.age > self.currentUser.preference.ageRange.max{
+                failedHardFilter = true
+            }
+            */
+            
+            
+            //
+            print("\(profile.fName), and \(failedHardFilter)" )
+            
+            if !failedHardFilter{
+                if order[similarity] == nil{
+                    order[similarity] = [profile]
+                }
+                else{
+                    order[similarity]!.append(profile)
+                }
+            }
+                
+           
+        }
+        
+        
+        
+        
+        let  sortedOrder = order.sorted{$0.key > $1.key}
+        var result: [User] = []
+        for (key, value) in sortedOrder{
+            result.append(contentsOf: value)
+        }
+        
+        return result
+    }
+
+    
 }
