@@ -24,7 +24,6 @@ class AgoraManager: NSObject, ObservableObject {
     var rtmToken = "undefined"
     let rtmChannelId = "roommate"
     @Published var rtcChannelId = "undefined"
-    let tmpToken = "007eJxTYBA7Ojc2yWLxuh7Lv797ZhRK2Tzb9Djqx8Lg41t66894rstXYDBNTE0zsUw1NzZIMTdJSk2yNDZISzFJNE4zt0wxMkuzYFwikdYQyMiwUWYqCyMDBIL4KgzGhiYWLgYGrroGlqaWuibObia6FmZOFrqmli4WToaWRs7OjmYMDACFdyeN"
     
     @Published var callerId = ""
     var incomingToken = "undefined"
@@ -79,10 +78,10 @@ class AgoraManager: NSObject, ObservableObject {
     func fetchRTCToken(channelName: String, user: String) -> String {
         let jsonObject: [String: Any] = [
             "tokenType": "rtc",
-            "channel": "test",
+            "channel": channelName,
             "role": "publisher",
 //            "user_id": user,
-            "uid": "123",
+            "uid": "0",
             "expire": 3600
 
         ]
@@ -198,8 +197,7 @@ class AgoraManager: NSObject, ObservableObject {
                     showCallingView = false
                 }
                 self.currentRtcToken = self.rtcToken
-//                self.currentRtcToken = self.tmpToken
-                self.currentRtcChannelId = "test"
+                self.currentRtcChannelId = self.rtcChannelId
                 requestMicrophonePermissions()
                 requestCameraPermissions()
                 withAnimation {
@@ -235,8 +233,7 @@ class AgoraManager: NSObject, ObservableObject {
             showIncomingView = false
         }
         self.currentRtcToken = self.incomingToken
-//        self.currentRtcToken = self.tmpToken
-        self.currentRtcChannelId = "test"
+        self.currentRtcChannelId = self.incomingChannelId
         requestCameraPermissions()
         requestMicrophonePermissions() 
         withAnimation {

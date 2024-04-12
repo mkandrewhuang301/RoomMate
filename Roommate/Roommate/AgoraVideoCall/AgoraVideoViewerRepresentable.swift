@@ -25,7 +25,7 @@ struct AgoraVideoViewerRepresentable: UIViewRepresentable {
         agoraView.fills(view: view)
         print("rtctoken: \(rtcToken)")
         print("Joining channel: \(channelName)")
-        let result = agoraView.join(channel: "test", with: rtcToken, as: .broadcaster, uid: Optional(123))
+        let result = agoraView.join(channel: channelName, with: rtcToken, as: .broadcaster, uid: Optional(0))
         print("Joining channel result: \(String(describing: result))")
         return view
     }
