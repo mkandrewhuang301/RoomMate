@@ -19,12 +19,12 @@ struct ContentView: View {
     
     //user details:
     @State var userIndex: Int = 0
-    
+    @State private var selectedTab: Int = 0
     var body: some View {
         ZStack {
             if isDownloadComplete {
                 
-                TabView{
+                TabView(selection: $selectedTab){
                     ZStack{
                         //showDetail = false
                         
@@ -40,6 +40,16 @@ struct ContentView: View {
                     .tabItem{
                         Label("", systemImage:"circle.hexagongrid.circle.fill")
                     }
+                    .tag(0)
+                    .onChange(of: selectedTab){ _ , _ in
+                        if selectedTab == 0 {
+                            userList = dataModel.filter()
+                        }
+                        print("HERE")
+                        print(userList.count)
+                        userIndex = 0
+                        
+                    }
                     
                     NavigationView{
                         BlogView()
@@ -47,6 +57,7 @@ struct ContentView: View {
                     .tabItem{
                         Label("", systemImage:"house")
                     }
+                    .tag(1)
                     
                     NavigationView{
                         ChatView(user: dataModel.bindingForCurrentUser())
@@ -54,6 +65,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("", systemImage: "message.fill")
                     }
+                    .tag(2)
                     
                     NavigationView{
                         //var s: String = "123"
@@ -62,6 +74,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("", systemImage: "person.fill")
                     }
+                    .tag(3)
                 }
             }
             else{

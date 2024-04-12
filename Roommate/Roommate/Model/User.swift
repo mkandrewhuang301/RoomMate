@@ -23,7 +23,6 @@ struct User: Codable, Identifiable {
     
     //var seen: [UUID] = []
     
-    //var profileSeen: [UUID] = []
 
     var purpose: Purpose = .Unknown
 

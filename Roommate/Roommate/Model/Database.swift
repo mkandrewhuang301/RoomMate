@@ -105,7 +105,6 @@ final class Database: ObservableObject{
                 failedHardFilter = true
             }
             ///school preference
-            
             if self.currentUser.preference.sameSchool &&  self.currentUser.school != profile.school{
                 failedHardFilter = true
             }
@@ -118,8 +117,6 @@ final class Database: ObservableObject{
             if self.currentUser.preference.sameMajor &&  self.currentUser.major != profile.major{
                 failedHardFilter = true
             }
-            
-            
             //SOFT FILTER
             /*
              Weights: 
@@ -143,8 +140,7 @@ final class Database: ObservableObject{
             if self.currentUser.gradYear == profile.gradYear{
                 similarity += 1
             }
-            //calcuate when the users go to sleep. If there is a
-            print(self.currentUser.sleepSchedule.max)
+            //FIX SLEEP SCHEDULE
             ///two early birds
             if self.currentUser.sleepSchedule.max  < 20  && profile.sleepSchedule.max < 20 {
                 similarity += 3
@@ -182,8 +178,7 @@ final class Database: ObservableObject{
             
             
             //
-            print("\(self.currentUser.preference.gender)" )
-            print("\(profile.fName), and \(failedHardFilter)" )
+            print("\(profile.fName), and \(similarity) , and \(failedHardFilter)")
             
             if !failedHardFilter{
                 if order[similarity] == nil{
@@ -193,6 +188,7 @@ final class Database: ObservableObject{
                     order[similarity]!.append(profile)
                 }
             }
+            
                 
            
         }
@@ -200,8 +196,11 @@ final class Database: ObservableObject{
         
         let  sortedOrder = order.sorted{$0.key > $1.key}
         var result: [User] = []
-        for (_, value) in sortedOrder{
-            result.append(contentsOf: value)
+        for (score, users) in sortedOrder{
+            for user in users{
+                print("\(score), \(user.fName)")
+            }
+            result.append(contentsOf: users)
         }
         
         return result

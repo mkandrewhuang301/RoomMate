@@ -45,6 +45,7 @@ struct ProfileEditTabView: View {
                         withAnimation {
                             showOverlay.toggle()
                         }
+                        
                     }
                 }
             }

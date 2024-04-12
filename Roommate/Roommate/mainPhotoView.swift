@@ -130,7 +130,7 @@ struct mainPhotosViewer: View {
         .highPriorityGesture(
                 DragGesture()
                     .onEnded{ gesture in
-                        //if isDraggable{
+                        if isDraggable{
                             let location = gesture.location
                             let limit = 2*screenWidth / 7
                             let isRightSide = (location.x - gesture.startLocation.x) > limit
@@ -178,10 +178,10 @@ struct mainPhotosViewer: View {
                             }
                          
                             initialSwipe = nil
-                        //}
+                        }
                     }
                     .onChanged(){ gesture in
-                        //if isDraggable {
+                        if isDraggable {
                             let x = gesture.translation.width
                             let y = gesture.translation.height
                             self.offsetX = x
@@ -196,7 +196,7 @@ struct mainPhotosViewer: View {
                                     isSwipeDown = false
                                 }
                             }
-                        //}
+                        }
                     }
         )
         .onChange(of: index){
