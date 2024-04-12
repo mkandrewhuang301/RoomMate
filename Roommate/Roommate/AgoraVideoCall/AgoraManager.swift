@@ -15,6 +15,7 @@ class AgoraManager: NSObject, ObservableObject {
         UserDefaults.standard.set(false, forKey: "permissionGranted")
     }
     
+    var selfId = ""
     var agoraRTC: AgoraRtcEngineKit!
     var agoraRTM: AgoraRtmKit!
     var agoraRTMChannel: AgoraRtmChannel!
@@ -22,9 +23,9 @@ class AgoraManager: NSObject, ObservableObject {
     var rtcToken = "undefined"
     var rtmToken = "undefined"
     let rtmChannelId = "roommate"
-    @Published var rtcChannelId = "test"
+    @Published var rtcChannelId = "undefined"
+    let tmpToken = "007eJxTYBA7Ojc2yWLxuh7Lv797ZhRK2Tzb9Djqx8Lg41t66894rstXYDBNTE0zsUw1NzZIMTdJSk2yNDZISzFJNE4zt0wxMkuzYFwikdYQyMiwUWYqCyMDBIL4KgzGhiYWLgYGrroGlqaWuibObia6FmZOFrqmli4WToaWRs7OjmYMDACFdyeN"
     
-    @Published var incomingCall = false
     @Published var callerId = ""
     var incomingToken = "undefined"
     var incomingChannelId = "undefined"
@@ -77,11 +78,19 @@ class AgoraManager: NSObject, ObservableObject {
     
     func fetchRTCToken(channelName: String, user: String) -> String {
         let jsonObject: [String: Any] = [
-            "user_id": user,
-            "channel_name": channelName
+            "tokenType": "rtc",
+            "channel": "test",
+            "role": "publisher",
+//            "user_id": user,
+            "uid": "123",
+            "expire": 3600
+
         ]
         if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []) {
-            guard let tokenServerURL = URL(string: "https://vcm-39030.vm.duke.edu:8081/get_rtc_token") else {
+//            guard let tokenServerURL = URL(string: "https://vcm-39030.vm.duke.edu:8081/get_rtc_token") else {
+//                return ""
+//            }
+            guard let tokenServerURL = URL(string: "https://agora-token-service-production-ccb0.up.railway.app/getToken") else {
                 return ""
             }
             let semaphore = DispatchSemaphore(value: 0)
@@ -113,6 +122,7 @@ class AgoraManager: NSObject, ObservableObject {
     }
     
     func loginRTM(user: String) {
+        self.selfId = user
         if self.rtcChannelId == "undefined" {
             self.rtcChannelId = user
         }
@@ -142,12 +152,11 @@ class AgoraManager: NSObject, ObservableObject {
     }
     
     func sendCallRequest(targetUser: String, completion: @escaping (Bool) -> Void) {
-        if self.rtcToken == "undefined" {
-            self.rtcToken = fetchRTCToken(channelName: rtcChannelId, user: targetUser)
-        }
+        self.rtcToken = fetchRTCToken(channelName: rtcChannelId, user: selfId)
+        print("RTC Token: \(self.rtcToken)")
         calleeId = targetUser
         let callInfo: [String: String] = [
-            "type": "request",
+            "type": "call",
             "token": rtcToken,
             "channel": rtcChannelId
         ]
@@ -173,12 +182,14 @@ class AgoraManager: NSObject, ObservableObject {
     func handleReceivedRTMMessage(_ message: AgoraRtmMessage, from user: String) {
         if let data = message.text.data(using: .utf8),
            let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: String] {
+            print(String(data: data, encoding: .utf8) ?? "Failed to convert data to string")
             let type = json["type"] ?? "undefined"
             if type == "call" {
+                print("Receving calling!")
                 self.incomingToken = json["token"] ?? "undefined"
                 self.incomingChannelId = json["channel"] ?? "undefined"
-                self.incomingToken = json["token"] ?? "undefined"
-                self.incomingChannelId = json["channel"] ?? "undefined"
+                self.callerId = user
+                print("hi still alive")
                 withAnimation {
                     showIncomingView = true
                 }
@@ -187,7 +198,8 @@ class AgoraManager: NSObject, ObservableObject {
                     showCallingView = false
                 }
                 self.currentRtcToken = self.rtcToken
-                self.currentRtcChannelId = self.rtcChannelId
+//                self.currentRtcToken = self.tmpToken
+                self.currentRtcChannelId = "test"
                 requestMicrophonePermissions()
                 requestCameraPermissions()
                 withAnimation {
@@ -223,7 +235,8 @@ class AgoraManager: NSObject, ObservableObject {
             showIncomingView = false
         }
         self.currentRtcToken = self.incomingToken
-        self.currentRtcChannelId = self.incomingChannelId
+//        self.currentRtcToken = self.tmpToken
+        self.currentRtcChannelId = "test"
         requestCameraPermissions()
         requestMicrophonePermissions() 
         withAnimation {
@@ -343,6 +356,7 @@ func requestCameraPermissions() {
 
 extension AgoraManager: AgoraRtmDelegate {
     func rtmKit(_ kit: AgoraRtmKit, messageReceived message: AgoraRtmMessage, fromPeer peerId: String) {
+        print("hi, receiving message!!")
         DispatchQueue.main.async { [weak self] in
             self?.handleReceivedRTMMessage(message, from: peerId)
         }

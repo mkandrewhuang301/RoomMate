@@ -15,17 +15,18 @@ struct AgoraVideoViewerRepresentable: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
         let view = UIView(frame: .zero)
         
-        let rtcToken = agoraManager.rtcToken
-        let channelName = agoraManager.rtcChannelId
+        let rtcToken = agoraManager.currentRtcToken
+        let channelName = agoraManager.currentRtcChannelId
         
         let agoraView = AgoraVideoViewer(
-            connectionData: AgoraConnectionData(appId: agoraManager.appId, rtcToken: rtcToken),
-            style: .grid
+            connectionData: AgoraConnectionData(appId: agoraManager.appId, rtcToken: rtcToken)
         )
         agoraManager.agoraVideoViewer = agoraView
         agoraView.fills(view: view)
-        agoraView.join(channel: channelName, as: .broadcaster)
-        
+        print("rtctoken: \(rtcToken)")
+        print("Joining channel: \(channelName)")
+        let result = agoraView.join(channel: "test", with: rtcToken, as: .broadcaster, uid: Optional(123))
+        print("Joining channel result: \(String(describing: result))")
         return view
     }
     
