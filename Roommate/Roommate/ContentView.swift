@@ -23,9 +23,14 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if isDownloadComplete {
-                
                 TabView(selection: $selectedTab){
                     ZStack{
+                        /*
+                        HStack{
+                            Text("Roommate")
+                            Image(
+                        }
+                         */
                         //showDetail = false
                         
                         if userList.count > userIndex + 1{
