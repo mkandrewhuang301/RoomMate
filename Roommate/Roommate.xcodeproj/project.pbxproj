@@ -38,6 +38,13 @@
 		6793D2F22BC7110900FC8C68 /* SwiftUIRtc in Frameworks */ = {isa = PBXBuildFile; productRef = 6793D2F12BC7110900FC8C68 /* SwiftUIRtc */; };
 		6793D2F72BC7383200FC8C68 /* AgoraRtmKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6793D2F62BC7383200FC8C68 /* AgoraRtmKit */; };
 		6793D3072BC83A6200FC8C68 /* profilePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6793D3062BC83A6200FC8C68 /* profilePic.swift */; };
+		67B7DBED2BC87D0D00FCB550 /* CallingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B7DBE92BC87D0D00FCB550 /* CallingView.swift */; };
+		67B7DBEE2BC87D0D00FCB550 /* IncomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B7DBEA2BC87D0D00FCB550 /* IncomingView.swift */; };
+		67B7DBEF2BC87D0D00FCB550 /* AgoraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B7DBEB2BC87D0D00FCB550 /* AgoraManager.swift */; };
+		67B7DBF02BC87D0D00FCB550 /* AgoraVideoViewerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B7DBEC2BC87D0D00FCB550 /* AgoraVideoViewerRepresentable.swift */; };
+		67B7DBF32BC87E2500FCB550 /* AgoraAppGroupDataHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 67B7DBF22BC87E2500FCB550 /* AgoraAppGroupDataHelper */; };
+		67B7DBF52BC87E2500FCB550 /* AgoraBroadcastExtensionHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 67B7DBF42BC87E2500FCB550 /* AgoraBroadcastExtensionHelper */; };
+		67B7DBF72BC87E2500FCB550 /* AgoraUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 67B7DBF62BC87E2500FCB550 /* AgoraUIKit */; };
 		91019E052BB3C67E00FE262D /* ProfileEditTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */; };
 		911C5B962BC83FB500335F9E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C5B952BC83FB500335F9E /* DataManager.swift */; };
 		911C5B982BC83FE700335F9E /* mainPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C5B972BC83FE700335F9E /* mainPhotoView.swift */; };
@@ -79,6 +86,10 @@
 		6793D2EC2BC65B6900FC8C68 /* NewMatchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchItem.swift; sourceTree = "<group>"; };
 		6793D2EE2BC65B7100FC8C68 /* NewMatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchView.swift; sourceTree = "<group>"; };
 		6793D3062BC83A6200FC8C68 /* profilePic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profilePic.swift; sourceTree = "<group>"; };
+		67B7DBE92BC87D0D00FCB550 /* CallingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallingView.swift; sourceTree = "<group>"; };
+		67B7DBEA2BC87D0D00FCB550 /* IncomingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingView.swift; sourceTree = "<group>"; };
+		67B7DBEB2BC87D0D00FCB550 /* AgoraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgoraManager.swift; sourceTree = "<group>"; };
+		67B7DBEC2BC87D0D00FCB550 /* AgoraVideoViewerRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgoraVideoViewerRepresentable.swift; sourceTree = "<group>"; };
 		91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditTabView.swift; sourceTree = "<group>"; };
 		911C5B952BC83FB500335F9E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		911C5B972BC83FE700335F9E /* mainPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPhotoView.swift; sourceTree = "<group>"; };
@@ -95,7 +106,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6793D2F72BC7383200FC8C68 /* AgoraRtmKit in Frameworks */,
+				67B7DBF32BC87E2500FCB550 /* AgoraAppGroupDataHelper in Frameworks */,
+				67B7DBF72BC87E2500FCB550 /* AgoraUIKit in Frameworks */,
 				6793D2F22BC7110900FC8C68 /* SwiftUIRtc in Frameworks */,
+				67B7DBF52BC87E2500FCB550 /* AgoraBroadcastExtensionHelper in Frameworks */,
 				91FE1BE22BABC43000980170 /* ECE564Login in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +182,7 @@
 				914C9BAB2BAB588E004F3E69 /* Info.plist */,
 				6790200C2BAA0E0F00CE0AAC /* Model */,
 				673E3F692BC5AA13005229B7 /* Chat */,
+				67B7DBE82BC87D0D00FCB550 /* AgoraVideoCall */,
 				6790208C2BBC706D00CE0AAC /* Profile */,
 				673E3F592BBE09AC005229B7 /* Resources */,
 				67901FFD2BA4989400CE0AAC /* RoommateApp.swift */,
@@ -219,6 +234,17 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		67B7DBE82BC87D0D00FCB550 /* AgoraVideoCall */ = {
+			isa = PBXGroup;
+			children = (
+				67B7DBE92BC87D0D00FCB550 /* CallingView.swift */,
+				67B7DBEA2BC87D0D00FCB550 /* IncomingView.swift */,
+				67B7DBEB2BC87D0D00FCB550 /* AgoraManager.swift */,
+				67B7DBEC2BC87D0D00FCB550 /* AgoraVideoViewerRepresentable.swift */,
+			);
+			path = AgoraVideoCall;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,6 +266,9 @@
 				91FE1BE12BABC43000980170 /* ECE564Login */,
 				6793D2F12BC7110900FC8C68 /* SwiftUIRtc */,
 				6793D2F62BC7383200FC8C68 /* AgoraRtmKit */,
+				67B7DBF22BC87E2500FCB550 /* AgoraAppGroupDataHelper */,
+				67B7DBF42BC87E2500FCB550 /* AgoraBroadcastExtensionHelper */,
+				67B7DBF62BC87E2500FCB550 /* AgoraUIKit */,
 			);
 			productName = Roommate;
 			productReference = 67901FFA2BA4989400CE0AAC /* Roommate.app */;
@@ -273,6 +302,7 @@
 				91FE1BE02BABC43000980170 /* XCRemoteSwiftPackageReference "ECE564Login" */,
 				6793D2F02BC7110900FC8C68 /* XCRemoteSwiftPackageReference "SwiftUIRtc" */,
 				6793D2F52BC7383200FC8C68 /* XCRemoteSwiftPackageReference "AgoraRtm_iOS" */,
+				67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */,
 			);
 			productRefGroup = 67901FFB2BA4989400CE0AAC /* Products */;
 			projectDirPath = "";
@@ -302,6 +332,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				673E3F522BBDC0EC005229B7 /* WheelPickerView.swift in Sources */,
+				67B7DBED2BC87D0D00FCB550 /* CallingView.swift in Sources */,
+				67B7DBEF2BC87D0D00FCB550 /* AgoraManager.swift in Sources */,
 				911C5B962BC83FB500335F9E /* DataManager.swift in Sources */,
 				91019E052BB3C67E00FE262D /* ProfileEditTabView.swift in Sources */,
 				673E3F5D2BBE37D6005229B7 /* ImagePicker.swift in Sources */,
@@ -312,6 +344,7 @@
 				679020152BAA0E2300CE0AAC /* User.swift in Sources */,
 				914C9B9F2BAA8297004F3E69 /* ChatView.swift in Sources */,
 				679020172BAA0E2300CE0AAC /* Room.swift in Sources */,
+				67B7DBEE2BC87D0D00FCB550 /* IncomingView.swift in Sources */,
 				673E3F562BBDD3A0005229B7 /* RangeSlider.swift in Sources */,
 				679020142BAA0E2300CE0AAC /* Range.swift in Sources */,
 				673E3F582BBDEEE0005229B7 /* InterestsView.swift in Sources */,
@@ -329,6 +362,7 @@
 				6793D3072BC83A6200FC8C68 /* profilePic.swift in Sources */,
 				67901FFE2BA4989400CE0AAC /* RoommateApp.swift in Sources */,
 				673E3F6D2BC5B597005229B7 /* ChatRow.swift in Sources */,
+				67B7DBF02BC87D0D00FCB550 /* AgoraVideoViewerRepresentable.swift in Sources */,
 				673E3F4E2BBD0FCC005229B7 /* EditPhotoItem.swift in Sources */,
 				6790201E2BAA12C000CE0AAC /* School.swift in Sources */,
 				673E3F502BBD1502005229B7 /* EditPhotoMatrix.swift in Sources */,
@@ -474,7 +508,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Roommate/Preview Content\"";
-				DEVELOPMENT_TEAM = 6LR5K8LYYD;
+				DEVELOPMENT_TEAM = U6J58C8CJT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Roommate/Info.plist;
@@ -488,7 +522,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.ece564.Roommate;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.tq22.ece564.Roommate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -504,7 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Roommate/Preview Content\"";
-				DEVELOPMENT_TEAM = 6LR5K8LYYD;
+				DEVELOPMENT_TEAM = U6J58C8CJT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Roommate/Info.plist;
@@ -518,7 +552,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.ece564.Roommate;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.tq22.ece564.Roommate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -566,6 +600,14 @@
 				minimumVersion = 1.5.1;
 			};
 		};
+		67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AgoraIO-Community/VideoUIKit-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
+			};
+		};
 		91FE1BE02BABC43000980170 /* XCRemoteSwiftPackageReference "ECE564Login" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/0HugoHu/ECE564Login";
@@ -586,6 +628,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6793D2F52BC7383200FC8C68 /* XCRemoteSwiftPackageReference "AgoraRtm_iOS" */;
 			productName = AgoraRtmKit;
+		};
+		67B7DBF22BC87E2500FCB550 /* AgoraAppGroupDataHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraAppGroupDataHelper;
+		};
+		67B7DBF42BC87E2500FCB550 /* AgoraBroadcastExtensionHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraBroadcastExtensionHelper;
+		};
+		67B7DBF62BC87E2500FCB550 /* AgoraUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraUIKit;
 		};
 		91FE1BE12BABC43000980170 /* ECE564Login */ = {
 			isa = XCSwiftPackageProductDependency;

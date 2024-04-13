@@ -71,6 +71,15 @@
         "revision" : "708548a477450be13d76f72c296928880d73ad5c",
         "version" : "0.5.0"
       }
+    },
+    {
+      "identity" : "videouikit-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AgoraIO-Community/VideoUIKit-iOS.git",
+      "state" : {
+        "revision" : "d2d20302e3e328aa24008b00aad8e706b96381ff",
+        "version" : "4.1.1"
+      }
     }
   ],
   "version" : 2
