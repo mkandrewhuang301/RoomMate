@@ -117,6 +117,7 @@ struct RMController: RouteCollection {
                 .flatMap { userToMatch in
                     if userToMatch.applyList.contains(currentUser.id!) {
                         userToMatch.applyList.removeAll { $0 == currentUser.id! }
+                        currentUser.waitList.removeAll { $0 == userToMatch.id! }
                         userToMatch.friends.append(currentUser.id!)
                         currentUser.friends.append(userToMatch.id!)
                     } else {
