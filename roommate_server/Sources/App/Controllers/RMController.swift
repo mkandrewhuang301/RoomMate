@@ -25,6 +25,9 @@ struct RMController: RouteCollection {
         subroutes.group("reject") { subroute in
             subroute.post(use: rejectForMatch)
         }
+        subroutes.group("delete") { subroute in
+            subroute.post(use: deleteFriend)
+        }
     }
 
     func getUser(req: Request) throws -> EventLoopFuture<User> {
@@ -136,8 +139,8 @@ struct RMController: RouteCollection {
             User.find(matchRequest.matchid, on: req.db)
                 .unwrap(or: Abort(.notFound))
                 .flatMap { userToMatch in
-                    currentUser.applyList.removeAll { $0 == userToMatch.id! }
-                    userToMatch.waitList.removeAll { $0 == currentUser.id! }
+                    currentUser.waitList.removeAll { $0 == userToMatch.id! }
+                    userToMatch.applyList.removeAll { $0 == currentUser.id! }
                     currentUser.friends.append(userToMatch.id!)
                     userToMatch.friends.append(currentUser.id!)
                     return currentUser.save(on: req.db).flatMap {
@@ -158,6 +161,24 @@ struct RMController: RouteCollection {
                 .flatMap { userToMatch in
                     currentUser.waitList.removeAll { $0 == userToMatch.id! }
                     userToMatch.applyList.removeAll { $0 == currentUser.id! }
+                    return currentUser.save(on: req.db).flatMap {
+                        userToMatch.save(on: req.db).map { userToMatch }
+                    }
+                }.transform(to: .ok)
+        }
+    }
+
+    func deleteFriend(req: Request) throws -> EventLoopFuture<HTTPStatus> {
+        let matchRequest = try req.content.decode(MatchRequest.self)
+        
+         return User.find(matchRequest.myid, on: req.db)
+        .unwrap(or: Abort(.notFound))
+        .flatMap { currentUser in
+            User.find(matchRequest.matchid, on: req.db)
+                .unwrap(or: Abort(.notFound))
+                .flatMap { userToMatch in
+                    currentUser.friends.removeAll { $0 == userToMatch.id! }
+                    userToMatch.friends.removeAll { $0 == currentUser.id! }
                     return currentUser.save(on: req.db).flatMap {
                         userToMatch.save(on: req.db).map { userToMatch }
                     }
