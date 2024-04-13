@@ -25,12 +25,16 @@ struct ContentView: View {
             if isDownloadComplete {
                 TabView(selection: $selectedTab){
                     ZStack{
-                        /*
+                        
                         HStack{
-                            Text("Roommate")
-                            Image(
+                            
+                            Image("appText")
+                                .resizable()
+                                
                         }
-                         */
+                        .offset(y: -300)
+                        .frame(width: 200, height: 50)
+                         
                         //showDetail = false
                         
                         if userList.count > userIndex + 1{
