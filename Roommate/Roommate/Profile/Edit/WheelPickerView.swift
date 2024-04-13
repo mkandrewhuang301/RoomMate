@@ -28,7 +28,9 @@ struct WheelPickerView: View {
                                 }
                             }) {
                                 Text("Done")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(.accentColor)
+                                    .font(.custom("Helvetica Neue", size: 16))
+                                    .fontWeight(.bold)
                             }
                         }
                         .padding()

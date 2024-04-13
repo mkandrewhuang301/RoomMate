@@ -19,18 +19,19 @@ struct ChatView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
+            HStack(spacing: 0) {
                 Spacer()
+                Image("iconimage")
+                    .resizable()
+                    .frame(width: 50, height: 50)
                 Text("RoomMate")
                     .font(.custom("Futura", size: 28))
                     .bold()
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.accentColor)
                     .frame(height: 50)
                 Spacer()
             }
             .frame(height: 50)
-            .background(Color(.purple))
-            
             List {
                 Section(header: 
                     HStack {
@@ -56,13 +57,14 @@ struct ChatView: View {
                     ) {
                         Image(systemName: "arrow.clockwise.circle.fill")
                             .resizable()
-                            .frame(width: 35, height: 35)
-                            .foregroundColor(.green)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color("crystal"))
                     }
                 }
                 ) {
                     NewMatchView(user: $user)
                 }
+                
                 Section(header: Text("Contacts")
                     .font(.custom("Helvetica Neue", size: 18))
                     .fontWeight(.bold)

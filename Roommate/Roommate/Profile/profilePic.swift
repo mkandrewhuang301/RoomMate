@@ -17,7 +17,7 @@ struct profilePic: View {
     let total: Double = 17 ///number of variables needed to be set in USER
     @State var count: Double = 0
     //@State var percent: Double = 0
-    var color: Color = .purple
+    var color: Color = Color("crystal")
     
     var body: some View {
         VStack{
@@ -45,6 +45,8 @@ struct profilePic: View {
                 .offset(y:-47)
                 .foregroundColor(.white)
                 .frame(width: 100, height: 40)
+                .font(.custom("Helvetica Neue", size: 16))
+                .fontWeight(.bold)
                 //.frame(width:30, height:20)
                 
         }
