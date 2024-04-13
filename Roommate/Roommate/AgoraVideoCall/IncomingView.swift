@@ -37,7 +37,6 @@ struct IncomingView: View {
                             .clipShape(
                                 Circle()
                             )
-                            .padding()
                     }
                     Button(action: {
                         agoraManager.acceptCall()

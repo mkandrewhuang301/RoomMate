@@ -5,6 +5,7 @@ import SwiftUI
 import Combine
 import AgoraUIKit
 import AVFoundation
+import Photos
 
 class AgoraManager: NSObject, ObservableObject {
     static let shared = AgoraManager()
@@ -29,6 +30,7 @@ class AgoraManager: NSObject, ObservableObject {
     var incomingToken = "undefined"
     var incomingChannelId = "undefined"
     @Published var calleeId = ""
+    var opponentId = ""
     
     @Published var currentRtcToken = ""
     @Published var currentRtcChannelId = ""
@@ -154,6 +156,7 @@ class AgoraManager: NSObject, ObservableObject {
         self.rtcToken = fetchRTCToken(channelName: rtcChannelId, user: selfId)
         print("RTC Token: \(self.rtcToken)")
         calleeId = targetUser
+        opponentId = targetUser
         let callInfo: [String: String] = [
             "type": "call",
             "token": rtcToken,
@@ -188,30 +191,34 @@ class AgoraManager: NSObject, ObservableObject {
                 self.incomingToken = json["token"] ?? "undefined"
                 self.incomingChannelId = json["channel"] ?? "undefined"
                 self.callerId = user
+                self.opponentId = user
                 print("hi still alive")
                 withAnimation {
                     showIncomingView = true
                 }
             } else if type == "accept" {
-                withAnimation {
-                    showCallingView = false
-                }
                 self.currentRtcToken = self.rtcToken
                 self.currentRtcChannelId = self.rtcChannelId
                 requestMicrophonePermissions()
                 requestCameraPermissions()
                 withAnimation {
-                    showVideoView = true
+                    self.showVideoView = true
+                    showCallingView = false
                 }
+                print(self.showVideoView)
             } else if type == "decline" {
                 withAnimation {
                     showCallingView = false
                 }
                 print("declined")
             }
-//            else if type == "end" {
-//                print("end")
-//            }
+            else if type == "end" {
+                agoraVideoViewer?.leaveChannel()
+                withAnimation {
+                    showIncomingView = false
+                    showVideoView = false
+                }
+            }
         }
     }
     
@@ -224,13 +231,10 @@ class AgoraManager: NSObject, ObservableObject {
             return
         }
         let message = AgoraRtmMessage(text: jsonString)
-        agoraRTM.send(message, toPeer: callerId) { (errorCode) in
+        agoraRTM.send(message, toPeer: opponentId) { (errorCode) in
             if errorCode != .ok {
                 return
             }
-        }
-        withAnimation {
-            showIncomingView = false
         }
         self.currentRtcToken = self.incomingToken
         self.currentRtcChannelId = self.incomingChannelId
@@ -238,6 +242,7 @@ class AgoraManager: NSObject, ObservableObject {
         requestMicrophonePermissions() 
         withAnimation {
             showVideoView = true
+            showIncomingView = false
         }
     }
     
@@ -251,7 +256,7 @@ class AgoraManager: NSObject, ObservableObject {
             return
         }
         let message = AgoraRtmMessage(text: jsonString)
-        agoraRTM.send(message, toPeer: callerId) { (errorCode) in
+        agoraRTM.send(message, toPeer: opponentId) { (errorCode) in
             if errorCode != .ok {
                 return
             }
@@ -261,21 +266,21 @@ class AgoraManager: NSObject, ObservableObject {
         }
     }
     
-//    func endCall() {
-//        let acceptInfo: [String: String] = [
-//            "type": "end"
-//        ]
-//        guard let jsonData = try? JSONSerialization.data(withJSONObject: acceptInfo, options: []),
-//              let jsonString = String(data: jsonData, encoding: .utf8) else {
-//            return
-//        }
-//        let message = AgoraRtmMessage(text: jsonString)
-//        agoraRTM.send(message, toPeer: callerId) { (errorCode) in
-//            if errorCode != .ok {
-//                return
-//            }
-//        }
-//    }
+    func endCall() {
+        let acceptInfo: [String: String] = [
+            "type": "end"
+        ]
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: acceptInfo, options: []),
+              let jsonString = String(data: jsonData, encoding: .utf8) else {
+            return
+        }
+        let message = AgoraRtmMessage(text: jsonString)
+        agoraRTM.send(message, toPeer: opponentId) { (errorCode) in
+            if errorCode != .ok {
+                return
+            }
+        }
+    }
     
     func logoutRTM() {
         agoraRTMChannel.leave { (errorCode) in
@@ -298,7 +303,6 @@ class AgoraManager: NSObject, ObservableObject {
 func requestMicrophonePermissions() {
     switch AVCaptureDevice.authorizationStatus(for: .audio) {
     case .authorized:
-        print("Microphone permissions granted")
         break
     case .notDetermined:
         AVCaptureDevice.requestAccess(for: .audio) { granted in
@@ -326,7 +330,6 @@ func requestMicrophonePermissions() {
 func requestCameraPermissions() {
     switch AVCaptureDevice.authorizationStatus(for: .video) {
     case .authorized:
-        print("Camera permissions granted")
         break
     case .notDetermined:
         AVCaptureDevice.requestAccess(for: .video) { granted in
@@ -348,6 +351,30 @@ func requestCameraPermissions() {
             break
         @unknown default:
             break
+    }
+}
+
+func requestPhotoLibraryPermission() {
+    let status = PHPhotoLibrary.authorizationStatus()
+    switch status {
+    case .authorized:
+        break
+    case .notDetermined:
+        PHPhotoLibrary.requestAuthorization { newStatus in
+            if newStatus == .authorized {
+                print("PhotoLibranry permissions granted")
+            } else {
+                print("PhotoLibranry permissions not granted")
+            }
+        }
+    case .denied, .restricted:
+        print("PhotoLibranry permissions not granted")
+        break
+    case .limited:
+        print("PhotoLibranry permissions not granted")
+        break
+    @unknown default:
+        fatalError("Unknown authorization status")
     }
 }
 

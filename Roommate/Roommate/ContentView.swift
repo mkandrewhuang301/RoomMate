@@ -7,7 +7,8 @@
 
 import SwiftUI
 import ECE564Login
-
+import UIKit
+import AudioToolbox
 
 struct ContentView: View {
     @ObservedObject var dataModel: Database  = Database.shared
@@ -72,7 +73,7 @@ struct ContentView: View {
 //            ECE564Login()
 //          .onDisappear(){
             .onAppear(){
-                let netID = "zy96"
+                let netID = "tq22"
 //              let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
                 DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                     switch result{
@@ -87,28 +88,61 @@ struct ContentView: View {
                     }
                 }
             }
-
-
         }
         .background(.white)
         .onAppear{
             downloadManager.downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/list"){result in
-                switch result{
-                    case .success(let users):
-                        let _ = dataModel.replaceDB(users: users)
-                        userList = dataModel.list()
-                        //userList = dataModel.filter()
-                        isDownloadComplete = true
-                        return true
-                    case .failure(let error):
-                        // Handle the error, perhaps setting an error message state variable
-                        print("Error downloading user data: \(error.localizedDescription)")
-                        return false
-                    }
+            switch result{
+                case .success(let users):
+                    let _ = dataModel.replaceDB(users: users)
+                    userList = dataModel.list()
+                    //userList = dataModel.filter()
+                    isDownloadComplete = true
+                    return true
+                case .failure(let error):
+                    // Handle the error, perhaps setting an error message state variable
+                    print("Error downloading user data: \(error.localizedDescription)")
+                    return false
                 }
+            }
+        }
+        .onChange(of: agoraManager.showIncomingView, initial: false) { oldValue, newValue in
+            if newValue {
+                startVibrating()
+            } else {
+                stopVibrating()
+            }
+        }
+        .fullScreenCover(isPresented: $agoraManager.showCallingView) {
+            let name = dataModel.find(UUID(uuidString: agoraManager.calleeId)!)?.fName ?? ""
+            CallingView(calleeName: name)
+        }
+        .fullScreenCover(isPresented: $agoraManager.showVideoView) {
+            VideoCallView()
+        }
+        .fullScreenCover(isPresented: $agoraManager.showIncomingView) {
+            let name = dataModel.find(UUID(uuidString: agoraManager.callerId)!)?.fName ?? ""
+            IncomingView(callerName: name)
         }
     }
-        
+    
+}
+
+private var vibrationTimer: Timer?
+    
+func startVibrating() {
+    stopVibrating()
+    vibrationTimer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { _ in
+        triggerVibration()
+    }
+}
+
+func stopVibrating() {
+    vibrationTimer?.invalidate()
+}
+
+func triggerVibration() {
+    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
 }
 
 #Preview {

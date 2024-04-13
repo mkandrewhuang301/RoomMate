@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CallingView: View {
+    @ObservedObject var agoraManager: AgoraManager = AgoraManager.shared
     var calleeName: String
-
+    
     var body: some View {
         ZStack {
             Color.black.opacity(0.7).edgesIgnoringSafeArea(.all)
@@ -25,6 +26,21 @@ struct CallingView: View {
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                 Spacer()
+                Button(action: {
+                    agoraManager.endCall()
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        agoraManager.showCallingView = false
+                    }
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .foregroundColor(.red)
+                        .background(Color.white)
+                        .clipped()
+                        .clipShape(Circle())
+                        .padding()
+                }
             }
         }
     }

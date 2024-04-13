@@ -71,10 +71,12 @@ struct EditPhotoMatrix: View {
         .actionSheet(isPresented: $showActionSheet) {
             ActionSheet(title: Text("Upload Photo").bold(), buttons: [
                 .default(Text("Camera"), action: {
+                    requestCameraPermissions()
                     sourceType = .camera
                     showImagePicker = true
                 }),
                 .default(Text("Photo Library"), action: {
+                    requestPhotoLibraryPermission()
                     sourceType = .photoLibrary
                     showImagePicker = true
                 }),

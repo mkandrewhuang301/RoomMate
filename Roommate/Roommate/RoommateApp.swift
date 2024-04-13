@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct RoommateApp: App {
     @StateObject private var agoraManager = AgoraManager.shared
+    @StateObject private var dataModel = Database.shared
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
