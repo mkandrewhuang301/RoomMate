@@ -28,7 +28,7 @@ struct EditPhotoItem: View {
                     
                     Image(systemName: "plus.circle")
                         .font(.largeTitle)
-                        .foregroundColor(.red)
+                        .foregroundColor(Color.accentColor)
                 }
             }
             .frame(width: 130, height: 200)

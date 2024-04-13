@@ -33,7 +33,7 @@ struct OtherProfileDetailView: View {
                     Image(systemName: "arrowshape.down.circle.fill")
                         .resizable()
                         .frame(width: 50, height: 50)
-                        .foregroundColor(.blue.opacity(0.4))
+                        .foregroundColor(Color("crystal"))
                         .padding(.trailing)
                 }
             }
@@ -117,7 +117,7 @@ struct OtherProfileDetailView: View {
                 }
                 .frame(minHeight: UIScreen.main.bounds.height, maxHeight: .infinity)
                 .padding(.vertical)
-                .background(.blue.opacity(0.3))
+                .background(Color("crystal").opacity(0.9))
             }
         }
     }

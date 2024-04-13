@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatRow: View {
     @Binding var user: User
+    @ObservedObject var agoraManager: AgoraManager = AgoraManager.shared
     
     var body: some View {
         ZStack {
@@ -30,7 +31,13 @@ struct ChatRow: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    print("Button pressed")
+                    agoraManager.sendCallRequest(targetUser: user.id.uuidString) { result in
+                        if result {
+                            print("Call request sent")
+                        } else {
+                            print("Failed to send call request")
+                        }
+                    }
                 }) {
                     Image(systemName: "phone.circle.fill")
                         .resizable()

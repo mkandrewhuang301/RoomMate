@@ -100,7 +100,7 @@ struct InterestTagView: View {
         .cornerRadius(20)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(isSelected ? .red : .gray, lineWidth: 2)
+                .stroke(isSelected ? Color.accentColor : .gray, lineWidth: 2)
         )
     }
 }
@@ -123,7 +123,7 @@ struct SelectedInterestTagView: View {
             }
         }
         .padding(.vertical, 5)
-        .background(.black)
+        .background(Color.accentColor)
         .cornerRadius(20)
     }
 }

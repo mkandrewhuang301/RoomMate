@@ -37,6 +37,8 @@ struct ProfileEditTabView: View {
                             showOverlay.toggle()
                         }
                     }
+                    .font(.custom("Helvetica Neue", size: 16))
+                    .fontWeight(.bold)
                     Spacer()
                     Button("Save") {
                         if !uploadViewModel.upload(website: "http://vcm-39030.vm.duke.edu:8080/roommate/modify-profile", user: user) {
@@ -46,6 +48,8 @@ struct ProfileEditTabView: View {
                             showOverlay.toggle()
                         }
                     }
+                    .font(.custom("Helvetica Neue", size: 16))
+                    .fontWeight(.bold)
                 }
             }
             .padding()
@@ -57,7 +61,7 @@ struct ProfileEditTabView: View {
                 .font(.custom("Helvetica Neue", size: 20))
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(selectedTab == .edit ? .red : .gray)
+                .foregroundColor(selectedTab == .edit ? Color.accentColor : .gray)
                 Divider()
                     .frame(maxHeight: 30)
                     .padding(.horizontal, 2)
@@ -67,7 +71,7 @@ struct ProfileEditTabView: View {
                 .font(.custom("Helvetica Neue", size: 20))
                 .fontWeight(.bold)
                 .frame(maxWidth: .infinity)
-                .foregroundColor(selectedTab == .preview ? .red : .gray)
+                .foregroundColor(selectedTab == .preview ? Color.accentColor : .gray)
             }
             
             switch selectedTab {
