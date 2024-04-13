@@ -30,6 +30,19 @@ struct ProfileView: View {
     var body: some View {
         VStack{
 //            NavigationLink(destination: editProfileView(user: $user)){
+            HStack(spacing: 0) {
+                Spacer()
+                Image("iconimage")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                Text("RoomMate")
+                    .font(.custom("Futura", size: 28))
+                    .bold()
+                    .foregroundStyle(Color.accentColor)
+                    .frame(height: 50)
+                Spacer()
+            }
+            .frame(height: 50)
             Button(action: {
                 withAnimation {
                     showOverlay = true
@@ -64,12 +77,15 @@ struct ProfileView: View {
             VStack{
                 Text("\(user.fName) \(user.lName), \(user.age)")
                 //.offset(y:-40)
-                    .font(.system(size: 20))
-                    .padding(.bottom, 5)
+                    .padding(.vertical, 5)
+                    .font(.custom("Helvetica Neue", size: 24))
+                    .fontWeight(.heavy)
                 if(percent != 100){
                     Text("Incomplete Profile")
-                        . italic()
+                        .font(.custom("Helvetica Neue", size: 16))
+                        .italic()
                         .foregroundColor(.gray)
+                        .padding(.vertical, 5)
                 }
             }
             .offset(y: -35)
@@ -89,8 +105,8 @@ struct ProfileView: View {
             
             Spacer()
             
-            helpButton()
-                .padding()
+//            helpButton()
+//                .padding()
         }
         .onAppear{
 //            isLoading = true

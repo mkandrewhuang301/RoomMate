@@ -30,7 +30,7 @@ struct RangeSlider: View {
                             .frame(height: 6)
                             .padding(.horizontal, 6)
                         
-                        Rectangle().foregroundStyle(Color(.red))
+                        Rectangle().foregroundColor(.accentColor)
                             .frame(width: widthToW - width, height: 6)
                             .offset(x: width + 20)
                         
@@ -85,7 +85,7 @@ struct DraggableCircle: View {
         ZStack {
             Circle()
                 .frame(width: 25, height: 25)
-                .foregroundStyle(Color(.red))
+                .foregroundColor(Color.accentColor)
             Circle()
                 .frame(width: 15, height: 15)
                 .foregroundStyle(.white)

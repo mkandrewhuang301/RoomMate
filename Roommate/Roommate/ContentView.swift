@@ -7,10 +7,12 @@
 
 import SwiftUI
 import ECE564Login
-
+import UIKit
+import AudioToolbox
 
 struct ContentView: View {
     @ObservedObject var dataModel: Database  = Database.shared
+    @ObservedObject var agoraManager: AgoraManager = AgoraManager.shared
     @StateObject private var downloadManager = DownloadManager<[User]>()
     @State private var currentNetID: String = ""
     @State private var isViewVisible: Bool = false
@@ -23,67 +25,74 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if isDownloadComplete {
-                TabView(selection: $selectedTab){
-                    ZStack{
-                        
-                        HStack{
-                            
-                            Image("appText")
-                                .resizable()
+                VStack{
+                    TabView(selection: $selectedTab){
+                        VStack(spacing: 0) {
+                            HStack(spacing: 0) {
+                                Spacer()
+                                    .frame(width: 10)
+                                Image("iconimage")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                Text("RoomMate")
+                                    .font(.custom("Futura", size: 24))
+                                    .bold()
+                                    .foregroundStyle(Color.accentColor)
+                                    .frame(height: 40)
+                                Spacer()
+                            }
+                            .frame(height: 40)
+                            .padding(.top, 10)
+                            ZStack{
+                                //showDetail = false
                                 
+                                if userList.count > userIndex + 1{
+                                    mainPhotosViewer(index: $userIndex, profile: $userList[userIndex + 1],  user: dataModel.bindingForCurrentUser(), isDraggable: false)
+                                }
+                                if userList.count > userIndex{
+                                    mainPhotosViewer(index: $userIndex, profile: $userList[userIndex], user: dataModel.bindingForCurrentUser(), isDraggable: true)
+                                }
+                            }
                         }
-                        .offset(y: -300)
-                        .frame(width: 200, height: 50)
-                         
-                        //showDetail = false
-                        
-                        if userList.count > userIndex + 1{
-                            mainPhotosViewer(index: $userIndex, profile: $userList[userIndex + 1],  user: dataModel.bindingForCurrentUser(), isDraggable: false)
+                        .tabItem{
+                            Label("", systemImage:"circle.hexagongrid.circle.fill")
                         }
-                        if userList.count > userIndex{
-                            mainPhotosViewer(index: $userIndex, profile: $userList[userIndex], user: dataModel.bindingForCurrentUser(), isDraggable: true)
-                        }
+                        .tag(0)
+                        .onChange(of: selectedTab){ _ , _ in
+                            if selectedTab == 0 {
+                                userList = dataModel.filter()
+                            }
+                            print("HERE")
+                            print(userList.count)
+                            userIndex = 0
                             
-                        
-                    }
-                    .tabItem{
-                        Label("", systemImage:"circle.hexagongrid.circle.fill")
-                    }
-                    .tag(0)
-                    .onChange(of: selectedTab){ _ , _ in
-                        if selectedTab == 0 {
-                            userList = dataModel.filter()
                         }
-                        print("HERE")
-                        print(userList.count)
-                        userIndex = 0
                         
+                        NavigationView{
+                            BlogView()
+                        }
+                        .tabItem{
+                            Label("", systemImage:"house")
+                        }
+                        .tag(1)
+                        
+                        NavigationView{
+                            ChatView(user: dataModel.bindingForCurrentUser())
+                        }
+                        .tabItem {
+                            Label("", systemImage: "message.fill")
+                        }
+                        .tag(2)
+                        
+                        NavigationView{
+                            //var s: String = "123"
+                            ProfileView(user: dataModel.bindingForCurrentUser())
+                        }
+                        .tabItem {
+                            Label("", systemImage: "person.fill")
+                        }
+                        .tag(3)
                     }
-                    
-                    NavigationView{
-                        BlogView()
-                    }
-                    .tabItem{
-                        Label("", systemImage:"house")
-                    }
-                    .tag(1)
-                    
-                    NavigationView{
-                        ChatView(user: dataModel.bindingForCurrentUser())
-                    }
-                    .tabItem {
-                        Label("", systemImage: "message.fill")
-                    }
-                    .tag(2)
-                    
-                    NavigationView{
-                        //var s: String = "123"
-                        ProfileView(user: dataModel.bindingForCurrentUser())
-                    }
-                    .tabItem {
-                        Label("", systemImage: "person.fill")
-                    }
-                    .tag(3)
                 }
             }
             else{
@@ -92,10 +101,11 @@ struct ContentView: View {
             
             Text("")
             //ECE564Login()
-          //.onDisappear(){
-            .onAppear(){
-                let netID = "ah629"
-              //let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+          }
+          .onDisappear(){
+//            .onAppear(){
+//                let netID = "tq22"
+              let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
                 DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                     switch result{
                         //when user not found, just use new profile
@@ -104,13 +114,11 @@ struct ContentView: View {
                             return true
                         case .success(let user):
                             dataModel.setCurrentUser(user)
+                            agoraManager.loginRTM(user: user.id.uuidString)
                             return true
                     }
                 }
             }
-
-
-        }
         .background(.white)
         .onAppear{
             downloadManager.downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/list"){result in
@@ -126,10 +134,46 @@ struct ContentView: View {
                         print("Error downloading user data: \(error.localizedDescription)")
                         return false
                     }
+
                 }
+            }
+        .onChange(of: agoraManager.showIncomingView, initial: false) { oldValue, newValue in
+            if newValue {
+                startVibrating()
+            } else {
+                stopVibrating()
+            }
+        }
+        .fullScreenCover(isPresented: $agoraManager.showCallingView) {
+            let name = dataModel.find(UUID(uuidString: agoraManager.calleeId)!)?.fName ?? ""
+            CallingView(calleeName: name)
+        }
+        .fullScreenCover(isPresented: $agoraManager.showVideoView) {
+            VideoCallView()
+        }
+        .fullScreenCover(isPresented: $agoraManager.showIncomingView) {
+            let name = dataModel.find(UUID(uuidString: agoraManager.callerId)!)?.fName ?? ""
+            IncomingView(callerName: name)
         }
     }
-        
+    
+}
+
+private var vibrationTimer: Timer?
+    
+func startVibrating() {
+    stopVibrating()
+    vibrationTimer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { _ in
+        triggerVibration()
+    }
+}
+
+func stopVibrating() {
+    vibrationTimer?.invalidate()
+}
+
+func triggerVibration() {
+    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
 }
 
 #Preview {

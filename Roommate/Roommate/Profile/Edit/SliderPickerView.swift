@@ -33,7 +33,9 @@ struct SliderPickerView: View {
                                 }
                             }) {
                                 Text("Done")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(Color.accentColor)
+                                    .font(.custom("Helvetica Neue", size: 16))
+                                    .fontWeight(.bold)
                             }
                         }
                         .padding()
