@@ -52,20 +52,23 @@ struct PhotosViewer: View {
                             currentIndex = currentIndex > 0 ? currentIndex - 1 : 0
                         }
                     }
+                    .offset(y: -50)
             }
             HStack {
-                VStack (alignment: .leading) {
+                VStack (alignment: .leading, spacing: 0) {
                     HStack {
                         if showName {
                             Text(user.fName)
                                 .font(.custom("Avenir", size: 40))
                                 .fontWeight(.black)
                                 .foregroundColor(.white)
+                                .shadow(color: .black, radius: 3, x: 0, y: 2)
                         }
                         if showAge {
                             Text(String(user.age))
                                 .font(.custom("Avenir", size: 35))
                                 .foregroundColor(.white)
+                                .shadow(color: .black, radius: 3, x: 0, y: 2)
                         }
                         Spacer()
                         if showDetailButton {
@@ -80,10 +83,12 @@ struct PhotosViewer: View {
                                     .clipShape(Circle())
                                     .padding(.top, 10)
                                     .padding(.trailing, 10)
+                                    .shadow(color: .black, radius: 3, x: 0, y: 2)
                             }
                             .padding(.horizontal)
                         }
                     }
+                    .padding(.bottom, -10)
                     if showInterests {
                         Text("Interests")
                             .font(.custom("Avenir", size: 20))
@@ -94,8 +99,9 @@ struct PhotosViewer: View {
                             InterestBulletView(interest: interest)
                         }
                     }
+                        
                 }
-//                .position(x: 210, y: 450)
+                .offset(x:0, y:90)
             }
             .position(x: screenWidth / 2 + 20, y: 300)
             
@@ -111,7 +117,7 @@ struct PhotosViewer: View {
                         )
                 }
             }
-            .offset(y: -260)
+            .offset(y: -310)
         }
         
     }
