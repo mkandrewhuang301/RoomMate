@@ -27,7 +27,11 @@ struct ContentView: View {
             if isDownloadComplete {
                 VStack{
                     TabView(selection: $selectedTab){
-                        VStack(spacing: 0) {
+                        ZStack() {
+                            Image("background")
+                                .resizable()
+                                .edgesIgnoringSafeArea(.top)
+                                .opacity(0.6)
                             HStack(spacing: 0) {
                                 Spacer()
                                     .frame(width: 10)
@@ -39,13 +43,15 @@ struct ContentView: View {
                                     .bold()
                                     .foregroundStyle(Color.accentColor)
                                     .frame(height: 40)
-                                Spacer()
+                                //Spacer()
+                                //user offset instead of it
                             }
+                            .offset(x: -80, y:-335)
                             .frame(height: 40)
                             .padding(.top, 10)
+                            
                             ZStack{
                                 //showDetail = false
-                                
                                 if userList.count > userIndex + 1{
                                     mainPhotosViewer(index: $userIndex, profile: $userList[userIndex + 1],  user: dataModel.bindingForCurrentUser(), isDraggable: false)
                                 }
