@@ -262,6 +262,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				91BA0FC32BCAE86D00FEF90E /* PBXTargetDependency */,
+				91BA0FC12BCAE86A00FEF90E /* PBXTargetDependency */,
+				91BA0FBF2BCAE86700FEF90E /* PBXTargetDependency */,
+				91BA0FBD2BCAE86100FEF90E /* PBXTargetDependency */,
+				91BA0FBB2BCAE85C00FEF90E /* PBXTargetDependency */,
 				91FE1BE42BABC43500980170 /* PBXTargetDependency */,
 			);
 			name = Roommate;
@@ -378,6 +383,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		91BA0FBB2BCAE85C00FEF90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 91BA0FBA2BCAE85C00FEF90E /* SwiftUIRtc */;
+		};
+		91BA0FBD2BCAE86100FEF90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 91BA0FBC2BCAE86100FEF90E /* AgoraRtmKit */;
+		};
+		91BA0FBF2BCAE86700FEF90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 91BA0FBE2BCAE86700FEF90E /* AgoraAppGroupDataHelper */;
+		};
+		91BA0FC12BCAE86A00FEF90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 91BA0FC02BCAE86A00FEF90E /* AgoraBroadcastExtensionHelper */;
+		};
+		91BA0FC32BCAE86D00FEF90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 91BA0FC22BCAE86D00FEF90E /* AgoraUIKit */;
+		};
 		91FE1BE42BABC43500980170 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 91FE1BE32BABC43500980170 /* ECE564Login */;
@@ -644,6 +669,31 @@
 			productName = AgoraBroadcastExtensionHelper;
 		};
 		67B7DBF62BC87E2500FCB550 /* AgoraUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraUIKit;
+		};
+		91BA0FBA2BCAE85C00FEF90E /* SwiftUIRtc */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6793D2F02BC7110900FC8C68 /* XCRemoteSwiftPackageReference "SwiftUIRtc" */;
+			productName = SwiftUIRtc;
+		};
+		91BA0FBC2BCAE86100FEF90E /* AgoraRtmKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6793D2F52BC7383200FC8C68 /* XCRemoteSwiftPackageReference "AgoraRtm_iOS" */;
+			productName = AgoraRtmKit;
+		};
+		91BA0FBE2BCAE86700FEF90E /* AgoraAppGroupDataHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraAppGroupDataHelper;
+		};
+		91BA0FC02BCAE86A00FEF90E /* AgoraBroadcastExtensionHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraBroadcastExtensionHelper;
+		};
+		91BA0FC22BCAE86D00FEF90E /* AgoraUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
 			productName = AgoraUIKit;

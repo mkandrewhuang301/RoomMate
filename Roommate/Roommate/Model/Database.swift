@@ -159,6 +159,11 @@ final class Database: ObservableObject{
             if self.currentUser.haveRoom != profile.haveRoom {
                 similarity += 4
             }
+            /*
+            if self.currentUser.seen.contains(profile.id){
+                silimarity -=10
+            }
+             */
             
             //get union of interests
             let userInterests = Set(self.currentUser.interests)
