@@ -40,9 +40,7 @@ struct ProfileEditView: View {
             ) {
                 Picker("Gender", selection: $user.gender) {
                     ForEach(Gender.allCases, id: \.self) { gender in
-                        if gender != .Unknown {
-                            Text(gender.rawValue).tag(gender)
-                        }
+                        Text(gender.rawValue).tag(gender)
                     }
                 }
                 Button(action: {
@@ -193,9 +191,7 @@ struct ProfileEditView: View {
             ) {
                 Picker("Prefer to find...", selection: $user.preference.gender) {
                     ForEach(Gender.allCases, id: \.self) { gender in
-                        if gender != .Unknown {
-                            Text(gender.rawValue).tag(gender)
-                        }
+                        Text(gender.rawValue).tag(gender)
                     }
                 }
                 Button(action: {

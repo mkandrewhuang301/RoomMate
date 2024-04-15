@@ -37,7 +37,7 @@ struct WheelPickerView: View {
                         Picker("Select a number", selection: $num) {
                             let range = from...to
                             ForEach(range, id: \.self) { num in
-                                Text("\(num)").tag(num)
+                                Text("\(String(num))").tag(num)
                             }
                         }
                         .pickerStyle(WheelPickerStyle())
