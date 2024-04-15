@@ -10,15 +10,21 @@ import SwiftUI
 struct NewMatchView: View {
     @ObservedObject var dataModel: Database  = Database.shared
     @Binding var user: User
+    @Binding var showProfile: Bool
+    @Binding var showUser: User
     let minimumMatch = 5
+    
+    var dedupedWaitList: [UUID] {
+        Array(Set(user.waitList))
+    }
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack (spacing: 25){
-                ForEach(user.waitList, id: \.self) { friend_uuid in
+                ForEach(dedupedWaitList, id: \.self) { friend_uuid in
                     let friend = dataModel.bindingForUser(friend_uuid)
-                    NewMatchItem(user: $user, friend: friend)
+                    NewMatchItem(user: $user, friend: friend, showProfile: $showProfile, showUser: $showUser)
                 }
-                ForEach(0..<max(minimumMatch - user.waitList.count, 0), id: \.self) { _ in
+                ForEach(0..<max(minimumMatch - dedupedWaitList.count, 0), id: \.self) { _ in
                     RoundedRectangle(cornerRadius: 15)
                         .fill(Color(red: 233/255, green: 234/255, blue: 238/255))
                         .frame(width: 120, height: 150)

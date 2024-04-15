@@ -12,6 +12,8 @@ struct ChatView: View {
     @Binding var user: User
     @ObservedObject var agoraManager: AgoraManager = AgoraManager.shared
     @StateObject var uploadViewModel = UploadViewModel()
+    @State private var showProfile = false
+    @State private var showUser: User = User()
     
     var dedupedFriendList: [UUID] {
         Array(Set(user.friends))
@@ -62,7 +64,7 @@ struct ChatView: View {
                     }
                 }
                 ) {
-                    NewMatchView(user: $user)
+                    NewMatchView(user: $user, showProfile: $showProfile, showUser: $showUser)
                 }
                 
                 Section(header: Text("Contacts")
@@ -97,6 +99,9 @@ struct ChatView: View {
                     }
                 }
             }
+        }
+        .fullScreenCover(isPresented: $showProfile) {
+            OtherProfileDetailView(user: $showUser, showDetail: $showProfile)
         }
     }
 }
