@@ -62,6 +62,7 @@ struct ContentView: View {
                         }
                         .tabItem{
                             Label("", systemImage:"circle.hexagongrid.circle.fill")
+                                .padding()
                         }
                         .tag(0)
                         .onChange(of: selectedTab){ _ , _ in
@@ -79,6 +80,7 @@ struct ContentView: View {
                         }
                         .tabItem{
                             Label("", systemImage:"house")
+                                .padding()
                         }
                         .tag(1)
                         
@@ -87,6 +89,7 @@ struct ContentView: View {
                         }
                         .tabItem {
                             Label("", systemImage: "message.fill")
+                                .padding()
                         }
                         .tag(2)
                         
@@ -96,6 +99,7 @@ struct ContentView: View {
                         }
                         .tabItem {
                             Label("", systemImage: "person.fill")
+                                .padding()
                         }
                         .tag(3)
                     }

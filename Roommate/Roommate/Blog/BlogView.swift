@@ -30,7 +30,7 @@ struct WebView2: UIViewRepresentable {
         let webView = WKWebView()
         webView.isUserInteractionEnabled = false
         webView.scrollView.isScrollEnabled = false
-        webView.configuration.preferences.javaScriptEnabled = true
+        //webView.configuration.preferences.javaScriptEnabled = true
         webView.navigationDelegate = context.coordinator
         return webView
     }
@@ -74,7 +74,7 @@ struct WebView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
-        webView.configuration.preferences.javaScriptEnabled = true
+        //webView.configuration.preferences.javaScriptEnabled = true
         webView.navigationDelegate = context.coordinator
         return webView
     }
