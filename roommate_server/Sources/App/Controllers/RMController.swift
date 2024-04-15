@@ -56,6 +56,7 @@ struct RMController: RouteCollection {
             user.friends = userData.friends
             user.applyList = userData.applyList
             user.waitList = userData.waitList
+            user.seen = userData.seen
             user.purpose = userData.purpose
             user.photos = userData.photos
             user.school = userData.school

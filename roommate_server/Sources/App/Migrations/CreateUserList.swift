@@ -16,6 +16,7 @@ struct CreateUserList: AsyncMigration {
             .field("friends", .array(of: .uuid))
             .field("applyList", .array(of: .uuid))
             .field("waitList", .array(of: .uuid))
+            .field("seen", .array(of: .uuid))
             .field("purpose", .string)
             .field("photos", .array(of: .string))
             .field("school", .string)

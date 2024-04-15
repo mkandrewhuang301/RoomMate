@@ -32,6 +32,9 @@ final class User: Model, Content {
     @Field(key: "waitList")
     var waitList: [UUID]
 
+    @Field(key: "seen")
+    var seen: [UUID]
+
     @Field(key: "purpose")
     var purpose: Purpose
 
