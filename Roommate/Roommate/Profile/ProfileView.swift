@@ -42,7 +42,8 @@ struct ProfileView: View {
                     .frame(height: 50)
                 Spacer()
             }
-            .frame(height: 50)
+            .padding()
+            .frame(height: 80)
             Button(action: {
                 withAnimation {
                     showOverlay = true

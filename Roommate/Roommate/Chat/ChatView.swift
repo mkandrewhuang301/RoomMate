@@ -33,7 +33,8 @@ struct ChatView: View {
                     .frame(height: 50)
                 Spacer()
             }
-            .frame(height: 50)
+            .padding()
+            .frame(height: 80)
             List {
                 Section(header: 
                     HStack {
