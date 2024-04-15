@@ -114,24 +114,26 @@ struct ContentView: View {
             
             Text("")
             ECE564Login()
-          }
-          .onDisappear(){
-//           .onAppear(){
-//                let netID = "kl478"
-              let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+            //          }
+            .onDisappear(){
+                //           .onAppear(){
+                //let netID = "tq22"
+                let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+                
                 DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                     switch result{
                         //when user not found, just use new profile
-                        case .failure( _):
-                            dataModel.setCurrentUser(User())
-                            return true
-                        case .success(let user):
-                            dataModel.setCurrentUser(user)
-                            agoraManager.loginRTM(user: user.id.uuidString)
-                            return true
+                    case .failure( _):
+                        dataModel.setCurrentUser(User())
+                        return true
+                    case .success(let user):
+                        dataModel.setCurrentUser(user)
+                        agoraManager.loginRTM(user: user.id.uuidString)
+                        return true
                     }
                 }
             }
+        }
         .background(.white)
         .onAppear{
             downloadManager.downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/list"){result in

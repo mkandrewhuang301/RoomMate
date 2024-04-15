@@ -21,8 +21,7 @@ struct User: Codable, Identifiable {
     
     var waitList: [UUID] = []
     
-    //var seen: [UUID] = []
-    
+    var seen: [UUID] = []
 
     var purpose: Purpose = .Unknown
 
