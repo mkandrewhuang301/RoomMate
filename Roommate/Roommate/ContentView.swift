@@ -21,13 +21,17 @@ struct ContentView: View {
     
     //user details:
     @State var userIndex: Int = 0
-    
+    @State private var selectedTab: Int = 0
     var body: some View {
         ZStack {
             if isDownloadComplete {
                 VStack{
-                    TabView{
-                        VStack(spacing: 0) {
+                    TabView(selection: $selectedTab){
+                        ZStack() {
+                            Image("background")
+                                .resizable()
+                                .edgesIgnoringSafeArea(.top)
+                                .opacity(0.6)
                             HStack(spacing: 0) {
                                 Spacer()
                                     .frame(width: 10)
@@ -39,13 +43,15 @@ struct ContentView: View {
                                     .bold()
                                     .foregroundStyle(Color.accentColor)
                                     .frame(height: 40)
-                                Spacer()
+                                //Spacer()
+                                //user offset instead of it
                             }
+                            .offset(x: -80, y:-335)
                             .frame(height: 40)
                             .padding(.top, 10)
+                            
                             ZStack{
                                 //showDetail = false
-                                
                                 if userList.count > userIndex + 1{
                                     mainPhotosViewer(index: $userIndex, profile: $userList[userIndex + 1],  user: dataModel.bindingForCurrentUser(), isDraggable: false)
                                 }
@@ -57,6 +63,16 @@ struct ContentView: View {
                         .tabItem{
                             Label("", systemImage:"circle.hexagongrid.circle.fill")
                         }
+                        .tag(0)
+                        .onChange(of: selectedTab){ _ , _ in
+                            if selectedTab == 0 {
+                                userList = dataModel.filter()
+                            }
+                            print("HERE")
+                            print(userList.count)
+                            userIndex = 0
+                            
+                        }
                         
                         NavigationView{
                             BlogView()
@@ -64,6 +80,7 @@ struct ContentView: View {
                         .tabItem{
                             Label("", systemImage:"house")
                         }
+                        .tag(1)
                         
                         NavigationView{
                             ChatView(user: dataModel.bindingForCurrentUser())
@@ -71,6 +88,7 @@ struct ContentView: View {
                         .tabItem {
                             Label("", systemImage: "message.fill")
                         }
+                        .tag(2)
                         
                         NavigationView{
                             //var s: String = "123"
@@ -79,6 +97,7 @@ struct ContentView: View {
                         .tabItem {
                             Label("", systemImage: "person.fill")
                         }
+                        .tag(3)
                     }
                 }
             }
@@ -87,11 +106,12 @@ struct ContentView: View {
             }
             
             Text("")
-            ECE564Login()
-          .onDisappear(){
-//            .onAppear(){
-//                let netID = "tq22"
-              let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+            //ECE564Login()
+          }
+          //.onDisappear(){
+           .onAppear(){
+                let netID = "ah629"
+              //let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
                 DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                     switch result{
                         //when user not found, just use new profile
@@ -105,24 +125,24 @@ struct ContentView: View {
                     }
                 }
             }
-        }
         .background(.white)
         .onAppear{
             downloadManager.downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/list"){result in
-            switch result{
-                case .success(let users):
-                    let _ = dataModel.replaceDB(users: users)
-                    userList = dataModel.list()
-                    //userList = dataModel.filter()
-                    isDownloadComplete = true
-                    return true
-                case .failure(let error):
-                    // Handle the error, perhaps setting an error message state variable
-                    print("Error downloading user data: \(error.localizedDescription)")
-                    return false
+                switch result{
+                    case .success(let users):
+                        let _ = dataModel.replaceDB(users: users)
+                        //userList = dataModel.list()
+                        userList = dataModel.filter()
+                        isDownloadComplete = true
+                        return true
+                    case .failure(let error):
+                        // Handle the error, perhaps setting an error message state variable
+                        print("Error downloading user data: \(error.localizedDescription)")
+                        return false
+                    }
+
                 }
             }
-        }
         .onChange(of: agoraManager.showIncomingView, initial: false) { oldValue, newValue in
             if newValue {
                 startVibrating()

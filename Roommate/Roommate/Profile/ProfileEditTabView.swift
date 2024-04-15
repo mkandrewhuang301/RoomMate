@@ -47,6 +47,7 @@ struct ProfileEditTabView: View {
                         withAnimation {
                             showOverlay.toggle()
                         }
+                        
                     }
                     .font(.custom("Helvetica Neue", size: 16))
                     .fontWeight(.bold)

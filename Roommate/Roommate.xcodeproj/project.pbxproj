@@ -53,6 +53,7 @@
 		914C9B9D2BAA8234004F3E69 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9C2BAA8234004F3E69 /* ProfileView.swift */; };
 		914C9B9F2BAA8297004F3E69 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9E2BAA8297004F3E69 /* ChatView.swift */; };
 		914C9BA32BAA8442004F3E69 /* BlogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9BA22BAA8442004F3E69 /* BlogView.swift */; };
+		91BA0FC52BCCB7BD00FEF90E /* websites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BA0FC42BCCB7BD00FEF90E /* websites.swift */; };
 		91FE1BE22BABC43000980170 /* ECE564Login in Frameworks */ = {isa = PBXBuildFile; productRef = 91FE1BE12BABC43000980170 /* ECE564Login */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,7 @@
 		914C9B9E2BAA8297004F3E69 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		914C9BA22BAA8442004F3E69 /* BlogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogView.swift; sourceTree = "<group>"; };
 		914C9BAB2BAB588E004F3E69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		91BA0FC42BCCB7BD00FEF90E /* websites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = websites.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				911C5B972BC83FE700335F9E /* mainPhotoView.swift */,
 				911C5B952BC83FB500335F9E /* DataManager.swift */,
 				914C9BA22BAA8442004F3E69 /* BlogView.swift */,
+				91BA0FC42BCCB7BD00FEF90E /* websites.swift */,
 				679020012BA4989500CE0AAC /* Assets.xcassets */,
 				679020032BA4989500CE0AAC /* Preview Content */,
 			);
@@ -262,6 +265,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				91BA0FC32BCAE86D00FEF90E /* PBXTargetDependency */,
+				91BA0FC12BCAE86A00FEF90E /* PBXTargetDependency */,
+				91BA0FBF2BCAE86700FEF90E /* PBXTargetDependency */,
+				91BA0FBD2BCAE86100FEF90E /* PBXTargetDependency */,
+				91BA0FBB2BCAE85C00FEF90E /* PBXTargetDependency */,
 				91FE1BE42BABC43500980170 /* PBXTargetDependency */,
 			);
 			name = Roommate;
@@ -346,6 +354,7 @@
 				673E3F632BBE4A6B005229B7 /* PhotosViewer.swift in Sources */,
 				679020162BAA0E2300CE0AAC /* Preference.swift in Sources */,
 				679020152BAA0E2300CE0AAC /* User.swift in Sources */,
+				91BA0FC52BCCB7BD00FEF90E /* websites.swift in Sources */,
 				914C9B9F2BAA8297004F3E69 /* ChatView.swift in Sources */,
 				679020172BAA0E2300CE0AAC /* Room.swift in Sources */,
 				67B7DBEE2BC87D0D00FCB550 /* IncomingView.swift in Sources */,
@@ -378,6 +387,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		91BA0FBB2BCAE85C00FEF90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 91BA0FBA2BCAE85C00FEF90E /* SwiftUIRtc */;
+		};
+		91BA0FBD2BCAE86100FEF90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 91BA0FBC2BCAE86100FEF90E /* AgoraRtmKit */;
+		};
+		91BA0FBF2BCAE86700FEF90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 91BA0FBE2BCAE86700FEF90E /* AgoraAppGroupDataHelper */;
+		};
+		91BA0FC12BCAE86A00FEF90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 91BA0FC02BCAE86A00FEF90E /* AgoraBroadcastExtensionHelper */;
+		};
+		91BA0FC32BCAE86D00FEF90E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 91BA0FC22BCAE86D00FEF90E /* AgoraUIKit */;
+		};
 		91FE1BE42BABC43500980170 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 91FE1BE32BABC43500980170 /* ECE564Login */;
@@ -512,10 +541,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Roommate/Preview Content\"";
-				DEVELOPMENT_TEAM = U6J58C8CJT;
+				DEVELOPMENT_TEAM = 6LR5K8LYYD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Roommate/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need your permission to the camera.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need your permission to the microphone.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need your permission to the photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -526,7 +558,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.tq22.ece564.Roommate;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.ah629.Roommate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -542,10 +574,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Roommate/Preview Content\"";
-				DEVELOPMENT_TEAM = U6J58C8CJT;
+				DEVELOPMENT_TEAM = 6LR5K8LYYD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Roommate/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need your permission to the camera.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need your permission to the microphone.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need your permission to the photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -556,7 +591,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.tq22.ece564.Roommate;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.ah629.Roommate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -644,6 +679,31 @@
 			productName = AgoraBroadcastExtensionHelper;
 		};
 		67B7DBF62BC87E2500FCB550 /* AgoraUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraUIKit;
+		};
+		91BA0FBA2BCAE85C00FEF90E /* SwiftUIRtc */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6793D2F02BC7110900FC8C68 /* XCRemoteSwiftPackageReference "SwiftUIRtc" */;
+			productName = SwiftUIRtc;
+		};
+		91BA0FBC2BCAE86100FEF90E /* AgoraRtmKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6793D2F52BC7383200FC8C68 /* XCRemoteSwiftPackageReference "AgoraRtm_iOS" */;
+			productName = AgoraRtmKit;
+		};
+		91BA0FBE2BCAE86700FEF90E /* AgoraAppGroupDataHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraAppGroupDataHelper;
+		};
+		91BA0FC02BCAE86A00FEF90E /* AgoraBroadcastExtensionHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
+			productName = AgoraBroadcastExtensionHelper;
+		};
+		91BA0FC22BCAE86D00FEF90E /* AgoraUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 67B7DBF12BC87E2500FCB550 /* XCRemoteSwiftPackageReference "VideoUIKit-iOS" */;
 			productName = AgoraUIKit;

@@ -65,8 +65,25 @@ struct mainPhotosViewer: View {
                     }
                  
                     
-                    .offset(x: offsetX, y: offsetY)
+                    .offset(x: offsetX, y: offsetY )
             }
+            Image("dope")
+                .resizable()
+                .frame(width: 220, height: 110)
+                //.opacity(isDraggable ? 1 : 0)
+                .rotationEffect(.degrees(-30))
+                .opacity(isDraggable ? 0 + abs(offsetX > 0 ? offsetX: 0) * 0.008: 0 )
+                .offset(x:offsetX - 90, y: offsetY - 150)
+            
+            Image("nope")
+                .resizable()
+                .frame(width: 240, height: 160)
+               // .opacity(isDraggable ? 1 : 0)
+                .rotationEffect(.degrees(32))
+                .opacity(isDraggable ? 0 + abs(offsetX < 0 ? offsetX: 0) * 0.008: 0 )
+                .offset(x:offsetX + 90, y: offsetY - 150)
+            
+                
             if showDetailButton {
                 Button(action: {
                     showDetail.toggle()
@@ -81,8 +98,7 @@ struct mainPhotosViewer: View {
                         .padding(.trailing, 10)
                         
                 }
-                .position(x: 350 + offsetX, y: 530 + offsetY )
-                
+                .position(x: 350 + offsetX, y: 500 + offsetY )
             }
             VStack (alignment: .leading) {
                 HStack {
@@ -91,7 +107,7 @@ struct mainPhotosViewer: View {
                             .font(.custom("Avenir", size: 40))
                             .fontWeight(.black)
                             .foregroundColor(.white)
-                            .shadow(color: .black, radius: 2.8, x: 0, y: 2)
+                            .shadow(color: .black, radius: 3, x: 0, y: 2)
                     }
                     if showAge {
                         Text(String(profile.age))
@@ -111,7 +127,7 @@ struct mainPhotosViewer: View {
                     }
                 }
             }
-            .position(x: 210 + offsetX, y: 550 + offsetY)
+            .position(x: 210 + offsetX, y: 530 + offsetY)
             HStack(spacing: 3) {
                 ForEach(0..<profile.photos.count, id: \.self) { index in
                     Rectangle()
@@ -130,7 +146,7 @@ struct mainPhotosViewer: View {
         .highPriorityGesture(
                 DragGesture()
                     .onEnded{ gesture in
-                        //if isDraggable{
+                        if isDraggable{
                             let location = gesture.location
                             let limit = 2*screenWidth / 7
                             let isRightSide = (location.x - gesture.startLocation.x) > limit
@@ -154,6 +170,7 @@ struct mainPhotosViewer: View {
                                     user.applyList.append(profile.id)
                                     index += 1
                                     print(user.applyList.count)
+                                    //user.seen.append(profile.id)
                                 }
                                 
                             }
@@ -163,7 +180,9 @@ struct mainPhotosViewer: View {
                                     self.offsetX = -800
                                 }completion: {
                                     index += 1
+                                    //user.seen.append(profile.id)
                                 }
+                                
                             }
                         
                             else{
@@ -175,10 +194,10 @@ struct mainPhotosViewer: View {
                             }
                          
                             initialSwipe = nil
-                        //}
+                        }
                     }
                     .onChanged(){ gesture in
-                        //if isDraggable {
+                        if isDraggable {
                             let x = gesture.translation.width
                             let y = gesture.translation.height
                             self.offsetX = x
@@ -193,7 +212,7 @@ struct mainPhotosViewer: View {
                                     isSwipeDown = false
                                 }
                             }
-                        //}
+                        }
                     }
         )
         .onChange(of: index){

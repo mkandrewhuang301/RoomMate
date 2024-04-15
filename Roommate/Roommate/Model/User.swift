@@ -20,10 +20,14 @@ struct User: Codable, Identifiable {
     var applyList: [UUID] = []
     
     var waitList: [UUID] = []
+    
+    //var seen: [UUID] = []
+    
 
     var purpose: Purpose = .Unknown
 
     var photos: [String] = [] /// 4 photos
+    
 
     var school: School = .NotApplicable
     

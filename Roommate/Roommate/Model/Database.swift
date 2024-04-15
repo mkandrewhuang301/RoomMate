@@ -99,13 +99,12 @@ final class Database: ObservableObject{
             if currentUser.id == profile.id {
                 failedHardFilter = true
             }
-            ///calculate similarity value from each field
+            ///HARD FILTERS
             ///gender preference
             if self.currentUser.preference.gender != profile.gender{
                 failedHardFilter = true
             }
             ///school preference
-            /*
             if self.currentUser.preference.sameSchool &&  self.currentUser.school != profile.school{
                 failedHardFilter = true
             }
@@ -113,11 +112,78 @@ final class Database: ObservableObject{
             if profile.age < self.currentUser.preference.ageRange.min || profile.age > self.currentUser.preference.ageRange.max{
                 failedHardFilter = true
             }
-            */
+            
+            //same major
+            if self.currentUser.preference.sameMajor &&  self.currentUser.major != profile.major{
+                failedHardFilter = true
+            }
+            //SOFT FILTER
+            /*
+             Weights: 
+             
+             purpose: 2
+             school:
+             gradyear: 1
+             sleepschedule:2
+             major: 1
+             budget: 9
+             issmoke: 3
+             havepets: 1
+             selfintro: ???
+             haveRoom: 1
+             location: 9
+             Interests: 
+             */
+            if self.currentUser.purpose == profile.purpose{
+                similarity += 2
+            }
+            if self.currentUser.gradYear == profile.gradYear{
+                similarity += 1
+            }
+            //FIX SLEEP SCHEDULE
+            ///two early birds
+            if self.currentUser.sleepSchedule.max  < 20  && profile.sleepSchedule.max < 20 {
+                similarity += 3
+            }
+            //two night owl
+            if self.currentUser.sleepSchedule.max  >= 20  && profile.sleepSchedule.max >= 20 {
+                similarity += 5
+            }
+            if self.currentUser.isSmoke == profile.isSmoke {
+                similarity += 3
+            }
+            
+            if self.currentUser.havePets == profile.havePets {
+                similarity += 2
+            }
+            if self.currentUser.haveRoom != profile.haveRoom {
+                similarity += 4
+            }
+            /*
+            if self.currentUser.seen.contains(profile.id){
+                silimarity -=10
+            }
+             */
+            
+            //get union of interests
+            let userInterests = Set(self.currentUser.interests)
+            let profileInterests = Set(profile.interests)
+            
+            let unionInterests = userInterests.union(profileInterests)
+            let unionInterestsArray = Array(unionInterests)
+            
+            similarity += Float(unionInterestsArray.count) * 3.0
+            
+            ///FIGURE OUT LOCATION
+            
+            
+            
+            
+            
             
             
             //
-            print("\(profile.fName), and \(failedHardFilter)" )
+            print("\(profile.fName), and \(similarity) , and \(failedHardFilter)")
             
             if !failedHardFilter{
                 if order[similarity] == nil{
@@ -127,17 +193,19 @@ final class Database: ObservableObject{
                     order[similarity]!.append(profile)
                 }
             }
+            
                 
            
         }
         
         
-        
-        
         let  sortedOrder = order.sorted{$0.key > $1.key}
         var result: [User] = []
-        for (key, value) in sortedOrder{
-            result.append(contentsOf: value)
+        for (score, users) in sortedOrder{
+            for user in users{
+                print("\(score), \(user.fName)")
+            }
+            result.append(contentsOf: users)
         }
         
         return result

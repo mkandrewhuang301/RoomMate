@@ -126,7 +126,7 @@ struct ProfileEditView: View {
                     }
                 }) {
                     HStack {
-                        Text("I'm awaking at...")
+                        Text("I'm usually awake at")
                             .font(.custom("Helvetica Neue", size: 18))
                             .foregroundColor(.black)
                         Spacer()
