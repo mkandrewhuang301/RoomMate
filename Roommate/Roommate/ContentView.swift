@@ -28,28 +28,29 @@ struct ContentView: View {
                 VStack{
                     TabView(selection: $selectedTab){
                         ZStack() {
-                            Image("background")
-                                .resizable()
-                                .edgesIgnoringSafeArea(.top)
-                                .opacity(0.6)
-                            HStack(spacing: 0) {
-                                Spacer()
-                                    .frame(width: 10)
-                                Image("iconimage")
+                            VStack(spacing: 0) {
+                                HStack(spacing: 0) {
+                                    Spacer()
+                                        .frame(width: 10)
+                                    Image("iconimage")
+                                        .resizable()
+                                        .frame(width: 40, height: 40)
+                                    Text("RoomMate")
+                                        .font(.custom("Futura", size: 24))
+                                        .bold()
+                                        .foregroundStyle(Color.accentColor)
+                                        .frame(height: 40)
+                                    Spacer()
+                                    //user offset instead of it
+                                }
+                                .frame(height: 40)
+                                .padding(.vertical, 10)
+                                Image("background")
                                     .resizable()
-                                    .frame(width: 40, height: 40)
-                                Text("RoomMate")
-                                    .font(.custom("Futura", size: 24))
-                                    .bold()
-                                    .foregroundStyle(Color.accentColor)
-                                    .frame(height: 40)
-                                //Spacer()
-                                //user offset instead of it
+                                    .edgesIgnoringSafeArea(.bottom)
+                                    .opacity(0.6)
+                                    .frame(height: 650)
                             }
-                            .offset(x: -80, y:-335)
-                            .frame(height: 40)
-                            .padding(.top, 10)
-                            
                             ZStack{
                                 //showDetail = false
                                 if userList.count > userIndex + 1{
@@ -62,6 +63,8 @@ struct ContentView: View {
                         }
                         .tabItem{
                             Label("", systemImage:"circle.hexagongrid.circle.fill")
+                                .padding()
+                                .frame(height: 60)
                         }
                         .tag(0)
                         .onChange(of: selectedTab){ _ , _ in
@@ -79,6 +82,8 @@ struct ContentView: View {
                         }
                         .tabItem{
                             Label("", systemImage:"house")
+                                .padding()
+                                .frame(height: 60)
                         }
                         .tag(1)
                         
@@ -87,6 +92,8 @@ struct ContentView: View {
                         }
                         .tabItem {
                             Label("", systemImage: "message.fill")
+                                .padding()
+                                .frame(height: 60)
                         }
                         .tag(2)
                         
@@ -106,25 +113,27 @@ struct ContentView: View {
             }
             
             Text("")
-            //ECE564Login()
-          }
-          //.onDisappear(){
-           .onAppear(){
-                let netID = "ah629"
-              //let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+            ECE564Login()
+            //          }
+            .onDisappear(){
+                //           .onAppear(){
+                //let netID = "tq22"
+                let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+                
                 DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                     switch result{
                         //when user not found, just use new profile
-                        case .failure( _):
-                            dataModel.setCurrentUser(User())
-                            return true
-                        case .success(let user):
-                            dataModel.setCurrentUser(user)
-                            agoraManager.loginRTM(user: user.id.uuidString)
-                            return true
+                    case .failure( _):
+                        dataModel.setCurrentUser(User())
+                        return true
+                    case .success(let user):
+                        dataModel.setCurrentUser(user)
+                        agoraManager.loginRTM(user: user.id.uuidString)
+                        return true
                     }
                 }
             }
+        }
         .background(.white)
         .onAppear{
             downloadManager.downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/list"){result in
@@ -160,6 +169,11 @@ struct ContentView: View {
         .fullScreenCover(isPresented: $agoraManager.showIncomingView) {
             let name = dataModel.find(UUID(uuidString: agoraManager.callerId)!)?.fName ?? ""
             IncomingView(callerName: name)
+        }
+        .alert("Call Request", isPresented: $agoraManager.showAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(agoraManager.alertMessage)
         }
     }
     

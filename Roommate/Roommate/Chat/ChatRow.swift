@@ -25,7 +25,7 @@ struct ChatRow: View {
                     .fontWeight(.heavy)
                     .frame(width: 180, alignment: .leading)
                     .padding(.bottom, 40)
-//                    .border(Color.black)
+                //                    .border(Color.black)
                 Spacer()
             }
             HStack {
@@ -35,7 +35,7 @@ struct ChatRow: View {
                         if result {
                             print("Call request sent")
                         } else {
-                            print("Failed to send call request")
+                            
                         }
                     }
                 }) {

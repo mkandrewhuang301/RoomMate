@@ -48,7 +48,7 @@ struct mainPhotosViewer: View {
                 Image(uiImage: UIImage)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: cardStyle ? screenWidth - 20 : screenWidth, height: 550)
+                    .frame(width: cardStyle ? (screenWidth - 20) : screenWidth, height: 550)
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: cardStyle ? 25 : 0))
             

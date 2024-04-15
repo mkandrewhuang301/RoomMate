@@ -38,6 +38,8 @@ class AgoraManager: NSObject, ObservableObject {
     @Published var showVideoView = false
     @Published var showCallingView = false
     @Published var showIncomingView = false
+    @Published var showAlert = false
+    @Published var alertMessage = ""
     
     var agoraVideoViewer: AgoraVideoViewer?
     
@@ -173,6 +175,10 @@ class AgoraManager: NSObject, ObservableObject {
             if errorCode != .ok {
                 withAnimation {
                     self.showCallingView = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.alertMessage = "Your friends is not online. Please wait and call later."
+                        self.showAlert = true
+                    }
                 }
             }
         }

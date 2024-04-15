@@ -21,6 +21,7 @@
 		673E3F652BBE6F33005229B7 /* OtherProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E3F642BBE6F33005229B7 /* OtherProfileDetailView.swift */; };
 		673E3F6D2BC5B597005229B7 /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673E3F6C2BC5B597005229B7 /* ChatRow.swift */; };
 		673F083A2BCA281800371E38 /* VideoCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673F08392BCA281800371E38 /* VideoCallView.swift */; };
+		673F08412BCD711700371E38 /* UploadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673F08402BCD711700371E38 /* UploadViewModel.swift */; };
 		67901FFE2BA4989400CE0AAC /* RoommateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67901FFD2BA4989400CE0AAC /* RoommateApp.swift */; };
 		679020002BA4989400CE0AAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67901FFF2BA4989400CE0AAC /* ContentView.swift */; };
 		679020022BA4989500CE0AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 679020012BA4989500CE0AAC /* Assets.xcassets */; };
@@ -47,7 +48,7 @@
 		67B7DBF52BC87E2500FCB550 /* AgoraBroadcastExtensionHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 67B7DBF42BC87E2500FCB550 /* AgoraBroadcastExtensionHelper */; };
 		67B7DBF72BC87E2500FCB550 /* AgoraUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 67B7DBF62BC87E2500FCB550 /* AgoraUIKit */; };
 		91019E052BB3C67E00FE262D /* ProfileEditTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */; };
-		911C5B962BC83FB500335F9E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C5B952BC83FB500335F9E /* DataManager.swift */; };
+		911C5B962BC83FB500335F9E /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C5B952BC83FB500335F9E /* DownloadManager.swift */; };
 		911C5B982BC83FE700335F9E /* mainPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C5B972BC83FE700335F9E /* mainPhotoView.swift */; };
 		914C9B9B2BAA7C58004F3E69 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9A2BAA7C58004F3E69 /* Database.swift */; };
 		914C9B9D2BAA8234004F3E69 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914C9B9C2BAA8234004F3E69 /* ProfileView.swift */; };
@@ -72,6 +73,7 @@
 		673E3F642BBE6F33005229B7 /* OtherProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherProfileDetailView.swift; sourceTree = "<group>"; };
 		673E3F6C2BC5B597005229B7 /* ChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
 		673F08392BCA281800371E38 /* VideoCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCallView.swift; sourceTree = "<group>"; };
+		673F08402BCD711700371E38 /* UploadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewModel.swift; sourceTree = "<group>"; };
 		67901FFA2BA4989400CE0AAC /* Roommate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Roommate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67901FFD2BA4989400CE0AAC /* RoommateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoommateApp.swift; sourceTree = "<group>"; };
 		67901FFF2BA4989400CE0AAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,7 +96,7 @@
 		67B7DBEB2BC87D0D00FCB550 /* AgoraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgoraManager.swift; sourceTree = "<group>"; };
 		67B7DBEC2BC87D0D00FCB550 /* AgoraVideoViewerRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgoraVideoViewerRepresentable.swift; sourceTree = "<group>"; };
 		91019E042BB3C67E00FE262D /* ProfileEditTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditTabView.swift; sourceTree = "<group>"; };
-		911C5B952BC83FB500335F9E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		911C5B952BC83FB500335F9E /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		911C5B972BC83FE700335F9E /* mainPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPhotoView.swift; sourceTree = "<group>"; };
 		914C9B9A2BAA7C58004F3E69 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		914C9B9C2BAA8234004F3E69 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,24 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		673F083C2BCD6BCF00371E38 /* Blog */ = {
+			isa = PBXGroup;
+			children = (
+				914C9BA22BAA8442004F3E69 /* BlogView.swift */,
+				91BA0FC42BCCB7BD00FEF90E /* websites.swift */,
+			);
+			path = Blog;
+			sourceTree = "<group>";
+		};
+		673F083D2BCD6BE900371E38 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				911C5B952BC83FB500335F9E /* DownloadManager.swift */,
+				673F08402BCD711700371E38 /* UploadViewModel.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		67901FF12BA4989400CE0AAC = {
 			isa = PBXGroup;
 			children = (
@@ -183,19 +203,18 @@
 		67901FFC2BA4989400CE0AAC /* Roommate */ = {
 			isa = PBXGroup;
 			children = (
-				914C9BAB2BAB588E004F3E69 /* Info.plist */,
-				6790200C2BAA0E0F00CE0AAC /* Model */,
-				673E3F692BC5AA13005229B7 /* Chat */,
-				67B7DBE82BC87D0D00FCB550 /* AgoraVideoCall */,
-				6790208C2BBC706D00CE0AAC /* Profile */,
-				673E3F592BBE09AC005229B7 /* Resources */,
 				67901FFD2BA4989400CE0AAC /* RoommateApp.swift */,
 				67901FFF2BA4989400CE0AAC /* ContentView.swift */,
 				911C5B972BC83FE700335F9E /* mainPhotoView.swift */,
-				911C5B952BC83FB500335F9E /* DataManager.swift */,
-				914C9BA22BAA8442004F3E69 /* BlogView.swift */,
-				91BA0FC42BCCB7BD00FEF90E /* websites.swift */,
+				6790200C2BAA0E0F00CE0AAC /* Model */,
+				673F083C2BCD6BCF00371E38 /* Blog */,
+				673E3F692BC5AA13005229B7 /* Chat */,
+				67B7DBE82BC87D0D00FCB550 /* AgoraVideoCall */,
+				6790208C2BBC706D00CE0AAC /* Profile */,
+				673F083D2BCD6BE900371E38 /* util */,
+				673E3F592BBE09AC005229B7 /* Resources */,
 				679020012BA4989500CE0AAC /* Assets.xcassets */,
+				914C9BAB2BAB588E004F3E69 /* Info.plist */,
 				679020032BA4989500CE0AAC /* Preview Content */,
 			);
 			path = Roommate;
@@ -345,7 +364,7 @@
 				673E3F522BBDC0EC005229B7 /* WheelPickerView.swift in Sources */,
 				67B7DBED2BC87D0D00FCB550 /* CallingView.swift in Sources */,
 				67B7DBEF2BC87D0D00FCB550 /* AgoraManager.swift in Sources */,
-				911C5B962BC83FB500335F9E /* DataManager.swift in Sources */,
+				911C5B962BC83FB500335F9E /* DownloadManager.swift in Sources */,
 				673F083A2BCA281800371E38 /* VideoCallView.swift in Sources */,
 				91019E052BB3C67E00FE262D /* ProfileEditTabView.swift in Sources */,
 				673E3F5D2BBE37D6005229B7 /* ImagePicker.swift in Sources */,
@@ -375,6 +394,7 @@
 				6793D3072BC83A6200FC8C68 /* profilePic.swift in Sources */,
 				67901FFE2BA4989400CE0AAC /* RoommateApp.swift in Sources */,
 				673E3F6D2BC5B597005229B7 /* ChatRow.swift in Sources */,
+				673F08412BCD711700371E38 /* UploadViewModel.swift in Sources */,
 				67B7DBF02BC87D0D00FCB550 /* AgoraVideoViewerRepresentable.swift in Sources */,
 				673E3F4E2BBD0FCC005229B7 /* EditPhotoItem.swift in Sources */,
 				6790201E2BAA12C000CE0AAC /* School.swift in Sources */,
@@ -541,7 +561,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Roommate/Preview Content\"";
-				DEVELOPMENT_TEAM = 6LR5K8LYYD;
+				DEVELOPMENT_TEAM = U6J58C8CJT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Roommate/Info.plist;
@@ -558,7 +578,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.ah629.Roommate;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.tq22.Roommate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -574,7 +594,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Roommate/Preview Content\"";
-				DEVELOPMENT_TEAM = 6LR5K8LYYD;
+				DEVELOPMENT_TEAM = U6J58C8CJT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Roommate/Info.plist;
@@ -591,7 +611,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.ah629.Roommate;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.duke.tq22.Roommate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
