@@ -49,11 +49,18 @@ struct profilePic: View {
                 .font(.custom("Helvetica Neue", size: 16))
                 .fontWeight(.bold)
                 //.frame(width:30, height:20)
-                
-        }
-        .onAppear{
             
-            percent2 = percent
+        }
+        .onChange(of: percent) { newValue in
+                    withAnimation {
+                        percent2 = newValue
+                    }
+                }
+        .onAppear{
+            DispatchQueue.main.async {
+                percent2 = percent
+            }
+            //percent2 = percent
         }
     }
     private var circleOverlay: some View{
