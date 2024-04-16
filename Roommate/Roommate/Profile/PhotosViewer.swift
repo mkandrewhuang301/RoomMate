@@ -103,7 +103,7 @@ struct PhotosViewer: View {
                 }
                 .offset(x:0, y:90)
             }
-            .position(x: screenWidth / 2 + 20, y: 300)
+            .position(x: screenWidth / 2 + 20, y: 500)
             
             HStack(spacing: 8) {
                 ForEach(0..<user.photos.count, id: \.self) { index in

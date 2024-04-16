@@ -104,6 +104,19 @@ struct ChatView: View {
         .fullScreenCover(isPresented: $showProfile) {
             OtherProfileDetailView(user: $showUser, showDetail: $showProfile)
         }
+        .onAppear() {
+            let netID = user.netId
+            DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
+                switch result{
+                    case .failure( _):
+                        dataModel.setCurrentUser(User())
+                        return true
+                    case .success(let user):
+                        dataModel.setCurrentUser(user)
+                        return true
+                }
+            }
+        }
     }
 }
 

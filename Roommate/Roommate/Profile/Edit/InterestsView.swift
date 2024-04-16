@@ -56,7 +56,7 @@ struct InterestsView: View {
                             .frame(minWidth:0, maxWidth: . infinity, alignment: .leading)
                        )
                        .padding(.horizontal, 10)
-                   ScrollView {
+                   //ScrollView {
                        WrapView(items: filteredInterests
 //                                , selectedItems: $selectedInterests
                        ) { interest in
@@ -69,7 +69,8 @@ struct InterestsView: View {
                            }
                        }
                        .padding()
-                   }
+                   //}
+                   //.frame(maxHeight: .infinity)
                }
                .navigationTitle("Interests")
                .navigationBarItems(trailing: Button("Done", action: {
@@ -130,18 +131,19 @@ struct SelectedInterestTagView: View {
 
 struct WrapView<ItemView: View>: View {
     var items: [String]
-    //@Binding var selectedItems: [String]
     var content: (String) -> ItemView
 
     @State var totalHeight = CGFloat.infinity
     
     var body: some View {
-        VStack {
-            GeometryReader { geometry in
-                self.generateContent(in: geometry)
+        ScrollView {
+            VStack {
+                GeometryReader { geometry in
+                    self.generateContent(in: geometry)
+                }
             }
+            .frame(height: totalHeight)
         }
-        .frame(maxHeight: totalHeight)
     }
 
     private func generateContent(in geometry: GeometryProxy) -> some View {
@@ -186,8 +188,11 @@ struct WrapView<ItemView: View>: View {
 
 private struct ViewHeightKey: PreferenceKey {
     static var defaultValue: CGFloat { CGFloat.infinity }
+//    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+//        value = min(value, nextValue())
+//    }
     static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = min(value, nextValue())
+        value += nextValue()
     }
 }
 

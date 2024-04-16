@@ -51,7 +51,7 @@ struct profilePic: View {
                 //.frame(width:30, height:20)
             
         }
-        .onChange(of: percent) { newValue in
+        .onChange(of: percent, initial: false) { oldValue, newValue in
                     withAnimation {
                         percent2 = newValue
                     }

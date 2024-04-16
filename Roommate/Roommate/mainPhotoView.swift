@@ -21,7 +21,7 @@ struct mainPhotosViewer: View {
     @State private var currentIndex = 0
     @State private var screenWidth : CGFloat = 0
     @ObservedObject var dataModel: Database  = Database.shared
-
+    
     
     ///card animation variables
     @State var offsetX: CGFloat = 0
@@ -31,6 +31,14 @@ struct mainPhotosViewer: View {
     @StateObject var uploadViewModel = UploadViewModel()
     var barWidth: CGFloat {
         return (screenWidth - 50 - CGFloat(8 * (profile.photos.count - 1))) / CGFloat(profile.photos.count)
+    }
+    
+    var selectedInterests: [String] {
+        if profile.interests.count <= 2 {
+            return profile.interests
+        } else {
+            return Array(profile.interests.prefix(2))
+        }
     }
     enum DragDirection {
             case up
@@ -122,12 +130,12 @@ struct mainPhotosViewer: View {
                         .fontWeight(.black)
                         .foregroundColor(.white)
                         .shadow(color: .black, radius: 2.8, x: 0, y: 2)
-                    WrapView(items: profile.interests) { interest in
+                    WrapView(items: selectedInterests) { interest in
                         InterestBulletView(interest: interest)
                     }
                 }
             }
-            .position(x: 210 + offsetX, y: 530 + offsetY)
+            .position(x: 210 + offsetX, y: 830 + offsetY)
             HStack(spacing: 3) {
                 ForEach(0..<profile.photos.count, id: \.self) { index in
                     Rectangle()
