@@ -158,7 +158,7 @@ struct ProfileView: View {
                     .padding(.vertical, 5)
                     .font(.custom("Helvetica Neue", size: 24))
                     .fontWeight(.heavy)
-                if(percent != 100){
+                if(percent != 1){
                     Text("Incomplete Profile")
                         .font(.custom("Helvetica Neue", size: 16))
                         .italic()

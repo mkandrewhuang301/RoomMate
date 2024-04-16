@@ -175,6 +175,7 @@ struct mainPhotosViewer: View {
                                             return
                                         }
                                     }
+                                    currentIndex = 0
                                     user.applyList.append(profile.id)
                                     index += 1
                                     print(user.applyList.count)
@@ -187,6 +188,7 @@ struct mainPhotosViewer: View {
                                 withAnimation(.easeIn(duration: 0.28)) {
                                     self.offsetX = -800
                                 }completion: {
+                                    currentIndex = 0
                                     index += 1
                                     user.seen.append(profile.id)
                                 }

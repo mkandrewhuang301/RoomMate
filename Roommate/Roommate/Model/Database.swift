@@ -101,21 +101,24 @@ final class Database: ObservableObject{
             }
             ///HARD FILTERS
             ///gender preference
-            if self.currentUser.preference.gender != profile.gender{
-                failedHardFilter = true
+            if self.currentUser.preference.gender == profile.gender{
+                similarity += 10
+
             }
             ///school preference
-            if self.currentUser.preference.sameSchool &&  self.currentUser.school != profile.school{
-                failedHardFilter = true
+            if self.currentUser.preference.sameSchool &&  self.currentUser.school == profile.school{
+                similarity += 8
+
             }
             ///age must be right range
-            if profile.age < self.currentUser.preference.ageRange.min || profile.age > self.currentUser.preference.ageRange.max{
-                failedHardFilter = true
+            if profile.age >= self.currentUser.preference.ageRange.min && profile.age <= self.currentUser.preference.ageRange.max{
+                similarity += 9
+
             }
             
             //same major
-            if self.currentUser.preference.sameMajor &&  self.currentUser.major != profile.major{
-                failedHardFilter = true
+            if self.currentUser.preference.sameMajor &&  self.currentUser.major == profile.major{
+                similarity += 8
             }
             if self.currentUser.friends.contains(profile.id){
                 failedHardFilter = true
@@ -168,7 +171,7 @@ final class Database: ObservableObject{
             }
             
             if self.currentUser.seen.contains(profile.id){
-                similarity -= 10
+                similarity -= 14
             }
             
             //get union of interests

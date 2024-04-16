@@ -117,7 +117,7 @@ struct ContentView: View {
             //          }
             //.onDisappear(){
                            .onAppear(){
-                let netID = "ah629"
+                let netID = "njw30"
                 //let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
                 
                 DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
