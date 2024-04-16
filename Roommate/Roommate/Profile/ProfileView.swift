@@ -24,7 +24,84 @@ struct ProfileView: View {
     var height: Double = 125
     var width: Double = 125
     @Binding var user: User
-    @State var percent: Double = 0
+    var percent: Double {
+        let total: Double = 17.0 ///number of variables needed to be set in USER
+        var count = 0.0
+        if(user.DUID != 0){
+            count+=1
+        }
+        if(user.netId != ""){
+            count+=1
+        }
+        if(user.fName != "Unknown"){
+            count+=1
+        }
+        if(user.lName != "Unknown"){
+            count+=1
+        }
+        if(user.gender != .Unknown){
+            count+=1
+        }
+        if(user.purpose != .Unknown){
+            count+=1
+        }
+        if(!user.photos.isEmpty){
+            count+=1
+        }
+        if(user.school != .NotApplicable){
+            count+=1
+        }
+        //self.program = program ?? .NotApplicable
+        if(user.major != .NotApplicable){
+            count+=1
+        }
+        if(user.gradYear != 0){
+            count+=1
+        }
+        if(!(user.sleepSchedule.min ==  0 && user.sleepSchedule.max == 0)){
+            count+=1
+        }
+        if(!(user.budget.min ==  0 && user.budget.max == 0)){
+            count+=1
+        }
+        /*
+        if(user.isSmoke == false){
+            count+=1
+        }
+        if(user.havePets == false){
+            count+=1
+        }
+         */
+        if(user.selfIntro != ""){
+            count+=1
+        }
+        ///ROOM IS OPTIONAL
+        //self.room = room ?? Room()
+        
+        ///need number of elements  in  Preferences
+        //Get preference elements
+        if(user.preference.gender != .Unknown){
+            count+=1
+        }
+        if(!(user.preference.ageRange.min ==  0 && user.preference.ageRange.max == 0)){
+            count+=1
+        }
+        
+        if(user.location != ""){
+            count+=1
+        }
+        if(!user.interests.isEmpty){
+            count+=1
+        }
+        print(count)
+        return count / total
+        /*
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            percent = count / total
+        }
+         */
+
+    }
     @State var showOverlay: Bool = false
    
     var body: some View {
@@ -52,10 +129,10 @@ struct ProfileView: View {
                 VStack{
                     switch isLoading{
                     case false:
-                        profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: $user, height: height, width: width, percent: $percent )
+                        profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: $user, height: height, width: width, percent: percent )
                             .offset(y:42)
                     case true:
-                        profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: $user, height: height, width: width, percent: $percent)
+                        profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: $user, height: height, width: width, percent: percent)
                             .offset(y:42)
                     }
                     

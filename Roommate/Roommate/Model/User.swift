@@ -1,6 +1,6 @@
 import Foundation
 
-struct User: Codable, Identifiable, ObservableObject {
+struct User: Codable, Identifiable {
     
     var id: UUID
     

@@ -12,7 +12,8 @@ struct profilePic: View {
     @Binding var user: User
     let height: Double
     let width: Double
-    @Binding var percent: Double
+    var percent: Double
+    @State var percent2: Double = 0
 
     let total: Double = 17 ///number of variables needed to be set in USER
     @State var count: Double = 0
@@ -51,96 +52,28 @@ struct profilePic: View {
                 
         }
         .onAppear{
-            count = 0
-            if(user.DUID != 0){
-                count+=1
-            }
-            if(user.netId != ""){
-                count+=1
-            }
-            if(user.fName != "Unknown"){
-                count+=1
-            }
-            if(user.lName != "Unknown"){
-                count+=1
-            }
-            if(user.gender != .Unknown){
-                count+=1
-            }
-            if(user.purpose != .Unknown){
-                count+=1
-            }
-            if(!user.photos.isEmpty){
-                count+=1
-            }
-            if(user.school != .NotApplicable){
-                count+=1
-            }
-            //self.program = program ?? .NotApplicable
-            if(user.major != .NotApplicable){
-                count+=1
-            }
-            if(user.gradYear != 0){
-                count+=1
-            }
-            if(!(user.sleepSchedule.min ==  0 && user.sleepSchedule.max == 0)){
-                count+=1
-            }
-            if(!(user.budget.min ==  0 && user.budget.max == 0)){
-                count+=1
-            }
-            /*
-            if(user.isSmoke == false){
-                count+=1
-            }
-            if(user.havePets == false){
-                count+=1
-            }
-             */
-            if(user.selfIntro != ""){
-                count+=1
-            }
-            ///ROOM IS OPTIONAL
-            //self.room = room ?? Room()
             
-            ///need number of elements  in  Preferences
-            //Get preference elements
-            if(user.preference.gender != .Unknown){
-                count+=1
-            }
-            if(!(user.preference.ageRange.min ==  0 && user.preference.ageRange.max == 0)){
-                count+=1
-            }
-            
-            if(user.location != ""){
-                count+=1
-            }
-            if(!user.interests.isEmpty){
-                count+=1
-            }
-            print(count)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                percent = count / total
-            }
+            percent2 = percent
         }
     }
     private var circleOverlay: some View{
         Circle()
-            .trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: CGFloat(percent))
+            .trim(from: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, to: CGFloat(percent2))
             .stroke(style: StrokeStyle(lineWidth: 6, lineCap: .round))
             .rotation(Angle(degrees: -180))
+            .animation(.easeInOut(duration:1), value:percent2)
             .foregroundColor(color)
             .padding(-5)
-            .animation(.easeInOut(duration:1), value:percent)
+            
     }
     private var circleOverlay2: some View{
         Circle()
-            .trim(from: CGFloat(percent), to: 1.0)
+            .trim(from: CGFloat(percent2), to: 1.0)
             .stroke(style: StrokeStyle(lineWidth: 6, lineCap: .round))
             .rotation(Angle(degrees: -180))
             .foregroundColor(.gray.opacity(0.25))
             .padding(-5)
-            .animation(.easeInOut(duration:1), value:percent)
+            .animation(.easeInOut(duration:1), value:percent2)
     }
 }
 /*
