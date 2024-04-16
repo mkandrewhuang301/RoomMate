@@ -52,10 +52,10 @@ struct ProfileView: View {
                 VStack{
                     switch isLoading{
                     case false:
-                        profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width, percent: $percent )
+                        profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: $user, height: height, width: width, percent: $percent )
                             .offset(y:42)
                     case true:
-                        profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: user, height: height, width: width, percent: $percent)
+                        profilePic(photo: (user.photos.isEmpty ? "" :  user.photos[0] ), user: $user, height: height, width: width, percent: $percent)
                             .offset(y:42)
                     }
                     

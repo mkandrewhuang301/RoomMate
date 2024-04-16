@@ -9,7 +9,7 @@ import SwiftUI
 
 struct profilePic: View {
     var photo: String
-    var user: User
+    @Binding var user: User
     let height: Double
     let width: Double
     @Binding var percent: Double

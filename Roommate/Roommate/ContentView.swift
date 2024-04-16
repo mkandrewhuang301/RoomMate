@@ -49,7 +49,7 @@ struct ContentView: View {
                                     .resizable()
                                     .edgesIgnoringSafeArea(.bottom)
                                     .opacity(0.6)
-                                    .frame(height: 650)
+                                    //.frame(height: 650)
                             }
                             ZStack{
                                 //showDetail = false

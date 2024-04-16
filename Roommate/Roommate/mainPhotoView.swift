@@ -170,7 +170,7 @@ struct mainPhotosViewer: View {
                                     user.applyList.append(profile.id)
                                     index += 1
                                     print(user.applyList.count)
-                                    //user.seen.append(profile.id)
+                                    user.seen.append(profile.id)
                                 }
                                 
                             }
@@ -180,7 +180,7 @@ struct mainPhotosViewer: View {
                                     self.offsetX = -800
                                 }completion: {
                                     index += 1
-                                    //user.seen.append(profile.id)
+                                    user.seen.append(profile.id)
                                 }
                                 
                             }

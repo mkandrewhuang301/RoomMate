@@ -117,6 +117,13 @@ final class Database: ObservableObject{
             if self.currentUser.preference.sameMajor &&  self.currentUser.major != profile.major{
                 failedHardFilter = true
             }
+            if self.currentUser.friends.contains(profile.id){
+                failedHardFilter = true
+            }
+            if self.currentUser.applyList.contains(profile.id){
+                failedHardFilter = true
+            }
+             
             //SOFT FILTER
             /*
              Weights: 
@@ -159,11 +166,10 @@ final class Database: ObservableObject{
             if self.currentUser.haveRoom != profile.haveRoom {
                 similarity += 4
             }
-            /*
+            
             if self.currentUser.seen.contains(profile.id){
-                silimarity -=10
+                similarity -= 10
             }
-             */
             
             //get union of interests
             let userInterests = Set(self.currentUser.interests)
