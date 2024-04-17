@@ -62,7 +62,8 @@ You could see people who're interested in you here and decide whether to accept.
 
 ### Call him/her to make sure that is the right one
 
-You could call your friends here!
+You could call your friends here!  
+
 ![](Screenshots/Call1.png)
 ![](Screenshots/Call2.png)
 ### Get some suggestions before going to rent
