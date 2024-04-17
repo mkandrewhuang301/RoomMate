@@ -40,36 +40,36 @@ Welcome to the official repository of RoomMate, an iOS app tailored for Duke stu
 
 The password is the same as you set in the previous ECE564 homework.
 
-
+![](Screenshots/Login.png)
 
 ### Editing your personal profile for a greater chance of matching
 
 Add some photos and interests to let others know you better! Higher percentage of profile completeness would lead to more accurate matching from others!
 
-
+![](Screenshots/Edit1.png)
+![](Screenshots/Edit2.png)
 
 ### Swipe & Match!
 
 Swipe and apply to people you're interested in to make friends.
 
-[](./Screenshots/Swipe1.png)
-[](./Screenshots/Swipe2.png)
-
+![](Screenshots/Swipe1.png)
 ### See who is interested in you
 
 You could see people who're interested in you here and decide whether to accept.
 
-
+![](Screenshots/Swipe2.png)
 
 ### Call him/her to make sure that is the right one
 
 You could call your friends here!
-
+![](Screenshots/Call1.png)
+![](Screenshots/Call2.png)
 ### Get some suggestions before going to rent
 
 "There are known knowns; these are things we know we know. We know there are known unknowns; that is to say, we know there are some things we do not know. But there are also unknown unknowns—the ones we don't know we don't know."
-
-
+![](Screenshots/Blog1.png)
+![](Screenshots/Blog2.png)
 
 ## Attribution
 
