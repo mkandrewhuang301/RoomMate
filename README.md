@@ -1,6 +1,6 @@
 # RoomMate
 
-Welcome to the official repository of RoomMate, an iOS app tailored for Duke student. RoomMate allows Duke students to quickly find their matching roommates and have 
+Welcome to the official repository of RoomMate, an iOS app tailored for Duke student. RoomMate allows Duke students to quickly and accurately find their matching roommates. Please let me know if anything wrong with the server!
 
 ## Features
 
@@ -14,7 +14,7 @@ Welcome to the official repository of RoomMate, an iOS app tailored for Duke stu
 ### Prerequisites
 
 - Xcode 13 or later
-- iPhone 15 Pro
+- iPhone 15 Pro (If you're testing with simulator, please choose iPhone 15 Pro. However, if you want to test to video calling feature, you may want to test on your personal device, some UI layout may go weird if your device is of different type.)
 
 ### Installation & Running:
 
@@ -52,7 +52,8 @@ Add some photos and interests to let others know you better! Higher percentage o
 
 Swipe and apply to people you're interested in to make friends.
 
-
+[](./Screenshots/Swipe1.png)
+[](./Screenshots/Swipe2.png)
 
 ### See who is interested in you
 
