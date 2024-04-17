@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//this is the view for choosing interests
 struct InterestsView: View {
     @Binding var isPresented: Bool
     @Binding var selectedInterests: [String]

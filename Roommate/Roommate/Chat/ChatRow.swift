@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatRow: View {
+struct ChatRow: View { // this is one row of friend showing photo name and calling button
     @Binding var user: User
     @ObservedObject var agoraManager: AgoraManager = AgoraManager.shared
     
@@ -25,7 +25,6 @@ struct ChatRow: View {
                     .fontWeight(.heavy)
                     .frame(width: 180, alignment: .leading)
                     .padding(.bottom, 40)
-                //                    .border(Color.black)
                 Spacer()
             }
             HStack {

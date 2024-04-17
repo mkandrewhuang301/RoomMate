@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// this is the profile detail view shown from other users' view
 struct OtherProfileDetailView: View {
     @Binding var user: User
     @Binding var showDetail: Bool

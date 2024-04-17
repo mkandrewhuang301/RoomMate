@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// this is the view on profile page
+// including photo and a ring indicating the
+// completeness of someone's profile
 struct profilePic: View {
     var photo: String
     @Binding var user: User

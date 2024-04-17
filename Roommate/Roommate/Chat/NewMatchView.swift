@@ -14,11 +14,12 @@ struct NewMatchView: View {
     @Binding var showUser: User
     let minimumMatch = 5
     
-    var dedupedWaitList: [UUID] {
+    var dedupedWaitList: [UUID] { // deduplicate the wait list
         Array(Set(user.waitList))
     }
+    
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
+        ScrollView(.horizontal, showsIndicators: false) { // show all the people in the wait list
             HStack (spacing: 25){
                 ForEach(dedupedWaitList, id: \.self) { friend_uuid in
                     let friend = dataModel.bindingForUser(friend_uuid)

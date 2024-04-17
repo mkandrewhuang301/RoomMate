@@ -16,6 +16,7 @@
  */
 import SwiftUI
 
+// this is the profile view
 struct ProfileView: View {
     @StateObject var dataModel: Database  = Database.shared
     @State private var netID: String = ""

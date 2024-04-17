@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// this is the comonent showing the photos in the profile editing
+// page
 struct EditPhotoItem: View {
     @Binding var imageStr: String
 

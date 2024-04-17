@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+// this offers the ability to upload
 class UploadViewModel: NSObject, ObservableObject, URLSessionDelegate, URLSessionDataDelegate {
     
     @Published var showAlert: Bool = false

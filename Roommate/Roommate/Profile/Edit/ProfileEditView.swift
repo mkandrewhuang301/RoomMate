@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ProfileEditView: View {
     @Binding var user: User
-    
+
     @State private var showAgeSheet = false
     @State private var showGradYearSheet = false
     @State private var showBudgetSheet = false

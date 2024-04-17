@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// this is mainly for editing the age and
+// graduation year
 struct WheelPickerView: View {
     @Binding var isPresented: Bool
     let sheetHeight = UIScreen.main.bounds.height / 2

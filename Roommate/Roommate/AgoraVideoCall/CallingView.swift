@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CallingView: View {
+struct CallingView: View { // this is the view when you're calling someone
     @ObservedObject var agoraManager: AgoraManager = AgoraManager.shared
     var calleeName: String
     

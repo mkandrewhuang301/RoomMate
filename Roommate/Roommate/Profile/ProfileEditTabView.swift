@@ -12,6 +12,8 @@ enum Tab {
     case preview
 }
 
+// this is the view when you click the photo to edit
+// the profile and it will show
 struct ProfileEditTabView: View {
     var switched: Bool = false
     @Binding var user: User 

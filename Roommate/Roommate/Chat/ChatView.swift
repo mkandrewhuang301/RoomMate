@@ -21,7 +21,7 @@ struct ChatView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack(spacing: 0) {
+            HStack(spacing: 0) { // headline
                 Spacer()
                 Image("iconimage")
                     .resizable()
@@ -36,7 +36,7 @@ struct ChatView: View {
             .padding()
             .frame(height: 80)
             List {
-                Section(header: 
+                Section(header:  // new match line
                     HStack {
                         Text("New Matches")
                             .font(.custom("Helvetica Neue", size: 18))
@@ -68,14 +68,13 @@ struct ChatView: View {
                     NewMatchView(user: $user, showProfile: $showProfile, showUser: $showUser)
                 }
                 
-                Section(header: Text("Contacts")
+                Section(header: Text("Contacts") // contacts to call
                     .font(.custom("Helvetica Neue", size: 18))
                     .fontWeight(.bold)
                     .foregroundColor(.black)
                     .padding(.vertical)
                 ) {
                     // get a deduplicated friend uuid list
-                    
                     ForEach(dedupedFriendList, id: \.self) { friend_uuid in
                             let friend = dataModel.bindingForUser(friend_uuid)
                             ChatRow(user: friend)
