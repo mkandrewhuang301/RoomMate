@@ -51,7 +51,6 @@ struct profilePic: View {
                 .frame(width: 100, height: 40)
                 .font(.custom("Helvetica Neue", size: 16))
                 .fontWeight(.bold)
-                //.frame(width:30, height:20)
             
         }
         .onChange(of: percent, initial: false) { oldValue, newValue in

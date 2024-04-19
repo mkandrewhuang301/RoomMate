@@ -143,7 +143,7 @@ struct WrapView<ItemView: View>: View {
                     self.generateContent(in: geometry)
                 }
             }
-            .frame(height: totalHeight)
+            .frame(height: nil)
         }
     }
 

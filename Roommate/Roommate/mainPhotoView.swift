@@ -57,7 +57,7 @@ struct mainPhotosViewer: View {
                 Image(uiImage: UIImage)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: cardStyle ? (screenWidth - 20) : screenWidth, height: 550)
+                    .frame(width: cardStyle ? abs(screenWidth - 20) : screenWidth, height: 550)
                     .clipped()
                     .clipShape(RoundedRectangle(cornerRadius: cardStyle ? 25 : 0))
             
@@ -141,7 +141,7 @@ struct mainPhotosViewer: View {
                 ForEach(0..<profile.photos.count, id: \.self) { index in
                     Rectangle()
                         .fill(index == currentIndex ? Color.white : Color.gray.opacity(0.5))
-                        .frame(width: barWidth, height: 5)
+                        .frame(width: abs(barWidth), height: 5)
                         .cornerRadius(4)
                         .overlay(
                             RoundedRectangle(cornerRadius: 4)
