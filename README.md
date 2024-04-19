@@ -5,7 +5,7 @@ Welcome to the official repository of RoomMate, an iOS app tailored for Duke stu
 ## Features
 
 - **Duke Student Only:** This app is exclusively designed for Duke University students. Users must login with their Duke NetID to access the app’s features, ensuring a secure and student-specific environment.
-- **Personalized Filter:** 
+- **Personalized Filter:** App utilizes data from your profile information and recommends users who are similar to you
 - **Video Calling:** The app includes a third-party video calling feature that allows students to easily connect with their potential future roommates.
 - **Informational Blogs:** Some suggestions are here especially for students who are going to share housing for the first time.
 
