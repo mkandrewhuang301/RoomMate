@@ -18,6 +18,8 @@ struct ContentView: View {
     @State private var isViewVisible: Bool = false
     @State var userList: [User]  = []
     @State var isDownloadComplete: Bool = false
+    @State var loading: String = "Loading."
+    private var timer = Timer()
     
     //user details:
     @State var userIndex: Int = 0
@@ -106,7 +108,14 @@ struct ContentView: View {
                 }
             }
             else{
-                Text("Loading...")
+                Text(loading)
+                    .onAppear{
+                        startAnimation()
+                    }
+                    .onDisappear{
+                        endAnimation()
+                    }
+
             }
             
             Text("")
@@ -173,7 +182,21 @@ struct ContentView: View {
             Text(agoraManager.alertMessage)
         }
     }
-    
+    func startAnimation(){
+            endAnimation()
+            Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true){ _ in
+                if loading == "Loading..."{
+                    loading = "Loading"
+                }
+                else{
+                    loading  = self.loading + "."
+                }
+            }
+        }
+        func endAnimation(){
+            timer.invalidate()
+        }
+
 }
 
 private var vibrationTimer: Timer?
