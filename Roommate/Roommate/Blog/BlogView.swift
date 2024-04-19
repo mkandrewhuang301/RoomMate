@@ -21,7 +21,7 @@ class WebViewData: NSObject, ObservableObject {
         super.init()
     }
 }
-
+///second webview for the preview that users see when they click on the specific link
 struct WebView2: UIViewRepresentable {
     @ObservedObject var webViewData: WebViewData
     var index: Int
@@ -37,7 +37,7 @@ struct WebView2: UIViewRepresentable {
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
         let request = URLRequest(url: webViewData.urls[index])
-        if uiView.url != webViewData.urls[index] { // Check if the current URL is different
+        if uiView.url != webViewData.urls[index] {
             uiView.load(request)
         }
     }
@@ -48,12 +48,12 @@ struct WebView2: UIViewRepresentable {
 
     class Coordinator: NSObject, WKNavigationDelegate {
         var parent: WebView2
-        var hasLoaded = false // Flag to track load completion
+        var hasLoaded = false
 
         init(_ parent: WebView2) {
             self.parent = parent
         }
-        
+        //utilized copilot for webView (to get the link titles)
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             if !hasLoaded {
                 webView.evaluateJavaScript("document.title") { result, error in
@@ -63,12 +63,12 @@ struct WebView2: UIViewRepresentable {
                         }
                     }
                 }
-                hasLoaded = true // Set flag to true after loading
+                hasLoaded = true
             }
         }
     }
 }
-struct WebView: UIViewRepresentable {
+struct WebView: UIViewRepresentable { // First webview for the preview of the website
     @ObservedObject var webViewData: WebViewData
     var index: Int
 
@@ -81,7 +81,7 @@ struct WebView: UIViewRepresentable {
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
         let request = URLRequest(url: webViewData.urls[index])
-        if uiView.url != webViewData.urls[index] { // Check if the current URL is different
+        if uiView.url != webViewData.urls[index] {
             uiView.load(request)
         }
     }
@@ -92,12 +92,12 @@ struct WebView: UIViewRepresentable {
 
     class Coordinator: NSObject, WKNavigationDelegate {
         var parent: WebView
-        var hasLoaded = false // Flag to track load completion
+        var hasLoaded = false
 
         init(_ parent: WebView) {
             self.parent = parent
         }
-        
+        //utilized copilot for webView (to get the link titles)
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             if !hasLoaded {
                 webView.evaluateJavaScript("document.title") { result, error in
@@ -107,7 +107,7 @@ struct WebView: UIViewRepresentable {
                         }
                     }
                 }
-                hasLoaded = true // Set flag to true after loading
+                hasLoaded = true
             }
         }
     }
@@ -141,14 +141,12 @@ struct BlogView: View {
         return webViewData.pageTitles.enumerated().compactMap{ index, title in
             title.lowercased().contains(searchText.lowercased()) ? index : nil
         }
-        
     }
     var body: some View {
         NavigationView {
             List(filteredIndices, id: \.self) { index in
                 NavigationLink(destination: FormatView(webViewData: webViewData, index: index)) {
                     VStack(alignment: .leading) {
-                       
                         WebView2(webViewData: webViewData, index: index)
                             .frame(height: 250)
                             .cornerRadius(10)

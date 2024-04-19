@@ -53,14 +53,6 @@ class UploadViewModel: NSObject, ObservableObject, URLSessionDelegate, URLSessio
             return session
         }()
         
-//        let encoder = JSONEncoder()
-//        var jsonData: Data
-//        do {
-//            jsonData = try encoder.encode(user)
-//        } catch {
-//            return false
-//        }
-//        print(String(data: jsonData, encoding: .utf8)!)
         request.httpBody = json
         let task = session.dataTask(with: request)
         task.resume()

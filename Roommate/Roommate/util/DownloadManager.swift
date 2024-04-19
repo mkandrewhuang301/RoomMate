@@ -28,26 +28,15 @@ class DownloadManager<T: Decodable>: NSObject, ObservableObject, URLSessionDownl
         print("Download completed. File saved at: \(location.absoluteString)")
         do{
             let data = try Data(contentsOf: location)
-            /*
-            if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
-               let prettyPrintedData = try? JSONSerialization.data(withJSONObject: jsonObject, options: [.prettyPrinted]),
-               let prettyPrintedString = String(data: prettyPrintedData, encoding: .utf8) {
-                print(prettyPrintedString)
-            }
-             */
-            
-            //do{
             do {
                 let decoder = JSONDecoder()
                 let decoded = try decoder.decode(T.self, from: data)
                 DispatchQueue.main.async {
                    let _ = self.downloadingCompletionHandler?(.success(decoded))
                }
-                // If decoding is successful, use 'decoded' data
             } catch {
                 print("Decoding error: \(error)")
             }
-           //}
         }catch{
             print("error retrieving data ")
             DispatchQueue.main.async {
@@ -61,7 +50,6 @@ class DownloadManager<T: Decodable>: NSObject, ObservableObject, URLSessionDownl
         }
         var request = URLRequest(url:url)
         request.httpMethod = "GET"
-        ///credentials
         let credentials =  "vcm:\(auth)"
         guard let authData = credentials.data(using: .utf8) else{
             return false

@@ -60,7 +60,6 @@ struct profilePic: View {
             DispatchQueue.main.async {
                 percent2 = percent
             }
-            //percent2 = percent
         }
     }
     private var circleOverlay: some View{
