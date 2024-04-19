@@ -40,7 +40,7 @@ Welcome to the official repository of RoomMate, an iOS app tailored for Duke stu
 
 The password is the same as you set in the previous ECE564 homework.
 
-![](Screenshots/Login.png)
+<img src="Screenshots/Login.png" width="250">
 
 ### Editing your personal profile for a greater chance of matching
 
