@@ -54,6 +54,7 @@ Add some photos and interests to let others know you better! Higher percentage o
 Swipe and apply to people you're interested in to make friends.
 
 <img src="Screenshots/Swipe1.png" width="250">
+
 ### See who is interested in you
 
 You could see people who're interested in you here and decide whether to accept.
@@ -67,11 +68,13 @@ You could call your friends here!
 
 <img src="Screenshots/Call1.png" width="250">
 <img src="Screenshots/Call2.png" width="250">
+
 ### Get some suggestions before going to rent
 
 "There are known knowns; these are things we know we know. We know there are known unknowns; that is to say, we know there are some things we do not know. But there are also unknown unknowns—the ones we don't know we don't know."
+
 <img src="Screenshots/Blog1.png" width="250">
-<img src="Screenshots/Blog2.png" width="250">
+<img src="Screenshots/Blog2.png" width="250"> 
 
 ## Attribution
 
