@@ -8,8 +8,9 @@
 import SwiftUI
 import AgoraUIKit
 
-
-struct AgoraVideoViewerRepresentable: UIViewRepresentable {
+// this is the view for video calling provided by agoraUIkit, here what I've done
+// is to merge that UIKit View in the Swift UI with UIViewRepresentable
+struct AgoraVideoViewerRepresentable: UIViewRepresentable { 
     @ObservedObject var agoraManager: AgoraManager = AgoraManager.shared
     
     func makeUIView(context: Context) -> UIView {

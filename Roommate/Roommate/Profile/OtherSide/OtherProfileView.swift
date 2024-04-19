@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// this is the profileview shown from other users' view
 struct OtherProfileView: View {
     @Binding var user: User
     @State private var showDetail = false

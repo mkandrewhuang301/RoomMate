@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// this is the undraggble photo for preview
 struct PhotosViewer: View {
     @Binding var user: User
     @Binding var showDetail: Bool

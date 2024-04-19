@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// a double end range slider
 struct RangeSlider: View {
     @State var width: CGFloat = 0
     @State var widthToW: CGFloat = 15

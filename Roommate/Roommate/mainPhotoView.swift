@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// this is the view for the draggable photo component in the main page
 struct mainPhotosViewer: View {
     @Binding var index: Int
     @Binding var profile: User

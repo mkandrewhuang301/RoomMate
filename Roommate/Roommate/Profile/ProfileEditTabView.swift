@@ -12,6 +12,8 @@ enum Tab {
     case preview
 }
 
+// this is the view when you click the photo to edit
+// the profile and it will show
 struct ProfileEditTabView: View {
     var switched: Bool = false
     @Binding var user: User 
@@ -19,7 +21,14 @@ struct ProfileEditTabView: View {
     var profileImages: [UIImage] = []
     @State private var selectedTab: Tab = .edit
     @StateObject var uploadViewModel = UploadViewModel()
-    
+    @State private var tmpUser: User
+
+    init(user: Binding<User>, showOverlay: Binding<Bool>) {
+        self._user = user
+        self._showOverlay = showOverlay
+        self._tmpUser = State(initialValue: user.wrappedValue)
+    }
+
     var body: some View {
         VStack {
             ZStack {
@@ -41,6 +50,7 @@ struct ProfileEditTabView: View {
                     .fontWeight(.bold)
                     Spacer()
                     Button("Save") {
+                        user = tmpUser
                         if !uploadViewModel.upload(website: "http://vcm-39030.vm.duke.edu:8080/roommate/modify-profile", user: user) {
                             print("Failed to start upload task")
                         }
@@ -77,9 +87,9 @@ struct ProfileEditTabView: View {
             
             switch selectedTab {
                 case .edit:
-                    ProfileEditView(user: $user)
+                    ProfileEditView(user: $tmpUser)
                 case .preview:
-                    OtherProfileView(user: $user)
+                    OtherProfileView(user: $tmpUser)
             }
             Spacer()
         }

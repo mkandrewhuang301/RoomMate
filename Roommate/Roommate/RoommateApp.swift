@@ -18,7 +18,7 @@ struct RoommateApp: App {
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.willTerminateNotification)) { _ in
                     agoraManager.logoutRTM()
                     agoraManager.agoraVideoViewer?.leaveChannel()
-                }
+                } // logout the video calling channel when exiting the app
         }
     }
 }

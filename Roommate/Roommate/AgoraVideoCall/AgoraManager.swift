@@ -7,6 +7,11 @@ import AgoraUIKit
 import AVFoundation
 import Photos
 
+// this is view model managing all of the stuffs related to video calling
+// user will login to a rtm channel when booting the app
+// caller will open up a rtc channel send calling request with the channel info to callee through rtm channel
+// callee could accept and reject and send the reponse back to caller through rtm channel
+// then the caller and callee will join the rtc channel and do video calling
 class AgoraManager: NSObject, ObservableObject {
     static let shared = AgoraManager()
     override private init() {
@@ -84,15 +89,11 @@ class AgoraManager: NSObject, ObservableObject {
             "tokenType": "rtc",
             "channel": channelName,
             "role": "publisher",
-//            "user_id": user,
             "uid": "0",
             "expire": 3600
 
         ]
         if let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: []) {
-//            guard let tokenServerURL = URL(string: "https://vcm-39030.vm.duke.edu:8081/get_rtc_token") else {
-//                return ""
-//            }
             guard let tokenServerURL = URL(string: "https://agora-token-service-production-ccb0.up.railway.app/getToken") else {
                 return ""
             }

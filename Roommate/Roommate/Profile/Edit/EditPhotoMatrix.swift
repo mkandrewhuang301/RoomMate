@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// this is the comonent showing the photos in the profile editing
+// page, including 2x2 photos
 struct EditPhotoMatrix: View {
     @Binding var imageStrs: [String]
     @State private var showActionSheet = false

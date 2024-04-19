@@ -1,6 +1,6 @@
 # RoomMate
 
-Welcome to the official repository of RoomMate, an iOS app tailored for Duke student. RoomMate allows Duke students to quickly find their matching roommates and have 
+Welcome to the official repository of RoomMate, an iOS app tailored for Duke student. RoomMate allows Duke students to quickly and accurately find their matching roommates. Please let me know if anything wrong with the server!
 
 ## Features
 
@@ -14,7 +14,7 @@ Welcome to the official repository of RoomMate, an iOS app tailored for Duke stu
 ### Prerequisites
 
 - Xcode 13 or later
-- iPhone 15 Pro
+- iPhone 15 Pro (If you're testing with simulator, please choose iPhone 15 Pro. However, if you want to test to video calling feature, you may want to test on your personal device, some UI layout may go weird if your device is of different type.)
 
 ### Installation & Running:
 
@@ -40,35 +40,37 @@ Welcome to the official repository of RoomMate, an iOS app tailored for Duke stu
 
 The password is the same as you set in the previous ECE564 homework.
 
-
+![](Screenshots/Login.png)
 
 ### Editing your personal profile for a greater chance of matching
 
 Add some photos and interests to let others know you better! Higher percentage of profile completeness would lead to more accurate matching from others!
 
-
+![](Screenshots/Edit1.png)
+![](Screenshots/Edit2.png)
 
 ### Swipe & Match!
 
 Swipe and apply to people you're interested in to make friends.
 
-
-
+![](Screenshots/Swipe1.png)
 ### See who is interested in you
 
 You could see people who're interested in you here and decide whether to accept.
 
-
+![](Screenshots/Swipe2.png)
 
 ### Call him/her to make sure that is the right one
 
-You could call your friends here!
+You could call your friends here!  
 
+![](Screenshots/Call1.png)
+![](Screenshots/Call2.png)
 ### Get some suggestions before going to rent
 
 "There are known knowns; these are things we know we know. We know there are known unknowns; that is to say, we know there are some things we do not know. But there are also unknown unknowns—the ones we don't know we don't know."
-
-
+![](Screenshots/Blog1.png)
+![](Screenshots/Blog2.png)
 
 ## Attribution
 

@@ -11,6 +11,8 @@ enum RangeType {
     case number, money, time
 }
 
+// this is the components used for editing 
+// some range fields such as budget and awake time
 struct SliderPickerView: View {
     @Binding var isPresented: Bool
     let sheetHeight = UIScreen.main.bounds.height / 2

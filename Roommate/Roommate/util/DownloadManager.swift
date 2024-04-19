@@ -7,6 +7,7 @@
 
 import Foundation
 
+// this offers the ability to download
 class DownloadManager<T: Decodable>: NSObject, ObservableObject, URLSessionDownloadDelegate{
     
     //hold download task

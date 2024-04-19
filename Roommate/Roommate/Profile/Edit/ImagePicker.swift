@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// this component enables the edit photo item to get photo
+// from camera or photo library
 struct ImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     var sourceType: UIImagePickerController.SourceType
