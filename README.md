@@ -85,3 +85,5 @@ Read and filter through articles to gain insight about city communities and rent
   This range slider component is realized by following the guide of this video:
 
   [SwiftUI: Double Range Slider with Animation - YouTube](https://www.youtube.com/watch?v=ZKm98sKxBRM)
+  
+  The code for evaluating javascript from URL was possible through the help of swift copilot
