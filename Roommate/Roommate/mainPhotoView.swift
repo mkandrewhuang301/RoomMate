@@ -179,7 +179,7 @@ struct mainPhotosViewer: View {
                                     currentIndex = 0
                                     user.applyList.append(profile.id)
                                     index += 1
-                                    print(user.applyList.count)
+                                    //print(user.applyList.count)
                                     user.seen.append(profile.id)
                                 }
                                 

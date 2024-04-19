@@ -132,7 +132,7 @@ struct BlogView: View {
        URL(string: "https://realestate.usnews.com/places/rankings/best-places-to-live")!,
        URL(string: "https://money.com/best-places-to-live/")!,
        URL(string: "https://www.livebrizo.com/?utm_source=google&utm_medium=cpc&utm_campaign=search&utm_term=durham%20apartments&utm_content=location&gad_source=1&gclid=CjwKCAjw_e2wBhAEEiwAyFFFo_E0_UUtBACsOMTjFVltGWsr_VfJEd0rdOXKsTETDRa1XXtVL9hEQRoCLd8QAvD_BwE")!,
-       URL(string: "https://www.pods.com/blog/pros-and-cons-living-in-chicago")!,
+       URL(string: "https://www.hellolanding.com/blog/living-in-los-angeles-pros-and-cons/")!,
        URL(string: "https://www.thriftsandtangles.com/find-affordable-apartment-los-angeles/")!,
        
     ])
