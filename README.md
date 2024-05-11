@@ -46,7 +46,7 @@ The password is the same as you set in the previous ECE564 homework.
 
 Add some photos and interests to let others know you better! Higher percentage of profile completeness would lead to more accurate matching from others and better profile recommendations!
 
-<img src="Screenshots/Edit1.png" width="250">
+<img src="Screenshots/Edit3.PNG" width="250">
 <img src="Screenshots/Edit2.png" width="250">
 
 ### Swipe & Match!

@@ -119,12 +119,12 @@ struct ContentView: View {
             }
             
             Text("")
-            ECE564Login()
+            //ECE564Login()
             //          }
-            .onDisappear(){
-               //            .onAppear(){
-                //let netID = "lam145"
-                let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
+            //.onDisappear(){
+                           .onAppear(){
+                let netID = "ah629"
+                //let netID = UserDefaults.standard.string(forKey: "AuthString")!.components(separatedBy: ":")[0]
                 
                 DownloadManager<User>().downloadData(url: "http://vcm-39030.vm.duke.edu:8080/roommate/user/\(netID)"){ result in
                     switch result{
