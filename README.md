@@ -46,8 +46,7 @@ The password is the same as you set in the previous ECE564 homework.
 
 Add some photos and interests to let others know you better! Higher percentage of profile completeness would lead to more accurate matching from others and better profile recommendations!
 
-<img src="Screenshots/Edit3.PNG" width="250">
-<img src="Screenshots/Edit2.png" width="250">
+<img src="Screenshots/Edit3.PNG" width="250"> <img src="Screenshots/Edit2.png" width="250">
 
 ### Swipe & Match!
 
@@ -66,15 +65,13 @@ You can see people who're interested in rooming together with you here and decid
 You can call your friends here!  
 
 
-<img src="Screenshots/Call1.png" width="250">
-<img src="Screenshots/Call2.png" width="250">
+<img src="Screenshots/Call1.png" width="250"> <img src="Screenshots/Call2.png" width="250">
 
 ### Get some suggestions before you move in
 
 Read and filter through articles to gain insight about city communities and renting tips and tricks
 
-<img src="Screenshots/Blog1.png" width="250">
-<img src="Screenshots/Blog2.png" width="250"> 
+<img src="Screenshots/Blog1.png" width="250"> <img src="Screenshots/Blog2.png" width="250"> 
 
 "There are known knowns; these are things we know we know. We know there are known unknowns; that is to say, we know there are some things we do not know. But there are also unknown unknowns—the ones we don't know we don't know."
 
