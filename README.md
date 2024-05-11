@@ -52,7 +52,7 @@ Add some photos and interests to let others know you better! Higher percentage o
 
 Swipe and apply to people you're interested in to make friends.
 
-<img src="Screenshots/Swipe1.png" width="250" height = "500" style="margin-right: 20px;">  <img src="Screenshots/Swipe3.png" width="250">
+<img src="Screenshots/Swipe1.png" width="250" height = "500" style="margin-right: 20px;">  <img src="Screenshots/Swipe3.png" width="250" height = "500">
 
 ### See who is interested in you
 
