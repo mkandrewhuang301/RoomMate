@@ -71,7 +71,7 @@ You can call your friends here!
 
 Read and filter through articles to gain insight about city communities and renting tips and tricks
 
-<img src="Screenshots/Blog1.png" width="250" height="500" style="margin-right: 50px;">    <img src="Screenshots/Blog2.png" width="250"> 
+<img src="Screenshots/Blog1.png" width="250" height="500" style="margin-right: 50px;">    <img src="Screenshots/Blog2.png" width="250" height="500"> 
 
 "There are known knowns; these are things we know we know. We know there are known unknowns; that is to say, we know there are some things we do not know. But there are also unknown unknowns—the ones we don't know we don't know."
 
